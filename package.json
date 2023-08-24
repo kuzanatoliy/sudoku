@@ -1,0 +1,9 @@
+{
+  "name": "sudoku",
+  "version": "0.0.0",
+  "description": "Sudoku play",
+  "main": "index.js",
+  "repository": "https://github.com/kuzanatoliy/sudoku.git",
+  "author": "kuzanatoliy <njkznu@gmail.com>",
+  "license": "MIT"
+}
