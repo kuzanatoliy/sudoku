@@ -210,6 +210,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@kuzanatoliorg/prettier-config@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.2.0.tgz#b9fadb85db7a4024a51a3c53187508926c0409c5"
+  integrity sha512-MjDsmXibIOwIlla4KVJ1QEme2sNwwccZR8WL0Nz2RC/G5JGg3VP/Iotm+fhg7ios4NQYH2Er2nUQcYlpc6miLw==
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
