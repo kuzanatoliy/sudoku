@@ -1,13 +1,11 @@
 module.exports = {
-  extends: ['@commitlint/config-conventional'],
+  extends: ['@kuzanatoliorg/commitlint-config'],
   rules: {
-    'scope-enum': [2, 'always', ["quality", "engine", "web"]],
-    'references-empty': [2, 'never'],
-    'subject-case': [0, 'always']
+    'scope-enum': [2, 'always', ['quality', 'engine', 'web']],
   },
   parserPreset: {
     parserOpts: {
-      issuePrefixes: ['S-']
-    }
-  }
+      issuePrefixes: ['S-'],
+    },
+  },
 };
