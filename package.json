@@ -7,15 +7,16 @@
   "author": "kuzanatoliy <njkznu@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
     "commitlint": "commitlint --edit"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@kuzanatoliorg/commitlint-config": "^1.0.0",
-    "husky": "^8.0.3"
-  },
-  "dependencies": {
-    "@kuzanatoliorg/prettier-config": "^1.2.0"
+    "@kuzanatoliorg/prettier-config": "^1.10.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3"
   }
 }

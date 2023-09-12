@@ -215,10 +215,10 @@
   resolved "https://registry.yarnpkg.com/@kuzanatoliorg/commitlint-config/-/commitlint-config-1.0.0.tgz#ad7028596482a5f60ce6e23596b798c969790cb4"
   integrity sha512-97yEJ+T0iZlv+Cbeilf6sBMMaEaJaWFtWdvPYNk3gzNAUBA+PERZBm6p13iuBOvBLWXuCw1oA+jc7CXulNaF6Q==
 
-"@kuzanatoliorg/prettier-config@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.2.0.tgz#b9fadb85db7a4024a51a3c53187508926c0409c5"
-  integrity sha512-MjDsmXibIOwIlla4KVJ1QEme2sNwwccZR8WL0Nz2RC/G5JGg3VP/Iotm+fhg7ios4NQYH2Er2nUQcYlpc6miLw==
+"@kuzanatoliorg/prettier-config@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.10.0.tgz#8374ce952eafeaf42641f8e907ecc99ebf969fac"
+  integrity sha512-GNTQkciqjr8p6VhTty5JoOr+XFFR2lMKmsRdLFqGENHXbKDf5NHXx5M5D3DfUeNJ470Bpb06+jPn8KSYKDhWDQ==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
@@ -984,6 +984,11 @@ path-type@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
+
+prettier@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.0.3.tgz#432a51f7ba422d1469096c0fdc28e235db8f9643"
+  integrity sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==
 
 punycode@^2.1.0:
   version "2.3.0"
