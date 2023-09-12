@@ -210,6 +210,11 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@kuzanatoliorg/commitlint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/commitlint-config/-/commitlint-config-1.0.0.tgz#ad7028596482a5f60ce6e23596b798c969790cb4"
+  integrity sha512-97yEJ+T0iZlv+Cbeilf6sBMMaEaJaWFtWdvPYNk3gzNAUBA+PERZBm6p13iuBOvBLWXuCw1oA+jc7CXulNaF6Q==
+
 "@kuzanatoliorg/prettier-config@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.2.0.tgz#b9fadb85db7a4024a51a3c53187508926c0409c5"
