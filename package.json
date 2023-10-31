@@ -1,22 +1,37 @@
 {
-  "name": "sudoku",
+  "name": "@kuzanatoliorg/sudoku",
+  "private": true,
   "version": "0.0.0",
+  "type": "module",
   "description": "Sudoku play",
-  "main": "index.js",
+  "main": "src/index.tsx",
   "repository": "https://github.com/kuzanatoliy/sudoku.git",
   "author": "kuzanatoliy <njkznu@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuzanatoliy/sudoku/issues"
+  },
+  "homepage": "https://github.com/kuzanatoliy/sudoku#readme",
   "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "commitlint": "commitlint --edit"
   },
+  "dependencies": {
+    "solid-js": "^1.7.8"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
     "@kuzanatoliorg/commitlint-config": "^1.0.0",
     "@kuzanatoliorg/prettier-config": "^1.10.0",
     "husky": "^8.0.3",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-solid": "^2.7.0"
   }
 }
