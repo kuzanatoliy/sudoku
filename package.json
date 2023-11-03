@@ -20,7 +20,8 @@
     "prettier:write": "prettier --write .",
     "commitlint": "commitlint --edit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "echo testing"
   },
   "dependencies": {
     "solid-js": "^1.7.8"
