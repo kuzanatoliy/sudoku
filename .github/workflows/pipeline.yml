@@ -1,0 +1,74 @@
+name: deploy
+on: [push, workflow_dispatch]
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install dependencies
+        run: yarn install
+      - name: testing
+        run: yarn run test
+      - name: code style
+        run: yarn run prettier:check
+  version:
+    needs: quality-gates
+    if: github.ref_name == 'master'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: add git artifacts
+        run: |
+          git config --global user.email "njkznu@gmail.com"
+          git config --global user.name "kuzanatoliy"
+      - name: add minor version
+        if: github.event_name == 'push'
+        run: npm version minor
+      - name: major tag
+        if: github.event_name == 'workflow_dispatch'
+        run: npm version major
+      - name: publis version
+        run: |
+          git push
+          git push --tags
+  deploy:
+    needs: [quality-gates, version]
+    if: github.ref_name == 'master'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install dependencies
+        run: yarn install
+      - name: build
+        run: |
+          yarn run build -- --base sudoku
+          yarn run build-storybook
+          mv ./storybook-static ./dist
+      - name: deploy
+        run: |
+          echo >> dist/.nojekyll
+          git add -f dist
+          git commit -am "deploy to gh-pages"
+          git push origin `git subtree split --prefix dist`:refs/heads/gh-pages --force
+          git reset --hard HEAD~1

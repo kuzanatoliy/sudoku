@@ -39,7 +39,7 @@ export const Button: Component<ButtonProps> = (props) => {
   return (
     <button
       {...rest}
-      type="button"
+      type='button'
       classList={{
         'storybook-button--small': local.size === 'small',
         'storybook-button--medium': local.size === 'medium',
