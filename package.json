@@ -26,8 +26,8 @@
   "devDependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
-    "@kuzanatoliorg/commitlint-config": "^1.0.0",
-    "@kuzanatoliorg/prettier-config": "^1.10.0",
+    "@kuzanatoliorg/commitlint-config": "^1.1.0",
+    "@kuzanatoliorg/prettier-config": "^1.11.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
     "typescript": "^5.0.2",

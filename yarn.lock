@@ -598,15 +598,15 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@kuzanatoliorg/commitlint-config@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/commitlint-config/-/commitlint-config-1.0.0.tgz#ad7028596482a5f60ce6e23596b798c969790cb4"
-  integrity sha512-97yEJ+T0iZlv+Cbeilf6sBMMaEaJaWFtWdvPYNk3gzNAUBA+PERZBm6p13iuBOvBLWXuCw1oA+jc7CXulNaF6Q==
+"@kuzanatoliorg/commitlint-config@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/commitlint-config/-/commitlint-config-1.1.0.tgz#68819a3f95c1c9e43afbb16b3eb3b58a1d7d32f6"
+  integrity sha512-g7hNEDOxal5bJmADbBmYoOvwgpUH9F68FYVc6fTRxXqzD9Zm1oDClvL5CfAwvmeSIQ27Lef1k3T2sRVI9uDAug==
 
-"@kuzanatoliorg/prettier-config@^1.10.0":
-  version "1.10.0"
-  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.10.0.tgz#8374ce952eafeaf42641f8e907ecc99ebf969fac"
-  integrity sha512-GNTQkciqjr8p6VhTty5JoOr+XFFR2lMKmsRdLFqGENHXbKDf5NHXx5M5D3DfUeNJ470Bpb06+jPn8KSYKDhWDQ==
+"@kuzanatoliorg/prettier-config@^1.11.0":
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/@kuzanatoliorg/prettier-config/-/prettier-config-1.11.0.tgz#6fd5f5c83dbaa57f6782ecec7c21660dbf14ca7a"
+  integrity sha512-8rxR7YR7Q/7hRbEmOoQuk3gX9XX6ZqeHH1zkwL2NhuVgVwMxoFnTOikV3qqxaLxNEfGQmwUKMY2zm9udQrbm5g==
 
 "@types/babel__core@^7.20.2":
   version "7.20.3"
