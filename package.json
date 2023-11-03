@@ -18,18 +18,33 @@
     "preview": "vite preview",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "solid-js": "^1.7.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.2",
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-conventional": "^18.1.0",
     "@kuzanatoliorg/commitlint-config": "^1.1.0",
     "@kuzanatoliorg/prettier-config": "^1.11.0",
+    "@storybook/addon-essentials": "7.5.2",
+    "@storybook/addon-interactions": "7.5.2",
+    "@storybook/addon-links": "7.5.2",
+    "@storybook/blocks": "7.5.2",
+    "@storybook/builder-vite": "^7.5.2",
+    "@storybook/testing-library": "0.2.2",
+    "babel-preset-solid": "^1.8.4",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "storybook": "7.5.2",
+    "storybook-solidjs": "1.0.0-beta.2",
+    "storybook-solidjs-vite": "1.0.0-beta.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-solid": "^2.7.0"
