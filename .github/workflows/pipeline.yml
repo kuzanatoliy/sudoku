@@ -62,7 +62,7 @@ jobs:
         run: yarn install
       - name: build
         run: |
-          yarn run build -- --base todolist
+          yarn run build -- --base sudoku
           yarn run build-storybook
           mv ./storybook-static ./dist
       - name: deploy
