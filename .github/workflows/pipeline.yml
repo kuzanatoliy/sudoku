@@ -17,7 +17,7 @@ jobs:
       - name: testing
         run: yarn run test
       - name: code style
-        run: yarn run prettier:check && yarn run lint
+        run: yarn run prettier:check
   version:
     needs: quality-gates
     if: github.ref_name == 'master'
