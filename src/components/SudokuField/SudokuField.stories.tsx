@@ -7,14 +7,20 @@ const meta = {
   component: SudokuField,
   tags: ['autodocs'],
   argTypes: {
-    text: {
-      control: 'text',
-      description: "SudokuField's text value",
+    value: {
+      control: {
+        type: 'number',
+        min: 0,
+        max: 9,
+        step: 1,
+      },
+      description: "SudokuField's value value",
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'SudokuField component' },
+        type: { summary: 'number' },
+        defaultValue: { summary: 0 },
       },
     },
+    onChange: { action: 'onChange' },
   },
 } satisfies Meta<typeof SudokuField>;
 
@@ -23,6 +29,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    text: meta.argTypes.text.table.defaultValue.summary,
+    value: meta.argTypes.value.table.defaultValue.summary,
   },
 };
