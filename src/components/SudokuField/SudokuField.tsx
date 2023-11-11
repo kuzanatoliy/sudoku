@@ -1,4 +1,4 @@
-import { TComponent } from '../../types';
+import { TComponent } from 'types';
 
 import styles from './SudokuField.module.scss';
 
