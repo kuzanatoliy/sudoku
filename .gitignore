@@ -2,5 +2,6 @@ node_modules
 
 dist
 storybook-static
+coverage
 
 yarn-error.log
