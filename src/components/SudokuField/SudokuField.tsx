@@ -19,7 +19,6 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       class={styles.sudokufield}
       onKeyDown={(event) => {
         const value = Number(event.key);
-        console.log(event.stopPropagation);
         if (isSudokuValue(value)) {
           props.onChange(value);
           event.stopPropagation();
