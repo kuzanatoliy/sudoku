@@ -2,13 +2,13 @@
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   width: fit-content;
-  border: solid 2px black;
+  border: solid 2px var(--color-dark);
 }
 
 .sudokuplay_leftborder {
-  border-left: solid 2px black;
+  border-left-width: 2px;
 }
 
 .sudokuplay_bottomborder {
-  border-bottom: solid 2px black;
+  border-bottom-width: 2px;
 }
