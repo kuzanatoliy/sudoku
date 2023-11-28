@@ -10,8 +10,9 @@ describe('SudokuField', () => {
   const renderComponent = ({
     value = DEFAULT_VALUE,
     onChange = onChangeSpy,
+    ...props
   }: Partial<ISudokuFieldProps> = {}) =>
-    render(() => <SudokuField value={value} onChange={onChange} />);
+    render(() => <SudokuField value={value} onChange={onChange} {...props} />);
 
   beforeEach(() => {
     vitest.clearAllMocks();
@@ -46,5 +47,11 @@ describe('SudokuField', () => {
     const element = screen.getByText(DEFAULT_VALUE);
     fireEvent.keyDown(element, { key: 'A' });
     expect(onChangeSpy).not.toBeCalled();
+  });
+
+  it('Should pass custom outer class', () => {
+    renderComponent({ class: 'test_class' });
+    const element = screen.getByText(DEFAULT_VALUE);
+    expect(element.classList.contains('test_class')).toBeTruthy();
   });
 });

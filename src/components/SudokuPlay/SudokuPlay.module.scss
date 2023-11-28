@@ -1,0 +1,14 @@
+.sudokuplay {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: fit-content;
+  border: solid 2px black;
+}
+
+.sudokuplay_leftborder {
+  border-left: solid 2px black;
+}
+
+.sudokuplay_bottomborder {
+  border-bottom: solid 2px black;
+}
