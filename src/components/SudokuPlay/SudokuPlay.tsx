@@ -1,6 +1,8 @@
 import { For, createSignal } from 'solid-js';
 import { TComponent } from 'types';
-import { SudokuField, TSudokuValue } from '../SudokuField';
+import { TSudokuValue } from 'sudoku-engine';
+
+import { SudokuField } from '../SudokuField';
 
 import styles from './SudokuPlay.module.scss';
 

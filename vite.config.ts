@@ -31,6 +31,7 @@ export const viteConfig = defineConfig({
   resolve: {
     alias: {
       components: resolve(__dirname, './src/components'),
+      'sudoku-engine': resolve(__dirname, './src/sudoku-engine'),
       types: resolve(__dirname, './src/types'),
     },
   },
