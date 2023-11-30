@@ -1,11 +1,7 @@
 import { TComponent } from 'types';
+import { TSudokuValue, isSudokuValue } from 'sudoku-engine';
 
 import styles from './SudokuField.module.scss';
-
-export type TSudokuValue = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
-
-export const isSudokuValue = (value: number): value is TSudokuValue =>
-  value >= 0 && value <= 9;
 
 export interface ISudokuFieldProps {
   value: TSudokuValue;
