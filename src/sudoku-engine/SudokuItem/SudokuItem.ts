@@ -8,8 +8,6 @@ export class SudokuItem implements TSudokuItem {
   #locksCount: number;
 
   setValue: TSudokuItem['setValue'] = DEFAULT_HANDLER;
-  lock: TSudokuItem['lock'] = DEFAULT_HANDLER;
-  unlock: TSudokuItem['unlock'] = DEFAULT_HANDLER;
 
   constructor(
     value: TSudokuItem['value'],
@@ -23,14 +21,16 @@ export class SudokuItem implements TSudokuItem {
       this.setValue = (value) => {
         this.#value = value;
       };
-      this.lock = () => {
-        this.#locksCount++;
-      };
-      this.unlock = () => {
-        if (this.#locksCount > 0) {
-          this.#locksCount--;
-        }
-      };
+    }
+  }
+
+  lock() {
+    this.#locksCount++;
+  }
+
+  unlock() {
+    if (this.#locksCount > 0) {
+      this.#locksCount--;
     }
   }
 

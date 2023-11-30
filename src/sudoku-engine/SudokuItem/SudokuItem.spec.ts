@@ -45,17 +45,17 @@ describe('SudokuItem', () => {
     });
 
     it('Should handle lock', () => {
-      const item = new SudokuItem(5, true);
+      const item = new SudokuItem(5, false);
       expect(item.isWrong).toBeFalsy();
       item.lock();
-      expect(item.isWrong).toBeFalsy();
+      expect(item.isWrong).toBeTruthy();
     });
 
     it('Should handle unlock', () => {
-      const item = new SudokuItem(5, true, 1);
+      const item = new SudokuItem(5, false, 1);
       expect(item.isWrong).toBeTruthy();
       item.unlock();
-      expect(item.isWrong).toBeTruthy();
+      expect(item.isWrong).toBeFalsy();
     });
   });
 
