@@ -21,7 +21,11 @@ const vitestConfig = defineTestConfig({
       provider: 'v8',
       reporter: ['text', 'html'],
       include: ['src'],
-      exclude: ['src/**/index.{ts,tsx}', 'src/**/*.{stories.tsx,types.ts}'],
+      exclude: [
+        'src/**/index.{ts,tsx}',
+        'src/**/*.{stories.tsx,types.ts}',
+        '**/*.d.ts',
+      ],
     },
   },
 });
