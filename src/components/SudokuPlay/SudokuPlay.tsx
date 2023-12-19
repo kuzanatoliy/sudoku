@@ -1,17 +1,11 @@
-import { For, createSignal } from 'solid-js';
+import { Index, createSignal } from 'solid-js';
 import { TComponent } from 'types';
-import { TSudokuValue } from 'sudoku-engine';
+import { SudokuBattle, TSudokuValue } from 'sudoku-engine';
 
+import plays from '../../../data/plays.json';
 import { SudokuField } from '../SudokuField';
 
 import styles from './SudokuPlay.module.scss';
-
-const PLAY: TSudokuValue[] = [
-  1, 2, 0, 5, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 9, 2, 0, 3, 0, 0, 0, 0, 0, 1, 0,
-  0, 9, 0, 0, 4, 0, 0, 0, 5, 6, 7, 0, 0, 9, 0, 0, 0, 0, 0, 4, 0, 2, 0, 6, 0, 0,
-  0, 0, 5, 0, 3, 2, 0, 9, 6, 4, 0, 0, 0, 0, 6, 0, 0, 0, 3, 0, 2, 7, 0, 0, 0, 3,
-  0, 0, 0,
-];
 
 const getItemClasses = (index: number) => {
   const classes = [];
@@ -27,18 +21,25 @@ const getItemClasses = (index: number) => {
 export interface ISudokuPlayProps {}
 
 export const SudokuPlay: TComponent<ISudokuPlayProps> = () => {
-  const [play] = createSignal(PLAY);
+  const play = new SudokuBattle(plays[0].play as TSudokuValue[]);
+
+  const [playState, setStatePlay] = createSignal(play.getState());
   return (
     <div class={styles.sudokuplay}>
-      <For each={play()}>
+      <Index each={playState()}>
         {(item, index) => (
           <SudokuField
-            class={getItemClasses(index())}
-            value={item}
-            onChange={() => console.log(item)}
+            class={getItemClasses(index)}
+            value={item().value}
+            isDisabled={item().isReadOnly}
+            isError={item().isWrong}
+            onChange={(value) => {
+              play.setValue(index, value);
+              setStatePlay(play.getState());
+            }}
           />
         )}
-      </For>
+      </Index>
     </div>
   );
 };

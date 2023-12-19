@@ -7,7 +7,7 @@
   outline: 0;
   color: var(--color-main-dark);
   cursor: pointer;
-  border: solid 1px;
+  border: solid 1px var(--color-main-dark);
   box-sizing: border-box;
 
   &[data-error='true'] {

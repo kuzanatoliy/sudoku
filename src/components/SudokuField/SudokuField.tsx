@@ -24,7 +24,7 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
 
   return (
     <div
-      tabIndex={0}
+      tabIndex={localProps.isDisabled ? -1 : 0}
       class={
         localProps.class
           ? `${localProps.class} ${styles.sudokufield}`
