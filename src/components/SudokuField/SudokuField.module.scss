@@ -5,7 +5,41 @@
   text-align: center;
   padding: 10px;
   outline: 0;
-  border: solid 1px var(--color-dark);
-  color: var(--color-dark);
+  color: var(--color-main-dark);
+  cursor: pointer;
+  border: solid 1px;
   box-sizing: border-box;
+
+  &[data-error='true'] {
+    color: var(--color-warn-dark);
+
+    &[data-highlighted='true'] {
+      background-color: var(--color-warn-light);
+    }
+
+    &:focus {
+      background-color: var(--color-warn-normal);
+    }
+  }
+
+  &:focus {
+    background-color: var(--color-main-normal);
+  }
+
+  &[data-highlighted='true'] {
+    background-color: var(--color-main-light);
+
+    &:focus {
+      background-color: var(--color-main-normal);
+    }
+  }
+
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    color: var(--color-gray-normal);
+
+    &[data-highlighted='true'] {
+      background: var(--color-gray-light);
+    }
+  }
 }
