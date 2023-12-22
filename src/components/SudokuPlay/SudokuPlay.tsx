@@ -1,8 +1,7 @@
-import { Index, createSignal } from 'solid-js';
+import { Index, createSignal, createEffect } from 'solid-js';
 import { TComponent } from 'types';
 import { SudokuBattle, TSudokuValue } from 'sudoku-engine';
 
-import plays from '../../../data/plays.json';
 import { SudokuField } from '../SudokuField';
 
 import styles from './SudokuPlay.module.scss';
@@ -18,10 +17,17 @@ const getItemClasses = (index: number) => {
   return classes.join(' ');
 };
 
-export interface ISudokuPlayProps {}
+export interface ISudokuPlayProps {
+  initialPlay: TSudokuValue[];
+}
 
-export const SudokuPlay: TComponent<ISudokuPlayProps> = () => {
-  const play = new SudokuBattle(plays[0].play as TSudokuValue[]);
+export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
+  console.log('hm');
+  const play = new SudokuBattle(props.initialPlay);
+
+  createEffect(() => {
+    console.log(props.initialPlay);
+  });
 
   const [playState, setStatePlay] = createSignal(play.getState());
   return (
