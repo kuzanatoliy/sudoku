@@ -1,17 +1,16 @@
-import { For, createSignal } from 'solid-js';
+import { Index, createSignal, createEffect } from 'solid-js';
 import { TComponent } from 'types';
-import { TSudokuValue } from 'sudoku-engine';
+import {
+  SudokuBattle,
+  TSudokuBattle,
+  TSudokuItemState,
+  TSudokuValue,
+  isEffectedItem,
+} from 'sudoku-engine';
 
 import { SudokuField } from '../SudokuField';
 
 import styles from './SudokuPlay.module.scss';
-
-const PLAY: TSudokuValue[] = [
-  1, 2, 0, 5, 0, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 9, 2, 0, 3, 0, 0, 0, 0, 0, 1, 0,
-  0, 9, 0, 0, 4, 0, 0, 0, 5, 6, 7, 0, 0, 9, 0, 0, 0, 0, 0, 4, 0, 2, 0, 6, 0, 0,
-  0, 0, 5, 0, 3, 2, 0, 9, 6, 4, 0, 0, 0, 0, 6, 0, 0, 0, 3, 0, 2, 7, 0, 0, 0, 3,
-  0, 0, 0,
-];
 
 const getItemClasses = (index: number) => {
   const classes = [];
@@ -24,21 +23,47 @@ const getItemClasses = (index: number) => {
   return classes.join(' ');
 };
 
-export interface ISudokuPlayProps {}
+export interface ISudokuPlayProps {
+  initialPlay: TSudokuValue[];
+}
 
-export const SudokuPlay: TComponent<ISudokuPlayProps> = () => {
-  const [play] = createSignal(PLAY);
+export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
+  let play: TSudokuBattle;
+  const [playState, setStatePlay] = createSignal<TSudokuItemState[]>([]);
+  const [focusedField, setFocusedField] = createSignal(-1);
+
+  createEffect(() => {
+    play = new SudokuBattle(props.initialPlay);
+    setStatePlay(play.getState());
+  });
+
+  const onFieldBlur = () => {
+    setFocusedField(-1);
+  };
+
   return (
     <div class={styles.sudokuplay}>
-      <For each={play()}>
+      <Index each={playState()}>
         {(item, index) => (
           <SudokuField
-            class={getItemClasses(index())}
-            value={item}
-            onChange={() => console.log(item)}
+            class={getItemClasses(index)}
+            value={item().value}
+            isDisabled={item().isReadOnly}
+            isError={item().isWrong}
+            isHighlighted={
+              focusedField() !== -1 && isEffectedItem(index, focusedField())
+            }
+            onFocus={() => {
+              setFocusedField(index);
+            }}
+            onBlur={onFieldBlur}
+            onChange={(value) => {
+              play.setValue(index, value);
+              setStatePlay(play.getState());
+            }}
           />
         )}
-      </For>
+      </Index>
     </div>
   );
 };

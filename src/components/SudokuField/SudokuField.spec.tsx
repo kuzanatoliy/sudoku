@@ -5,6 +5,8 @@ import { SudokuField, ISudokuFieldProps } from './SudokuField';
 
 describe('SudokuField', () => {
   const onChangeSpy = vitest.fn();
+  const onFocusSpy = vitest.fn();
+  const onBlurSpy = vitest.fn();
   const DEFAULT_VALUE = 1;
 
   const renderComponent = ({
@@ -49,9 +51,25 @@ describe('SudokuField', () => {
     expect(onChangeSpy).not.toBeCalled();
   });
 
+  it('Should not change value if the field is disabled', () => {
+    renderComponent({ isDisabled: true });
+    const element = screen.getByText(DEFAULT_VALUE);
+    fireEvent.keyDown(element, { key: '5' });
+    expect(onChangeSpy).not.toBeCalled();
+  });
+
   it('Should pass custom outer class', () => {
     renderComponent({ class: 'test_class' });
     const element = screen.getByText(DEFAULT_VALUE);
     expect(element.classList.contains('test_class')).toBeTruthy();
+  });
+
+  it('Should run focus/blur handlers', () => {
+    renderComponent({ onFocus: onFocusSpy, onBlur: onBlurSpy });
+    const element = screen.getByText(DEFAULT_VALUE);
+    fireEvent.focus(element);
+    expect(onFocusSpy).toBeCalled();
+    fireEvent.blur(element);
+    expect(onBlurSpy).toBeCalled();
   });
 });

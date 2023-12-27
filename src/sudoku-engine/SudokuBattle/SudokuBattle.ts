@@ -1,39 +1,51 @@
 import { SudokuItem } from '../SudokuItem';
-import { isEffectedItem } from '../helpers/isEffectedItem';
-import { TSudokuItem, TSudokuValue } from '../types';
+import { isEffectedItem } from '../helpers';
+import {
+  TSudokuBattle,
+  TSudokuItem,
+  TSudokuValue,
+  ESudokuBunchOperations,
+} from '../types';
 
-export class SudokuBattle {
+export class SudokuBattle implements TSudokuBattle {
   #battleItems: TSudokuItem[];
 
   constructor(battleMap: TSudokuValue[]) {
     this.#battleItems = battleMap.map((item) => new SudokuItem(item));
   }
 
+  #bunchOperation = (
+    battleItems: TSudokuItem[],
+    index: number,
+    operation: ESudokuBunchOperations
+  ) => {
+    for (let i = 0; i < battleItems.length; i++) {
+      if (
+        i !== index &&
+        isEffectedItem(i, index) &&
+        battleItems[i].value === battleItems[index].value
+      ) {
+        battleItems[i][operation]();
+        battleItems[index][operation]();
+      }
+    }
+  };
+
   setValue(index: number, value: TSudokuValue) {
     if (this.#battleItems[index].value !== 0) {
-      for (let i = 0; i < this.#battleItems.length; i++) {
-        if (
-          i !== index &&
-          isEffectedItem(i, index) &&
-          this.#battleItems[i].value === this.#battleItems[index].value
-        ) {
-          this.#battleItems[i].unlock();
-          this.#battleItems[index].unlock();
-        }
-      }
+      this.#bunchOperation(
+        this.#battleItems,
+        index,
+        ESudokuBunchOperations.UNLOCK
+      );
     }
     this.#battleItems[index].setValue(value);
     if (value !== 0) {
-      for (let i = 0; i < this.#battleItems.length; i++) {
-        if (
-          i !== index &&
-          isEffectedItem(i, index) &&
-          this.#battleItems[i].value === this.#battleItems[index].value
-        ) {
-          this.#battleItems[i].lock();
-          this.#battleItems[index].lock();
-        }
-      }
+      this.#bunchOperation(
+        this.#battleItems,
+        index,
+        ESudokuBunchOperations.LOCK
+      );
     }
   }
 
