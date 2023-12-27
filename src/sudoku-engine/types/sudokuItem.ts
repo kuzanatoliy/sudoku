@@ -6,6 +6,11 @@ export type TSudokuItemState = {
   readonly isWrong: boolean;
 };
 
+export enum ESudokuBunchOperations {
+  LOCK = 'lock',
+  UNLOCK = 'unlock',
+}
+
 export type TSudokuItemHandlers = {
   getState: () => TSudokuItemState;
   setValue: (value: TSudokuValue) => void;
