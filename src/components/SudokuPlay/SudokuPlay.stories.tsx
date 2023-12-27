@@ -17,6 +17,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     initialPlay: {
+      defaultValue: EPlayOptions.play2,
       control: {
         type: 'select',
       },
@@ -45,10 +46,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  /*render: (props) => {
-    console.log(props);
-    return <div>Test</div>;
-  }*/
   args: {
     initialPlay: meta.argTypes.initialPlay.table.defaultValue.summary,
   },
