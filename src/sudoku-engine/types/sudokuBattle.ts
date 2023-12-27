@@ -3,5 +3,5 @@ import { TSudokuValue } from './values';
 
 export type TSudokuBattle = {
   setValue: (index: number, value: TSudokuValue) => void;
-  setState: () => TSudokuItemState[];
+  getState: () => TSudokuItemState[];
 };

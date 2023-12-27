@@ -1,8 +1,8 @@
 import { SudokuItem } from '../SudokuItem';
 import { isEffectedItem } from '../helpers/isEffectedItem';
-import { TSudokuItem, TSudokuValue } from '../types';
+import { TSudokuBattle, TSudokuItem, TSudokuValue } from '../types';
 
-export class SudokuBattle {
+export class SudokuBattle implements TSudokuBattle {
   #battleItems: TSudokuItem[];
 
   constructor(battleMap: TSudokuValue[]) {

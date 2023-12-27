@@ -1,6 +1,12 @@
 import { Index, createSignal, createEffect } from 'solid-js';
 import { TComponent } from 'types';
-import { SudokuBattle, TSudokuValue } from 'sudoku-engine';
+import {
+  SudokuBattle,
+  TSudokuBattle,
+  TSudokuItemState,
+  TSudokuValue,
+  isEffectedItem,
+} from 'sudoku-engine';
 
 import { SudokuField } from '../SudokuField';
 
@@ -22,14 +28,15 @@ export interface ISudokuPlayProps {
 }
 
 export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
-  console.log('hm');
-  const play = new SudokuBattle(props.initialPlay);
+  let play: TSudokuBattle;
+  const [playState, setStatePlay] = createSignal<TSudokuItemState[]>([]);
+  const [focusedField, setFocusedField] = createSignal(-1);
 
   createEffect(() => {
-    console.log(props.initialPlay);
+    play = new SudokuBattle(props.initialPlay);
+    setStatePlay(play.getState());
   });
 
-  const [playState, setStatePlay] = createSignal(play.getState());
   return (
     <div class={styles.sudokuplay}>
       <Index each={playState()}>
@@ -39,6 +46,10 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
             value={item().value}
             isDisabled={item().isReadOnly}
             isError={item().isWrong}
+            isHighlighted={isEffectedItem(index, focusedField())}
+            onFocus={() => {
+              setFocusedField(index);
+            }}
             onChange={(value) => {
               play.setValue(index, value);
               setStatePlay(play.getState());

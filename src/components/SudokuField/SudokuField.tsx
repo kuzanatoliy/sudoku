@@ -7,6 +7,7 @@ import { mergeProps } from 'solid-js';
 export interface ISudokuFieldProps {
   value: TSudokuValue;
   onChange: (value: TSudokuValue) => void;
+  onFocus?: () => void;
   class?: string;
   isDisabled?: boolean;
   isHighlighted?: boolean;
@@ -42,6 +43,11 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
         } else if (event.key === 'Delete') {
           props.onChange(0);
           event.stopPropagation();
+        }
+      }}
+      onFocus={() => {
+        if (props.onFocus) {
+          props.onFocus();
         }
       }}
       aria-disabled={localProps.isDisabled}
