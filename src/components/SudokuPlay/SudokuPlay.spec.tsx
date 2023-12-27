@@ -1,15 +1,9 @@
-import { render } from '@solidjs/testing-library';
+import { fireEvent, render } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
 import { SudokuPlay, ISudokuPlayProps } from './SudokuPlay';
 import { SudokuField } from '../SudokuField';
-import {
-  //SudokuBattle,
-  //TSudokuBattle,
-  //TSudokuItemState,
-  TSudokuValue,
-  //isEffectedItem,
-} from 'sudoku-engine';
+import { TSudokuValue, isEffectedItem } from 'sudoku-engine';
 
 vitest.mock('../SudokuField', async () => {
   const origin =
@@ -23,24 +17,28 @@ vitest.mock('../SudokuField', async () => {
   };
 });
 
-/*vitest.mock('sudoku-engine', async () => {
+vitest.mock('sudoku-engine', async () => {
   const origin =
-    await vitest.importActual<typeof import('../SudokuField')>(
-      '../SudokuField'
-    );
+    await vitest.importActual<typeof import('sudoku-engine')>('sudoku-engine');
   return {
-    SudokuBattle: function (play) {
+    ...origin,
+    SudokuBattle: function (play: TSudokuValue[]) {
       return {
-        setValue: vitest.fn(),
+        setValue: vitest
+          .fn()
+          .mockImplementation(
+            (index: number, value: TSudokuValue) => (play[index] = value)
+          ),
         getState: vitest.fn().mockImplementation(() =>
-          play.map((item) => {
-            value: item;
-          })
+          play.map((item) => ({
+            value: item,
+          }))
         ),
       };
     },
+    isEffectedItem: vitest.fn(),
   };
-});*/
+});
 
 describe('SudokuPlay', () => {
   const PLAY: TSudokuValue[] = [
@@ -63,5 +61,16 @@ describe('SudokuPlay', () => {
   it('Should render component', () => {
     renderComponent();
     expect(SudokuField).toBeCalledTimes(PLAY.length);
+  });
+
+  it('Should check workflow with item', () => {
+    const { container } = renderComponent();
+    expect(isEffectedItem).not.toBeCalled();
+    const element = container.childNodes[0].childNodes[2];
+    fireEvent.focus(element);
+    expect(isEffectedItem).toBeCalled();
+    fireEvent.keyDown(element, { key: '5' });
+    expect(element.textContent).toBe('5');
+    fireEvent.blur(element);
   });
 });

@@ -6,6 +6,7 @@ import { SudokuField, ISudokuFieldProps } from './SudokuField';
 describe('SudokuField', () => {
   const onChangeSpy = vitest.fn();
   const onFocusSpy = vitest.fn();
+  const onBlurSpy = vitest.fn();
   const DEFAULT_VALUE = 1;
 
   const renderComponent = ({
@@ -63,10 +64,12 @@ describe('SudokuField', () => {
     expect(element.classList.contains('test_class')).toBeTruthy();
   });
 
-  it('Should run focus handler', () => {
-    renderComponent({ onFocus: onFocusSpy });
+  it('Should run focus/blur handlers', () => {
+    renderComponent({ onFocus: onFocusSpy, onBlur: onBlurSpy });
     const element = screen.getByText(DEFAULT_VALUE);
     fireEvent.focus(element);
     expect(onFocusSpy).toBeCalled();
+    fireEvent.blur(element);
+    expect(onBlurSpy).toBeCalled();
   });
 });
