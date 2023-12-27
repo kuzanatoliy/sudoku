@@ -37,6 +37,10 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
     setStatePlay(play.getState());
   });
 
+  const onFieldBlur = () => {
+    setFocusedField(-1);
+  };
+
   return (
     <div class={styles.sudokuplay}>
       <Index each={playState()}>
@@ -46,10 +50,13 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
             value={item().value}
             isDisabled={item().isReadOnly}
             isError={item().isWrong}
-            isHighlighted={isEffectedItem(index, focusedField())}
+            isHighlighted={
+              focusedField() !== -1 && isEffectedItem(index, focusedField())
+            }
             onFocus={() => {
               setFocusedField(index);
             }}
+            onBlur={onFieldBlur}
             onChange={(value) => {
               play.setValue(index, value);
               setStatePlay(play.getState());

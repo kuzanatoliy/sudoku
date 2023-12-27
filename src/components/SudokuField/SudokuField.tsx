@@ -8,6 +8,7 @@ export interface ISudokuFieldProps {
   value: TSudokuValue;
   onChange: (value: TSudokuValue) => void;
   onFocus?: () => void;
+  onBlur?: () => void;
   class?: string;
   isDisabled?: boolean;
   isHighlighted?: boolean;
@@ -48,6 +49,11 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       onFocus={() => {
         if (props.onFocus) {
           props.onFocus();
+        }
+      }}
+      onBlur={() => {
+        if (props.onBlur) {
+          props.onBlur();
         }
       }}
       aria-disabled={localProps.isDisabled}
