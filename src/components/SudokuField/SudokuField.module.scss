@@ -9,6 +9,7 @@
   cursor: pointer;
   border: solid 1px var(--color-main-dark);
   box-sizing: border-box;
+  line-height: 1;
 
   &[data-highlighted='true'] {
     background: var(--color-gray-light);
