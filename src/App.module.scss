@@ -1,7 +1,36 @@
-.app {
-  height: 100vh;
-  width: 100vw;
+:root {
+  --page-background-color: var(--white);
+  --header-text-color: var(--white);
+  --header-background-color: var(--color-green-dark);
+}
+
+.app_main {
   display: flex;
+  flex-grow: 1;
   justify-content: center;
   align-items: center;
+}
+
+.app_header {
+  z-index: 1;
+  display: flex;
+  gap: var(--size-double);
+  align-items: center;
+  color: var(--header-text-color);
+  position: sticky;
+  top: 0;
+  background: var(--header-background-color);
+  box-shadow: 0 var(--size-double) var(--size-double)
+    var(--page-background-color);
+}
+
+.app_header_title {
+  margin: 0;
+}
+
+.app_header,
+.app_main {
+  margin: 0;
+  padding: var(--size-double)
+    calc((100% - var(--breakpoint-laptop)) / 2 + var(--size-double));
 }
