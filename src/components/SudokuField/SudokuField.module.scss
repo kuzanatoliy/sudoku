@@ -5,9 +5,9 @@
   text-align: center;
   padding: 10px;
   outline: 0;
-  color: var(--color-main-dark);
+  color: var(--color-green-dark);
   cursor: pointer;
-  border: solid 1px var(--color-main-dark);
+  border: solid 1px var(--color-green-dark);
   box-sizing: border-box;
   line-height: 1;
 
@@ -15,20 +15,20 @@
     background: var(--color-gray-light);
 
     &:focus {
-      background-color: var(--color-main-light);
+      background-color: var(--color-green-light);
     }
   }
 
   &[data-error='true'] {
-    color: var(--color-warn-dark);
+    color: var(--color-orange-dark);
 
     &:focus {
-      background-color: var(--color-warn-normal);
+      background-color: var(--color-orange-normal);
     }
   }
 
   &:focus {
-    background-color: var(--color-main-light);
+    background-color: var(--color-green-light);
   }
 
   &[aria-disabled='true'] {
