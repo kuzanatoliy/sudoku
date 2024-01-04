@@ -24,6 +24,7 @@
     "baseUrl": "./",
     "paths": {
       "components": ["./src/components"],
+      "hooks": ["./src/hooks"],
       "types": ["./src/types"],
       "sudoku-engine": ["./src/sudoku-engine"]
     }
