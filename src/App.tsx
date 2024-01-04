@@ -14,6 +14,7 @@ const App = () => (
     <main class={styles.app_main}>
       <SudokuPlay initialPlay={data[0].play as TSudokuValue[]} />
     </main>
+    <footer class={styles.app_footer}>© Kuzanatoliorg</footer>
   </>
 );
 

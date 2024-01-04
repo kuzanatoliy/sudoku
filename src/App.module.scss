@@ -2,6 +2,7 @@
   --page-background-color: var(--white);
   --header-text-color: var(--white);
   --header-background-color: var(--color-green-dark);
+  --footer-text-color: var(--color-green-dark);
 }
 
 .app_main {
@@ -28,8 +29,16 @@
   margin: 0;
 }
 
+.app_footer {
+  font-weight: bold;
+  color: var(--footer-text-color);
+  text-align: center;
+  background: var(--page-background-color);
+}
+
 .app_header,
-.app_main {
+.app_main,
+.app_footer {
   margin: 0;
   padding: var(--size-double)
     calc((100% - var(--breakpoint-laptop)) / 2 + var(--size-double));
