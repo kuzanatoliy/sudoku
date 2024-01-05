@@ -1,10 +1,14 @@
-//import { createContext } from 'solid-js';
 import { TParentComponent } from 'types';
 
-//const DeviceContext = createContext();
+import { DeviceContext } from './DeviceContext';
+import { useDeviceState } from './hooks';
 
 export const DeviceProvider: TParentComponent = (props) => {
-  //console.log(props.children);
+  const deviceState = useDeviceState();
 
-  return <>{props.children}</>;
+  return (
+    <DeviceContext.Provider value={deviceState}>
+      {props.children}
+    </DeviceContext.Provider>
+  );
 };
