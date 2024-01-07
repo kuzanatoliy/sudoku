@@ -2,7 +2,7 @@ import { renderHook } from '@solidjs/testing-library';
 import { describe, it, expect } from 'vitest';
 
 import { DeviceProvider } from '../DeviceProvider';
-import { useDeviceContext } from '.';
+import { useDeviceContext } from './use-device-context';
 
 describe('use-device-context', () => {
   it('Should render hook', () => {

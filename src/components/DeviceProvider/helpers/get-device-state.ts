@@ -12,9 +12,9 @@ export const getDeviceState: () => TDeviceState = () => ({
   isTablet:
     window.innerWidth > EBreakpoints.MOBILE_L &&
     window.innerWidth <= EBreakpoints.TABLET,
-  isLaptop: window.innerWidth > EBreakpoints.LAPTOP,
+  isLaptop: window.innerWidth > EBreakpoints.TABLET,
   isLaptopL:
-    window.innerWidth > EBreakpoints.LAPTOP_L &&
-    window.innerWidth <= EBreakpoints.LAPTOP_4K,
-  isLaptop4K: window.innerWidth > EBreakpoints.LAPTOP_4K,
+    window.innerWidth > EBreakpoints.LAPTOP &&
+    window.innerWidth <= EBreakpoints.LAPTOP_L,
+  isLaptop4K: window.innerWidth > EBreakpoints.LAPTOP_L,
 });
