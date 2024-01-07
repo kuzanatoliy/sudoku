@@ -25,6 +25,7 @@ const getItemClasses = (index: number) => {
 
 export interface ISudokuPlayProps {
   initialPlay: TSudokuValue[];
+  size?: ESudokuFieldSize;
 }
 
 export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
@@ -46,7 +47,7 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
       <Index each={playState()}>
         {(item, index) => (
           <SudokuField
-            size={ESudokuFieldSize.LARGE}
+            size={props.size}
             class={getItemClasses(index)}
             value={item().value}
             isDisabled={item().isReadOnly}
