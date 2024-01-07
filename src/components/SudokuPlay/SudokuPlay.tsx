@@ -8,7 +8,7 @@ import {
   isEffectedItem,
 } from 'sudoku-engine';
 
-import { SudokuField } from '../SudokuField';
+import { ESudokuFieldSize, SudokuField } from '../SudokuField';
 
 import styles from './SudokuPlay.module.scss';
 
@@ -46,6 +46,7 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
       <Index each={playState()}>
         {(item, index) => (
           <SudokuField
+            size={ESudokuFieldSize.LARGE}
             class={getItemClasses(index)}
             value={item().value}
             isDisabled={item().isReadOnly}

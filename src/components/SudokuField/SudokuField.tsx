@@ -4,18 +4,27 @@ import { TSudokuValue, isSudokuValue } from 'sudoku-engine';
 import styles from './SudokuField.module.scss';
 import { mergeProps } from 'solid-js';
 
+export const enum ESudokuFieldSize {
+  DEFAULT = 'default',
+  SMALL = 'small',
+  MIDDLE = 'middle',
+  LARGE = 'large',
+}
+
 export interface ISudokuFieldProps {
   value: TSudokuValue;
   onChange: (value: TSudokuValue) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   class?: string;
+  size?: ESudokuFieldSize;
   isDisabled?: boolean;
   isHighlighted?: boolean;
   isError?: boolean;
 }
 
 const defaultProps = {
+  size: ESudokuFieldSize.DEFAULT,
   isDisabled: false,
   isHighlighted: false,
   isError: false,
@@ -29,8 +38,10 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       tabIndex={localProps.isDisabled ? -1 : 0}
       class={
         localProps.class
-          ? `${localProps.class} ${styles.sudokufield}`
-          : styles.sudokufield
+          ? `${localProps.class} ${styles.sudokufield} ${
+              styles[`sudokufield__${localProps.size}`]
+            }`
+          : `${styles.sudokufield} ${styles[`sudokufield__${localProps.size}`]}`
       }
       onKeyDown={(event: KeyboardEvent) => {
         if (localProps.isDisabled) {
