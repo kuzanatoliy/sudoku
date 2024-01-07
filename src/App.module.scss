@@ -5,6 +5,14 @@
   --footer-text-color: var(--color-green-dark);
 }
 
+.app_header,
+.app_main,
+.app_footer {
+  margin: 0;
+  padding: var(--size-double)
+    calc((100% - var(--breakpoint-laptop)) / 2 + var(--size-double));
+}
+
 .app_main {
   display: flex;
   flex-grow: 1;
@@ -23,6 +31,7 @@
   background: var(--header-background-color);
   box-shadow: 0 var(--size-double) var(--size-double)
     var(--page-background-color);
+  margin-bottom: var(--size-double);
 }
 
 .app_header_title {
@@ -36,10 +45,10 @@
   background: var(--page-background-color);
 }
 
-.app_header,
-.app_main,
-.app_footer {
-  margin: 0;
-  padding: var(--size-double)
-    calc((100% - var(--breakpoint-laptop)) / 2 + var(--size-double));
+@media (max-width: 1056px) {
+  .app_header,
+  .app_main,
+  .app_footer {
+    padding: var(--size-double);
+  }
 }
