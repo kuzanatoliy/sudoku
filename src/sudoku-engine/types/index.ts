@@ -1,3 +1,3 @@
-export * from './sudokuBattle';
-export * from './sudokuItem';
+export * from './sudoku-battle.types';
+export * from './sudoku-item.types';
 export * from './values';

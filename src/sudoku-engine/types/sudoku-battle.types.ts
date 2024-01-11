@@ -1,4 +1,4 @@
-import { TSudokuItemState } from './sudokuItem';
+import { TSudokuItemState } from './sudoku-item.types';
 import { TSudokuValue } from './values';
 
 export type TSudokuBattle = {
