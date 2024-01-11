@@ -1,6 +1,7 @@
 import { createEffect, createSignal } from 'solid-js';
 import { ESudokuFieldSize, SudokuPlay, useDeviceContext } from 'components';
 import { TSudokuValue } from 'sudoku-engine';
+import { Duration } from 'timer-engine';
 
 import data from '../data/plays.json';
 import styles from './App.module.scss';
@@ -12,6 +13,13 @@ const App = () => {
   const [sudokuPlaySize, setSudokuPlaySize] = createSignal<ESudokuFieldSize>(
     ESudokuFieldSize.DEFAULT
   );
+
+  const duration = new Duration();
+  duration.run();
+
+  setTimeout(() => {
+    duration.stop();
+  }, 10000);
 
   createEffect(() => {
     const { isTablet, isMobile } = deviceState();
