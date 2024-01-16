@@ -1,3 +1,4 @@
+import { CustomTime } from '../CustomTime';
 import { TTimer, TObserver, TSubscription } from '../types';
 
 const TICK = 1000;
@@ -6,12 +7,14 @@ export class Duration implements TTimer, TObserver {
   #startTime: number = 0;
   #currentTime: number = 0;
   #timerId?: NodeJS.Timeout;
-  #subscriptions: Array<() => void> = [];
+  #subscriptions: Array<TSubscription> = [];
 
   #runTimer() {
     return setTimeout(() => {
       this.#currentTime = Date.now();
       this.#timerId = this.#runTimer();
+      const time = new CustomTime(this.#startTime - this.#currentTime);
+      this.#subscriptions.forEach((dispatch) => dispatch(time));
     }, TICK);
   }
 
