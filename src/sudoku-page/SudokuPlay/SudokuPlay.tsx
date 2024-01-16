@@ -8,7 +8,8 @@ import {
   isEffectedItem,
 } from 'sudoku-engine';
 
-import { ESudokuFieldSize, SudokuField } from '../SudokuField';
+import { SudokuField } from '../SudokuField';
+import { ESudokuFieldSize } from '../types';
 
 import styles from './SudokuPlay.module.scss';
 
