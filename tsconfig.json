@@ -25,6 +25,7 @@
     "paths": {
       "components": ["./src/components"],
       "sudoku-engine": ["./src/sudoku-engine"],
+      "sudoku-page": ["./src/sudoku-page"],
       "timer-engine": ["./src/timer-engine"],
       "types": ["./src/types"]
     }
