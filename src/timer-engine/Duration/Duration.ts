@@ -13,7 +13,7 @@ export class Duration implements TTimer, TObserver {
     return setTimeout(() => {
       this.#currentTime = Date.now();
       this.#timerId = this.#runTimer();
-      const time = new CustomTime(this.#startTime - this.#currentTime);
+      const time = new CustomTime(this.#currentTime - this.#startTime);
       this.#subscriptions.forEach((dispatch) => dispatch(time));
     }, TICK);
   }
