@@ -12,7 +12,7 @@ const enum EPlayOptions {
 }
 
 const meta = {
-  title: 'Components/SudokuPlay',
+  title: 'SudokuPage/SudokuPlay',
   component: SudokuPlay,
   tags: ['autodocs'],
   argTypes: {

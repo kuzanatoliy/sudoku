@@ -24,8 +24,10 @@
     "baseUrl": "./",
     "paths": {
       "components": ["./src/components"],
-      "types": ["./src/types"],
-      "sudoku-engine": ["./src/sudoku-engine"]
+      "sudoku-engine": ["./src/sudoku-engine"],
+      "sudoku-page": ["./src/sudoku-page"],
+      "timer-engine": ["./src/timer-engine"],
+      "types": ["./src/types"]
     }
   },
   "include": ["src"],

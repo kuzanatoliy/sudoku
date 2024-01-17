@@ -1,15 +1,10 @@
+import { mergeProps } from 'solid-js';
 import { TComponent } from 'types';
 import { TSudokuValue, isSudokuValue } from 'sudoku-engine';
 
-import styles from './SudokuField.module.scss';
-import { mergeProps } from 'solid-js';
+import { ESudokuFieldSize } from '../types';
 
-export const enum ESudokuFieldSize {
-  DEFAULT = 'default',
-  SMALL = 'small',
-  MIDDLE = 'middle',
-  LARGE = 'large',
-}
+import styles from './SudokuField.module.scss';
 
 export interface ISudokuFieldProps {
   value: TSudokuValue;
