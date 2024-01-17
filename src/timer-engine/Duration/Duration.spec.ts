@@ -64,16 +64,4 @@ describe('Duration', () => {
     vitest.runOnlyPendingTimers();
     expect(spy).toBeCalled();
   });
-
-  /*it.each`
-    time       | seconds | minutes | hours
-    ${2345}    | ${2}    | ${0}    | ${0}
-    ${135786}  | ${15}   | ${2}    | ${0}
-    ${4000000} | ${40}   | ${6}    | ${1}
-  `('Should verify values for $time', ({ time, seconds, minutes, hours }) => {
-    const Duration = new Duration(time);
-    expect(Duration.seconds).toBe(seconds);
-    expect(Duration.minutes).toBe(minutes);
-    expect(Duration.hours).toBe(hours);
-  });*/
 });

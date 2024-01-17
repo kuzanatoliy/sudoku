@@ -29,13 +29,12 @@ export const SudokuPage = () => {
     );
   });
 
+  const initialPlay = data[0].play as TSudokuValue[];
+
   return (
     <div class={styles.container}>
       <DurationWrapper time={time()} />
-      <SudokuPlay
-        initialPlay={data[0].play as TSudokuValue[]}
-        size={sudokuPlaySize()}
-      />
+      <SudokuPlay initialPlay={initialPlay} size={sudokuPlaySize()} />
     </div>
   );
 };
