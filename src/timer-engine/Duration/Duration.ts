@@ -41,6 +41,8 @@ export class Duration implements TTimer, TObserver {
   }
 
   unsubscribe(subscription: TSubscription) {
-    this.#subscriptions.filter((item) => item === subscription);
+    this.#subscriptions = this.#subscriptions.filter(
+      (item) => item !== subscription
+    );
   }
 }
