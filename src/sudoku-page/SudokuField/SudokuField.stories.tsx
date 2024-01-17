@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from 'storybook-solidjs';
 import { SudokuField } from './SudokuField';
 
 const meta = {
-  title: 'Components/SudokuField',
+  title: 'SudokuPage/SudokuField',
   component: SudokuField,
   tags: ['autodocs'],
   argTypes: {
