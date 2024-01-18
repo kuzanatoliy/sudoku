@@ -49,6 +49,10 @@ export class SudokuBattle implements TSudokuBattle {
     }
   }
 
+  isCompleted() {
+    return this.#battleItems.every((item) => item.value > 0 && !item.isWrong);
+  }
+
   getState() {
     return this.#battleItems.map((item) => item.getState());
   }
