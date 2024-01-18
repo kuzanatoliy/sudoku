@@ -22,7 +22,7 @@
     "commitlint": "commitlint --edit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest run --coverage"
+    "test": "vitest run  --coverage"
   },
   "dependencies": {
     "solid-js": "^1.7.8"
