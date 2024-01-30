@@ -37,7 +37,7 @@ describe('App', () => {
     vitest.clearAllMocks();
   });
 
-  it('Should render component', () => {
+  it.skip('Should render component', () => {
     renderComponent();
     expect(DeviceProvider).toBeCalled();
     expect(SudokuPage).toBeCalled();

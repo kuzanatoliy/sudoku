@@ -1,4 +1,4 @@
-import { Router, Route, Navigate } from '@solidjs/router';
+import { HashRouter as Router, Route, Navigate } from '@solidjs/router';
 
 import { TParentComponent } from 'types';
 import { DeviceProvider } from 'components';
