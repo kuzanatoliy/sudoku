@@ -10,7 +10,7 @@ const vitestConfig = defineTestConfig({
     pool: 'threads',
     poolOptions: {
       threads: {
-        isolate: true,
+        isolate: false,
       },
     },
     include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],
