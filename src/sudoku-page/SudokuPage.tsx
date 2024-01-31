@@ -1,4 +1,5 @@
 import { createEffect, createSignal } from 'solid-js';
+import { TParentComponent } from 'types';
 import { useDeviceContext } from 'components';
 import { TSudokuValue } from 'sudoku-engine';
 import { CustomTime, Duration, TCustomTime } from 'timer-engine';
@@ -11,7 +12,7 @@ import styles from './SudokuPage.module.scss';
 
 import data from '../../data/plays.json';
 
-export const SudokuPage = () => {
+export const SudokuPage: TParentComponent = () => {
   const deviceState = useDeviceContext();
   const [sudokuPlaySize, setSudokuPlaySize] = createSignal<ESudokuFieldSize>(
     ESudokuFieldSize.DEFAULT

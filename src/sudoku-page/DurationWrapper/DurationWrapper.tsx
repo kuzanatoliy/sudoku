@@ -1,4 +1,5 @@
 import { createSignal, createEffect } from 'solid-js';
+import { TComponent } from 'types';
 import { TCustomTime } from 'timer-engine';
 
 import styles from './DurationWrapper.module.scss';
@@ -9,7 +10,7 @@ export interface IDurationWrapperProps {
 
 const getFormattedNumber = (val: number) => `${val}`.padStart(2, '0');
 
-export const DurationWrapper = (props: IDurationWrapperProps) => {
+export const DurationWrapper: TComponent<IDurationWrapperProps> = (props) => {
   const [view, setView] = createSignal('');
 
   createEffect(() => {

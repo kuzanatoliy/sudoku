@@ -1,0 +1,16 @@
+.button {
+  position: relative;
+  background: var(--color-green-normal);
+  color: var(--white);
+  padding: var(--size-single) var(--size-double);
+  font-size: var(--size-double);
+  border: none;
+  border-radius: var(--size-half);
+  width: fit-content;
+  cursor: pointer;
+  outline-color: var(--color-green-dark);
+
+  &:hover {
+    background: var(--color-green-dark);
+  }
+}

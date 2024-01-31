@@ -3,13 +3,13 @@ import type { Meta, StoryObj } from 'storybook-solidjs';
 import { DurationWrapper } from './DurationWrapper';
 import { CustomTime, SECOND, MINUTE, HOUR } from 'timer-engine';
 
-interface IWrapper {
+interface IWrapperProps {
   seconds: number;
   minutes: number;
   hours: number;
 }
 
-const Wrapper = (props: IWrapper) => (
+const Wrapper = (props: IWrapperProps) => (
   <DurationWrapper
     time={
       new CustomTime(
@@ -64,7 +64,7 @@ const meta = {
       },
     },
   },
-} satisfies Meta<IWrapper>;
+} satisfies Meta<IWrapperProps>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

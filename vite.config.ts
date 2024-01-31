@@ -10,7 +10,7 @@ const vitestConfig = defineTestConfig({
     pool: 'threads',
     poolOptions: {
       threads: {
-        isolate: false,
+        isolate: true,
       },
     },
     include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],
@@ -41,6 +41,7 @@ export const viteConfig = defineConfig({
   resolve: {
     alias: {
       components: resolve(__dirname, './src/components'),
+      'not-found-page': resolve(__dirname, './src/not-found-page'),
       'sudoku-engine': resolve(__dirname, './src/sudoku-engine'),
       'sudoku-page': resolve(__dirname, './src/sudoku-page'),
       'timer-engine': resolve(__dirname, './src/timer-engine'),
