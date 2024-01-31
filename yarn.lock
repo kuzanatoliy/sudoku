@@ -7851,10 +7851,15 @@ send@0.18.0:
     range-parser "~1.2.1"
     statuses "2.0.1"
 
-seroval@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/seroval/-/seroval-0.12.0.tgz#dbf96b81db7c916c57deff0d3e33bf3f7a62ab94"
-  integrity sha512-5qvk9WRORhvOdHVtDv6KEKrTDbG8O9nODDdETfQcJ0u9iaZJ6mAASg/nQgPzqtuV9cqln9msE7WNmD+sJomrIw==
+seroval-plugins@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/seroval-plugins/-/seroval-plugins-1.0.4.tgz#917d2cd103525f0238433a49479def0ce65a56e4"
+  integrity sha512-DQ2IK6oQVvy8k+c2V5x5YCtUa/GGGsUwUBNN9UqohrZ0rWdUapBFpNMYP1bCyRHoxOJjdKGl+dieacFIpU/i1A==
+
+seroval@^1.0.3:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/seroval/-/seroval-1.0.4.tgz#0400d24a48b1f6f44b8a3d55af0476a1c5e8643f"
+  integrity sha512-qQs/N+KfJu83rmszFQaTxcoJoPn6KNUruX4KmnmyD0oZkUoiNvJ1rpdYKDf4YHM05k+HOgCxa3yvf15QbVijGg==
 
 serve-static@1.15.0:
   version "1.15.0"
@@ -7950,13 +7955,14 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-solid-js@^1.7.8:
-  version "1.8.5"
-  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.8.5.tgz#60c68cb67feafa84c2c3f38dd2050adeef31cde1"
-  integrity sha512-xvtJvzJzWbsn35oKFhW9kNwaxG1Z/YLMsDp4tLVcYZTMPzvzQ8vEZuyDQ6nt7xDArVgZJ7TUFrJUwrui/oq53A==
+solid-js@^1.8.12:
+  version "1.8.12"
+  resolved "https://registry.yarnpkg.com/solid-js/-/solid-js-1.8.12.tgz#12903f076cdbd74e13dd6ab47b1006c3a07f5591"
+  integrity sha512-sLE/i6M9FSWlov3a2pTC5ISzanH2aKwqXTZj+bbFt4SUrVb4iGEa7fpILBMOxsQjkv3eXqEk6JVLlogOdTe0UQ==
   dependencies:
     csstype "^3.1.0"
-    seroval "^0.12.0"
+    seroval "^1.0.3"
+    seroval-plugins "^1.0.3"
 
 solid-refresh@^0.5.3:
   version "0.5.3"
