@@ -2,6 +2,7 @@ import { resolve } from 'node:path';
 import { defineConfig, mergeConfig } from 'vite';
 import { defineConfig as defineTestConfig } from 'vitest/config';
 import solid from 'vite-plugin-solid';
+import solidSvg from 'vite-plugin-solid-svg';
 
 const vitestConfig = defineTestConfig({
   test: {
@@ -37,10 +38,11 @@ const vitestConfig = defineTestConfig({
 });
 
 export const viteConfig = defineConfig({
-  plugins: [solid()],
+  plugins: [solid(), solidSvg()],
   resolve: {
     alias: {
       components: resolve(__dirname, './src/components'),
+      icons: resolve(__dirname, './src/icons'),
       'not-found-page': resolve(__dirname, './src/not-found-page'),
       'sudoku-engine': resolve(__dirname, './src/sudoku-engine'),
       'sudoku-page': resolve(__dirname, './src/sudoku-page'),

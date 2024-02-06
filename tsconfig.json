@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "types": ["vite-plugin-solid-svg/types-component-solid", "vite/client"],
+
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -24,6 +26,7 @@
     "baseUrl": "./",
     "paths": {
       "components": ["./src/components"],
+      "icons": ["./src/icons"],
       "not-found-page": ["./src/not-found-page"],
       "sudoku-engine": ["./src/sudoku-engine"],
       "sudoku-page": ["./src/sudoku-page"],
