@@ -32,7 +32,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const ButtonComponent: Story = {
   args: {
     text: meta.argTypes.text.table.defaultValue.summary,
   },

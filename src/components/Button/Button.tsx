@@ -5,6 +5,7 @@ import styles from './Button.module.scss';
 
 export interface IButtonProps {
   onClick?: () => void;
+  class?: string;
 }
 
 /* c8 ignore start */
@@ -17,7 +18,14 @@ export const Button: TParentComponent<IButtonProps> = (props) => {
   const localProps = mergeProps(defaultProps, props);
 
   return (
-    <button class={styles.button} onClick={() => localProps.onClick()}>
+    <button
+      class={
+        localProps.class
+          ? `${localProps.class} ${styles.button}`
+          : styles.button
+      }
+      onClick={() => localProps.onClick()}
+    >
       {localProps.children}
     </button>
   );
