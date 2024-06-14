@@ -1,39 +1,50 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Button } from './Button';
-
-interface IWrapperProps {
-  text: string;
-  onClick: () => void;
-}
-
-const Wrapper = (props: IWrapperProps) => (
-  <Button onClick={props.onClick}>{props.text}</Button>
-);
+import { Button, EButtonVariant } from './Button';
 
 const meta = {
   title: 'Components/Button',
-  component: Wrapper,
+  component: Button,
   tags: ['autodocs'],
   argTypes: {
-    text: {
-      control: {
-        type: 'text',
-      },
-      description: "Button's text",
+    children: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      defaultValue: 'BUTTON TEXT',
+      description: 'The content of the component',
       table: {
-        type: { summary: 'text' },
-        defaultValue: { summary: 'Button' },
+        type: { summary: 'string' },
       },
     },
+    variant: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      defaultValue: EButtonVariant.CONTAINED,
+      description: 'The variant to use',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: EButtonVariant.CONTAINED },
+      },
+      options: [EButtonVariant.CONTAINED, EButtonVariant.OUTLINED],
+    },
   },
-} satisfies Meta<IWrapperProps>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const ButtonComponent: Story = {
   args: {
-    text: meta.argTypes.text.table.defaultValue.summary,
+    children: meta.argTypes.children.defaultValue,
+    variant: meta.argTypes.variant.defaultValue,
   },
+};
+
+export const ButtonVariants: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '20px' }}>
+      <Button variant={EButtonVariant.CONTAINED}>CONTAINED</Button>
+      <Button variant={EButtonVariant.OUTLINED}>OUTLINED</Button>
+    </div>
+  ),
 };

@@ -3,6 +3,7 @@
 .button {
   --button-bg-color: var(--color-green-normal);
   --button-color: var(--white);
+  --button-border-color: var(--button-bg-color);
   --button-padding-block: var(--size-single);
   --button-padding-inline: var(--size-double);
   --button-size: var(--size-double);
@@ -22,14 +23,31 @@
     --button-outline-color: var(--color-green-dark);
   }
 
+  &[data-variant='outlined'] {
+    --button-bg-color: var(--white);
+    --button-color: var(--color-green-normal);
+    --button-border-color: var(--color-green-normal);
+
+    &:hover {
+      --button-bg-color: color-mix(
+        in srgb,
+        var(--color-green-dark) 10%,
+        var(--white)
+      );
+      --button-color: var(--color-green-dark);
+      --button-border-color: var(--color-green-dark);
+    }
+  }
+
   background-color: var(--button-bg-color);
   color: var(--button-color);
   padding: var(--button-padding-block) var(--button-padding-inline);
   font-size: var(--button-size);
-  min-height: var(--button-size);
+  min-height: calc(var(--button-size) * 1.2);
   border-radius: var(--button-radius);
   box-sizing: content-box;
-  border: none;
+  line-height: 1.2;
+  border: solid 1px var(--button-border-color);
   outline: none;
   width: fit-content;
   cursor: pointer;
@@ -37,7 +55,7 @@
   @include focus-mixin(
     var(--button-outline-width),
     var(--button-outline-color),
-    var(--button-outline-offset),
+    calc(var(--button-outline-offset) + 1px),
     var(--button-outline-radius)
   );
 }
