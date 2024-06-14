@@ -27,6 +27,16 @@ const meta = {
       },
       options: [EButtonVariant.CONTAINED, EButtonVariant.OUTLINED],
     },
+    isDisabled: {
+      type: { name: 'boolean', required: false },
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: 'If true, the component is disabled',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -37,6 +47,7 @@ export const ButtonComponent: Story = {
   args: {
     children: meta.argTypes.children.defaultValue,
     variant: meta.argTypes.variant.defaultValue,
+    isDisabled: meta.argTypes.isDisabled.defaultValue,
   },
 };
 

@@ -23,10 +23,22 @@
     --button-outline-color: var(--color-green-dark);
   }
 
+  &[disabled] {
+    --button-bg-color: var(--color-gray-normal);
+    cursor: not-allowed;
+  }
+
   &[data-variant='outlined'] {
     --button-bg-color: var(--white);
     --button-color: var(--color-green-normal);
     --button-border-color: var(--color-green-normal);
+
+    &[disabled],
+    &[disabled]:hover {
+      --button-bg-color: var(--white);
+      --button-color: var(--color-gray-normal);
+      --button-border-color: var(--color-gray-normal);
+    }
 
     &:hover {
       --button-bg-color: color-mix(

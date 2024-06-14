@@ -12,12 +12,14 @@ export interface IButtonProps {
   onClick?: () => void;
   class?: string;
   variant?: EButtonVariant;
+  isDisabled?: false;
 }
 
 /* c8 ignore start */
 const defaultProps = {
   onClick: () => {},
   variant: EButtonVariant.CONTAINED,
+  isDisabled: false,
 };
 /* c8 ignore end */
 
@@ -32,6 +34,7 @@ export const Button: TParentComponent<IButtonProps> = (props) => {
           : styles.button
       }
       onClick={() => localProps.onClick()}
+      disabled={localProps.isDisabled}
       data-variant={localProps.variant}
     >
       {localProps.children}
