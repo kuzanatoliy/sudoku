@@ -13,6 +13,7 @@ export interface IButtonProps {
   class?: string;
   variant?: EButtonVariant;
   isDisabled?: false;
+  isFullWidth?: false;
 }
 
 /* c8 ignore start */
@@ -20,6 +21,7 @@ const defaultProps = {
   onClick: () => {},
   variant: EButtonVariant.CONTAINED,
   isDisabled: false,
+  isFullWidth: false,
 };
 /* c8 ignore end */
 
@@ -36,6 +38,7 @@ export const Button: TParentComponent<IButtonProps> = (props) => {
       onClick={() => localProps.onClick()}
       disabled={localProps.isDisabled}
       data-variant={localProps.variant}
+      data-full-width={localProps.isFullWidth}
     >
       {localProps.children}
     </button>

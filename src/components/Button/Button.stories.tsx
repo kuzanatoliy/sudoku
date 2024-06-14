@@ -37,6 +37,16 @@ const meta = {
         defaultValue: { summary: false },
       },
     },
+    isFullWidth: {
+      type: { name: 'boolean', required: false },
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: 'If true, the component take all available width',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
   },
 } satisfies Meta<typeof Button>;
 
@@ -48,6 +58,7 @@ export const ButtonComponent: Story = {
     children: meta.argTypes.children.defaultValue,
     variant: meta.argTypes.variant.defaultValue,
     isDisabled: meta.argTypes.isDisabled.defaultValue,
+    isFullWidth: meta.argTypes.isFullWidth.defaultValue,
   },
 };
 

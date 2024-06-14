@@ -28,6 +28,12 @@
     cursor: not-allowed;
   }
 
+  &[data-full-width='true'] {
+    width: fill-available;
+    width: -webkit-fill-available;
+    width: -moz-available;
+  }
+
   &[data-variant='outlined'] {
     --button-bg-color: var(--white);
     --button-color: var(--color-green-normal);
