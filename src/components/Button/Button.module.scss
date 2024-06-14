@@ -1,16 +1,41 @@
+@import '../../mixins.scss';
+
 .button {
-  position: relative;
-  background: var(--color-green-normal);
-  color: var(--white);
-  padding: var(--size-single) var(--size-double);
-  font-size: var(--size-double);
-  border: none;
-  border-radius: var(--size-half);
-  width: fit-content;
-  cursor: pointer;
-  outline-color: var(--color-green-dark);
+  --button-bg-color: var(--color-green-normal);
+  --button-color: var(--white);
+  --button-padding-block: var(--size-single);
+  --button-padding-inline: var(--size-double);
+  --button-size: var(--size-double);
+  --button-radius: var(--size-half);
+  --button-outline-color: none;
+  --button-outline-width: var(--size-quarter);
+  --button-outline-offset: var(--size-half);
+  --button-outline-radius: calc(
+    var(--button-radius) + var(--button-outline-offset)
+  );
 
   &:hover {
-    background: var(--color-green-dark);
+    --button-bg-color: var(--color-green-dark);
   }
+
+  &:focus {
+    --button-outline-color: var(--color-green-dark);
+  }
+
+  background-color: var(--button-bg-color);
+  color: var(--button-color);
+  padding: var(--button-padding-block) var(--button-padding-inline);
+  font-size: var(--button-size);
+  border-radius: var(--button-radius);
+  border: none;
+  outline: none;
+  width: fit-content;
+  cursor: pointer;
+
+  @include focus-mixin(
+    var(--button-outline-width),
+    var(--button-outline-color),
+    var(--button-outline-offset),
+    var(--button-outline-radius)
+  );
 }
