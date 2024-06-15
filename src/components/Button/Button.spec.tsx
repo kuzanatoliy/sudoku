@@ -23,4 +23,15 @@ describe('Button', () => {
     fireEvent.click(screen.getByRole('button'));
     expect(clickSpy).toBeCalled();
   });
+
+  it('Should handle default click', () => {
+    renderComponent();
+    fireEvent.click(screen.getByRole('button'));
+  });
+
+  it('Should add custom class', () => {
+    const customClass = 'custom-class';
+    renderComponent({ class: customClass });
+    screen.getByRole('button').classList.contains(customClass);
+  });
 });

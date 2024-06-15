@@ -23,18 +23,16 @@ export interface IButtonProps {
   isFullWidth?: false;
 }
 
-/* c8 ignore start */
-const defaultProps = {
+const DEFAULT_BUTTON_PROPS = {
   onClick: () => {},
   variant: EButtonVariant.CONTAINED,
   size: EButtonSize.MEDIUM,
   isDisabled: false,
   isFullWidth: false,
 };
-/* c8 ignore end */
 
 export const Button: TParentComponent<IButtonProps> = (props) => {
-  const localProps = mergeProps(defaultProps, props);
+  const localProps = mergeProps(DEFAULT_BUTTON_PROPS, props);
 
   return (
     <button
