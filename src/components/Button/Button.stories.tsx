@@ -54,6 +54,14 @@ const meta = {
         defaultValue: { summary: false },
       },
     },
+    onClick: {
+      action: 'onClick',
+      description: 'Click event handler',
+      table: {
+        type: { summary: 'function' },
+        defaultValue: { summary: '() => {}' },
+      },
+    },
   },
   args: {
     children: 'BUTTON TEXT',
