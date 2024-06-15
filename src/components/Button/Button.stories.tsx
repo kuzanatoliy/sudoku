@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Button, EButtonVariant } from './Button';
+import { Button, EButtonSize, EButtonVariant } from './Button';
 
 const meta = {
   title: 'Components/Button',
@@ -26,6 +26,17 @@ const meta = {
         defaultValue: { summary: EButtonVariant.CONTAINED },
       },
       options: [EButtonVariant.CONTAINED, EButtonVariant.OUTLINED],
+    },
+    size: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      defaultValue: EButtonSize.MEDIUM,
+      description: 'The size of the component',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: EButtonSize.MEDIUM },
+      },
+      options: [EButtonSize.SMALL, EButtonSize.MEDIUM, EButtonSize.LARGE],
     },
     isDisabled: {
       type: { name: 'boolean', required: false },
@@ -57,6 +68,7 @@ export const ButtonComponent: Story = {
   args: {
     children: meta.argTypes.children.defaultValue,
     variant: meta.argTypes.variant.defaultValue,
+    size: meta.argTypes.size.defaultValue,
     isDisabled: meta.argTypes.isDisabled.defaultValue,
     isFullWidth: meta.argTypes.isFullWidth.defaultValue,
   },
@@ -67,6 +79,16 @@ export const ButtonVariants: Story = {
     <div style={{ display: 'flex', gap: '20px' }}>
       <Button variant={EButtonVariant.CONTAINED}>CONTAINED</Button>
       <Button variant={EButtonVariant.OUTLINED}>OUTLINED</Button>
+    </div>
+  ),
+};
+
+export const ButtonSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: '20px', 'align-items': 'flex-start' }}>
+      <Button size={EButtonSize.SMALL}>SMALL</Button>
+      <Button size={EButtonSize.MEDIUM}>MEDIUM</Button>
+      <Button size={EButtonSize.LARGE}>LARGE</Button>
     </div>
   ),
 };

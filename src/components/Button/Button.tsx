@@ -8,10 +8,17 @@ export const enum EButtonVariant {
   OUTLINED = 'outlined',
 }
 
+export const enum EButtonSize {
+  LARGE = 'large',
+  MEDIUM = 'medium',
+  SMALL = 'small',
+}
+
 export interface IButtonProps {
   onClick?: () => void;
   class?: string;
   variant?: EButtonVariant;
+  size?: EButtonSize;
   isDisabled?: false;
   isFullWidth?: false;
 }
@@ -20,6 +27,7 @@ export interface IButtonProps {
 const defaultProps = {
   onClick: () => {},
   variant: EButtonVariant.CONTAINED,
+  size: EButtonSize.MEDIUM,
   isDisabled: false,
   isFullWidth: false,
 };
@@ -38,6 +46,7 @@ export const Button: TParentComponent<IButtonProps> = (props) => {
       onClick={() => localProps.onClick()}
       disabled={localProps.isDisabled}
       data-variant={localProps.variant}
+      data-size={localProps.size}
       data-full-width={localProps.isFullWidth}
     >
       {localProps.children}

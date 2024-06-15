@@ -34,6 +34,18 @@
     width: -moz-available;
   }
 
+  &[data-size='large'] {
+    --button-padding-block: var(--size-oneandhalf);
+    --button-padding-inline: var(--size-triple);
+    --button-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --button-padding-block: var(--size-three-quarters);
+    --button-padding-inline: var(--size-oneandhalf);
+    --button-size: var(--size-oneandhalf);
+  }
+
   &[data-variant='outlined'] {
     --button-bg-color: var(--white);
     --button-color: var(--color-green-normal);
