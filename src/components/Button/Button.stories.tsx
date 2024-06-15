@@ -10,16 +10,15 @@ const meta = {
     children: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
-      defaultValue: 'BUTTON TEXT',
       description: 'The content of the component',
       table: {
+        disable: true,
         type: { summary: 'string' },
       },
     },
     variant: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
-      defaultValue: EButtonVariant.CONTAINED,
       description: 'The variant to use',
       table: {
         type: { summary: 'string' },
@@ -30,7 +29,6 @@ const meta = {
     size: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
-      defaultValue: EButtonSize.MEDIUM,
       description: 'The size of the component',
       table: {
         type: { summary: 'string' },
@@ -41,7 +39,6 @@ const meta = {
     isDisabled: {
       type: { name: 'boolean', required: false },
       control: { type: 'boolean' },
-      defaultValue: false,
       description: 'If true, the component is disabled',
       table: {
         type: { summary: 'boolean' },
@@ -51,7 +48,6 @@ const meta = {
     isFullWidth: {
       type: { name: 'boolean', required: false },
       control: { type: 'boolean' },
-      defaultValue: false,
       description: 'If true, the component take all available width',
       table: {
         type: { summary: 'boolean' },
@@ -59,36 +55,68 @@ const meta = {
       },
     },
   },
+  args: {
+    children: 'BUTTON TEXT',
+    variant: EButtonVariant.CONTAINED,
+    size: EButtonSize.MEDIUM,
+    isDisabled: false,
+    isFullWidth: false,
+  },
 } satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const ButtonComponent: Story = {
-  args: {
-    children: meta.argTypes.children.defaultValue,
-    variant: meta.argTypes.variant.defaultValue,
-    size: meta.argTypes.size.defaultValue,
-    isDisabled: meta.argTypes.isDisabled.defaultValue,
-    isFullWidth: meta.argTypes.isFullWidth.defaultValue,
+  argTypes: {
+    children: {
+      table: { disable: false },
+    },
   },
 };
 
 export const ButtonVariants: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '20px' }}>
-      <Button variant={EButtonVariant.CONTAINED}>CONTAINED</Button>
-      <Button variant={EButtonVariant.OUTLINED}>OUTLINED</Button>
+  argTypes: {
+    variant: {
+      table: { disable: true },
+    },
+  },
+  render: (props) => (
+    <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
+      <Button {...props} variant={EButtonVariant.CONTAINED}>
+        CONTAINED
+      </Button>
+      <Button {...props} variant={EButtonVariant.OUTLINED}>
+        OUTLINED
+      </Button>
     </div>
   ),
 };
 
 export const ButtonSizes: Story = {
-  render: () => (
-    <div style={{ display: 'flex', gap: '20px', 'align-items': 'flex-start' }}>
-      <Button size={EButtonSize.SMALL}>SMALL</Button>
-      <Button size={EButtonSize.MEDIUM}>MEDIUM</Button>
-      <Button size={EButtonSize.LARGE}>LARGE</Button>
+  argTypes: {
+    size: {
+      table: { disable: true },
+    },
+  },
+  render: (props) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '20px',
+        'align-items': 'flex-start',
+        'flex-wrap': 'wrap',
+      }}
+    >
+      <Button {...props} size={EButtonSize.SMALL}>
+        SMALL
+      </Button>
+      <Button {...props} size={EButtonSize.MEDIUM}>
+        MEDIUM
+      </Button>
+      <Button {...props} size={EButtonSize.LARGE}>
+        LARGE
+      </Button>
     </div>
   ),
 };
