@@ -3,21 +3,50 @@ import { TParentComponent } from 'types';
 
 import styles from './Button.module.scss';
 
-export interface IButtonProps {
-  onClick?: () => void;
+export const enum EButtonVariant {
+  CONTAINED = 'contained',
+  OUTLINED = 'outlined',
 }
 
-/* c8 ignore start */
-const defaultProps = {
+export const enum EButtonSize {
+  LARGE = 'large',
+  MEDIUM = 'medium',
+  SMALL = 'small',
+}
+
+export interface IButtonProps {
+  onClick?: () => void;
+  class?: string;
+  variant?: EButtonVariant;
+  size?: EButtonSize;
+  isDisabled?: false;
+  isFullWidth?: false;
+}
+
+const DEFAULT_BUTTON_PROPS = {
   onClick: () => {},
+  variant: EButtonVariant.CONTAINED,
+  size: EButtonSize.MEDIUM,
+  isDisabled: false,
+  isFullWidth: false,
 };
-/* c8 ignore end */
 
 export const Button: TParentComponent<IButtonProps> = (props) => {
-  const localProps = mergeProps(defaultProps, props);
+  const localProps = mergeProps(DEFAULT_BUTTON_PROPS, props);
 
   return (
-    <button class={styles.button} onClick={() => localProps.onClick()}>
+    <button
+      class={
+        localProps.class
+          ? `${localProps.class} ${styles.button}`
+          : styles.button
+      }
+      onClick={() => localProps.onClick()}
+      disabled={localProps.isDisabled}
+      data-variant={localProps.variant}
+      data-size={localProps.size}
+      data-full-width={localProps.isFullWidth}
+    >
       {localProps.children}
     </button>
   );

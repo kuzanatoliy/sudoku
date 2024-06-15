@@ -1,39 +1,122 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Button } from './Button';
-
-interface IWrapperProps {
-  text: string;
-  onClick: () => void;
-}
-
-const Wrapper = (props: IWrapperProps) => (
-  <Button onClick={props.onClick}>{props.text}</Button>
-);
+import { Button, EButtonSize, EButtonVariant } from './Button';
 
 const meta = {
   title: 'Components/Button',
-  component: Wrapper,
+  component: Button,
   tags: ['autodocs'],
   argTypes: {
-    text: {
-      control: {
-        type: 'text',
-      },
-      description: "Button's text",
+    children: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The content of the component',
       table: {
-        type: { summary: 'text' },
-        defaultValue: { summary: 'Button' },
+        disable: true,
+        type: { summary: 'string' },
+      },
+    },
+    variant: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      description: 'The variant to use',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: EButtonVariant.CONTAINED },
+      },
+      options: [EButtonVariant.CONTAINED, EButtonVariant.OUTLINED],
+    },
+    size: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      description: 'The size of the component',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: EButtonSize.MEDIUM },
+      },
+      options: [EButtonSize.SMALL, EButtonSize.MEDIUM, EButtonSize.LARGE],
+    },
+    isDisabled: {
+      type: { name: 'boolean', required: false },
+      control: { type: 'boolean' },
+      description: 'If true, the component is disabled',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
+      },
+    },
+    isFullWidth: {
+      type: { name: 'boolean', required: false },
+      control: { type: 'boolean' },
+      description: 'If true, the component take all available width',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false },
       },
     },
   },
-} satisfies Meta<IWrapperProps>;
+  args: {
+    children: 'BUTTON TEXT',
+    variant: EButtonVariant.CONTAINED,
+    size: EButtonSize.MEDIUM,
+    isDisabled: false,
+    isFullWidth: false,
+  },
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  args: {
-    text: meta.argTypes.text.table.defaultValue.summary,
+export const ButtonComponent: Story = {
+  argTypes: {
+    children: {
+      table: { disable: false },
+    },
   },
+};
+
+export const ButtonVariants: Story = {
+  argTypes: {
+    variant: {
+      table: { disable: true },
+    },
+  },
+  render: (props) => (
+    <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
+      <Button {...props} variant={EButtonVariant.CONTAINED}>
+        CONTAINED
+      </Button>
+      <Button {...props} variant={EButtonVariant.OUTLINED}>
+        OUTLINED
+      </Button>
+    </div>
+  ),
+};
+
+export const ButtonSizes: Story = {
+  argTypes: {
+    size: {
+      table: { disable: true },
+    },
+  },
+  render: (props) => (
+    <div
+      style={{
+        display: 'flex',
+        gap: '20px',
+        'align-items': 'flex-start',
+        'flex-wrap': 'wrap',
+      }}
+    >
+      <Button {...props} size={EButtonSize.SMALL}>
+        SMALL
+      </Button>
+      <Button {...props} size={EButtonSize.MEDIUM}>
+        MEDIUM
+      </Button>
+      <Button {...props} size={EButtonSize.LARGE}>
+        LARGE
+      </Button>
+    </div>
+  ),
 };
