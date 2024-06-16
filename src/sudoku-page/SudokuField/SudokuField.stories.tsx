@@ -17,7 +17,7 @@ const meta = {
       description: "SudokuField's value",
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: '0' },
       },
     },
     isDisabled: {
@@ -27,7 +27,7 @@ const meta = {
       description: 'Disable',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     isHighlighted: {
@@ -37,7 +37,7 @@ const meta = {
       description: 'Highlighted',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     isError: {
@@ -47,7 +47,7 @@ const meta = {
       description: 'Error',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     onChange: { action: 'onChange' },

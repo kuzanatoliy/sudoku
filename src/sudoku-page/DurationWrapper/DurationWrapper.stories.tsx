@@ -34,7 +34,7 @@ const meta = {
       description: 'Seconds',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: '0' },
       },
     },
     minutes: {
@@ -47,7 +47,7 @@ const meta = {
       description: 'Minutes',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: '0' },
       },
     },
     hours: {
@@ -60,7 +60,7 @@ const meta = {
       description: 'Seconds',
       table: {
         type: { summary: 'number' },
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: '0' },
       },
     },
   },
