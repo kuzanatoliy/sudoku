@@ -13,11 +13,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install dependencies
-        run: yarn install
+        run: npm install
       - name: testing
-        run: yarn run test
+        run: npm run test
       - name: code style
-        run: yarn run prettier:check && yarn run lint
+        run: npm run prettier:check && npm run lint
   version:
     needs: quality-gates
     if: github.ref_name == 'master'
@@ -63,11 +63,11 @@ jobs:
           git config --global user.email "njkznu@gmail.com"
           git config --global user.name "kuzanatoliy"
       - name: install dependencies
-        run: yarn install
+        run: npm install
       - name: build
         run: |
-          yarn run build -- --base sudoku
-          yarn run build-storybook
+          npm run build -- --base sudoku
+          npm run build-storybook
           mv ./storybook-static ./dist
       - name: deploy
         run: |

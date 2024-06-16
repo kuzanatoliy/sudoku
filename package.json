@@ -64,8 +64,5 @@
     "vite": "^5.3.1",
     "vite-plugin-solid": "^2.10.2",
     "vitest": "^1.6.0"
-  },
-  "resolutions": {
-    "prettier-fallback": "npm:prettier@^3.3.2"
   }
 }
