@@ -42,7 +42,7 @@ const meta = {
       description: 'If true, the component is disabled',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     isFullWidth: {
@@ -51,7 +51,7 @@ const meta = {
       description: 'If true, the component take all available width',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
       },
     },
     onClick: {
