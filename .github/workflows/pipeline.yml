@@ -12,12 +12,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+      - name: clean cache
+        run: yarn cache clean
       - name: install dependencies
         run: yarn install
       - name: testing
         run: yarn run test
       - name: code style
-        run: yarn run lint
+        run: yarn run prettier:check && yarn run lint
   version:
     needs: quality-gates
     if: github.ref_name == 'master'
