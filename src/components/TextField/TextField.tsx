@@ -35,7 +35,11 @@ const DEFAULT_TEXT_FIELD_PROPS = {
 export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
 
-  console.log(localProps);
-
-  return <input value={localProps.value} class={styles.input} />;
+  return (
+    <div class={styles.textfield_root}>
+      <div class={styles.textfield_input_container}>
+        <input value={localProps.value} class={styles.textfield_input} />
+      </div>
+    </div>
+  );
 };
