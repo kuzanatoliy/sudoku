@@ -6,19 +6,12 @@
   --textfield-padding-block: var(--size-single);
   --textfield-padding-inline: var(--size-double);
   --textfield-size: var(--size-double);
-  /*--button-bg-color: var(--color-green-normal);
-  --button-color: var(--white);
-  --button-border-color: var(--button-bg-color);
-  --button-padding-block: var(--size-single);
-  --button-padding-inline: var(--size-double);
-  --button-size: var(--size-double);
-  --button-radius: var(--size-half);
-  --button-outline-color: none;
-  --button-outline-width: var(--size-quarter);
-  --button-outline-offset: var(--size-half);
-  --button-outline-radius: calc(
-    var(--button-radius) + var(--button-outline-offset)
-  );*/
+  --textfield-outline-color: none;
+  --textfield-outline-width: var(--size-quarter);
+  --textfield-outline-offset: var(--size-quarter);
+  --textfield-outline-radius: calc(
+    var(--textfield-radius) + var(--textfield-outline-offset)
+  );
 }
 
 .textfield_input_container {
@@ -28,15 +21,15 @@
   padding: var(--textfield-padding-block) var(--textfield-padding-inline);
 
   &:focus-within {
-    outline: solid 1px black;
+    --textfield-outline-color: var(--color-green-dark);
   }
 
-  /*@include focus-mixin(
-    var(--button-outline-width),
-    var(--button-outline-color),
-    calc(var(--button-outline-offset) + 1px),
-    var(--button-outline-radius)
-  );*/
+  @include focus-mixin(
+    var(--textfield-outline-width),
+    var(--textfield-outline-color),
+    var(--textfield-outline-offset),
+    var(--textfield-outline-radius)
+  );
 }
 
 .textfield_input {
@@ -45,6 +38,7 @@
   padding: 0;
   flex: 1;
   line-height: 1.2;
+  font-size: var(--textfield-size);
   height: calc(var(--textfield-size) * 1.2);
   box-sizing: content-box;
 }
