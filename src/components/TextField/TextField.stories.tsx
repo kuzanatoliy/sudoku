@@ -16,6 +16,25 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    placeholder: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description:
+        'The short hint displayed in the input before the user enters a value',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
+    label: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The label content',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
     /*variant: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
@@ -69,6 +88,8 @@ const meta = {
   },
   args: {
     value: '',
+    placeholder: 'Type text',
+    label: 'Text field label',
     /*variant: ETextFieldVariant.CONTAINED,
     size: ETextFieldSize.MEDIUM,
     isDisabled: false,

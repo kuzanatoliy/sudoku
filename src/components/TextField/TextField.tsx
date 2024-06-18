@@ -1,4 +1,5 @@
-import { mergeProps } from 'solid-js';
+import { Show, mergeProps } from 'solid-js';
+import { v4 as uuid } from 'uuid';
 import { TComponent } from 'types';
 
 import styles from './TextField.module.scss';
@@ -16,6 +17,8 @@ import styles from './TextField.module.scss';
 
 export interface ITextFieldProps {
   value: string;
+  placeholder?: string;
+  label?: string;
   /*onClick?: () => void;
   class?: string;
   variant?: ETextFieldVariant;
@@ -35,10 +38,28 @@ const DEFAULT_TEXT_FIELD_PROPS = {
 export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
 
+  let inputRef;
+
+  const inputId = uuid();
+
   return (
     <div class={styles.textfield_root}>
-      <div class={styles.textfield_input_container}>
-        <input value={localProps.value} class={styles.textfield_input} />
+      <Show when={localProps.label}>
+        <label for={inputId} class={styles.textfield_label}>
+          {localProps.label}
+        </label>
+      </Show>
+      <div
+        class={styles.textfield_input_container}
+        onClick={() => inputRef!.focus()}
+      >
+        <input
+          id={inputId}
+          ref={inputRef}
+          value={localProps.value}
+          placeholder={localProps.placeholder}
+          class={styles.textfield_input}
+        />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 .textfield_root {
   --textfield-border-color: var(--color-green-normal);
+  --textfield-color: var(--color-green-normal);
   --textfield-radius: var(--size-half);
   --textfield-padding-block: var(--size-single);
   --textfield-padding-inline: var(--size-double);
@@ -12,16 +13,23 @@
   --textfield-outline-radius: calc(
     var(--textfield-radius) + var(--textfield-outline-offset)
   );
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-half);
 }
 
 .textfield_input_container {
   display: flex;
+  cursor: text;
   border: solid 1px var(--textfield-border-color);
   border-radius: var(--textfield-radius);
   padding: var(--textfield-padding-block) var(--textfield-padding-inline);
 
-  &:focus-within {
+  &:focus-within,
+  &:active {
     --textfield-outline-color: var(--color-green-dark);
+    --textfield-color: var(--color-green-dark);
   }
 
   @include focus-mixin(
@@ -32,6 +40,13 @@
   );
 }
 
+.textfield_label {
+  line-height: 1.2;
+  font-size: var(--textfield-size);
+  color: var(--textfield-color);
+  font-weight: 600;
+}
+
 .textfield_input {
   border: none;
   outline: none;
@@ -40,5 +55,10 @@
   line-height: 1.2;
   font-size: var(--textfield-size);
   height: calc(var(--textfield-size) * 1.2);
+  color: var(--textfield-color);
   box-sizing: content-box;
+
+  &::placeholder {
+    color: color-mix(in srgb, var(--color-green-dark) 30%, var(--white));
+  }
 }
