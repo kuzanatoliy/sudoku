@@ -17,7 +17,7 @@
   cursor: text;
   box-shadow: 0 0 0 var(--textfield-outline-width) var(--textfield-border-color);
   border-radius: var(--textfield-radius);
-  padding: var(--textfield-padding-block) var(--textfield-padding-inline);
+  overflow: hidden;
 
   &:focus-within,
   &:active {
@@ -40,6 +40,7 @@
   padding: 0;
   flex: 1;
   line-height: 1.2;
+  padding: var(--textfield-padding-block) var(--textfield-padding-inline);
   font-size: var(--textfield-size);
   height: calc(var(--textfield-size) * 1.2);
   color: var(--textfield-color);

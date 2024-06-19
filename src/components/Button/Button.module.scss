@@ -19,7 +19,7 @@
       0 0 0 calc(var(--button-outline-offset) + 1px) var(--white),
       0 0 0
         calc(var(--button-outline-offset) + var(--button-outline-width) + 1px)
-        var(--button-outline-color);
+        var(--color-green-dark);
   }
 
   &[disabled] {
@@ -72,12 +72,13 @@
   color: var(--button-color);
   padding: var(--button-padding-block) var(--button-padding-inline);
   font-size: var(--button-size);
-  min-height: calc(var(--button-size) * 1.2 + var(--button-padding-block) * 2);
+  min-height: calc(var(--button-size) * 1.2);
   border-radius: var(--button-radius);
   line-height: 1.2;
   box-shadow: 0 0 0 1px var(--button-border-color);
   border: none;
   outline: none;
   width: fit-content;
+  box-sizing: content-box;
   cursor: pointer;
 }
