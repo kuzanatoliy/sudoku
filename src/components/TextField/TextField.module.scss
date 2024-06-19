@@ -1,5 +1,3 @@
-@import '../../mixins.scss';
-
 .textfield_root {
   --textfield-border-color: var(--color-green-normal);
   --textfield-color: var(--color-green-normal);
@@ -7,12 +5,7 @@
   --textfield-padding-block: var(--size-single);
   --textfield-padding-inline: var(--size-double);
   --textfield-size: var(--size-double);
-  --textfield-outline-color: none;
-  --textfield-outline-width: var(--size-quarter);
-  --textfield-outline-offset: var(--size-quarter);
-  --textfield-outline-radius: calc(
-    var(--textfield-radius) + var(--textfield-outline-offset)
-  );
+  --textfield-outline-width: 1px;
 
   display: flex;
   flex-direction: column;
@@ -22,22 +15,16 @@
 .textfield_input_container {
   display: flex;
   cursor: text;
-  border: solid 1px var(--textfield-border-color);
+  box-shadow: 0 0 0 var(--textfield-outline-width) var(--textfield-border-color);
   border-radius: var(--textfield-radius);
   padding: var(--textfield-padding-block) var(--textfield-padding-inline);
 
   &:focus-within,
   &:active {
-    --textfield-outline-color: var(--color-green-dark);
     --textfield-color: var(--color-green-dark);
+    --textfield-border-color: var(--color-green-dark);
+    --textfield-outline-width: var(--size-quarter);
   }
-
-  @include focus-mixin(
-    var(--textfield-outline-width),
-    var(--textfield-outline-color),
-    var(--textfield-outline-offset),
-    var(--textfield-outline-radius)
-  );
 }
 
 .textfield_label {
