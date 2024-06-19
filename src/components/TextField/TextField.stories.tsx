@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { TextField /*ETextFieldSize, ETextFieldVariant*/ } from './TextField';
+import {
+  ETextFieldSize,
+  ETextFieldType,
+  TextField /*ETextFieldSize, ETextFieldVariant*/,
+} from './TextField';
 
 const meta = {
   title: 'Components/TextField',
@@ -35,21 +39,23 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    /*variant: {
+    type: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
-      description: 'The variant to use',
+      description: 'Type of the input element',
       table: {
+        disable: false,
         type: { summary: 'string' },
-        defaultValue: { summary: ETextFieldVariant.CONTAINED },
+        defaultValue: { summary: ETextFieldType.TEXT },
       },
-      options: [ETextFieldVariant.CONTAINED, ETextFieldVariant.OUTLINED],
+      options: [ETextFieldType.TEXT, ETextFieldType.PASSWORD],
     },
     size: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
       description: 'The size of the component',
       table: {
+        disable: false,
         type: { summary: 'string' },
         defaultValue: { summary: ETextFieldSize.MEDIUM },
       },
@@ -59,37 +65,87 @@ const meta = {
         ETextFieldSize.LARGE,
       ],
     },
+    helperMessage: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The helper text content',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
+    errorMessage: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The error message',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
+    class: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'Additional css classes',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
+    isError: {
+      type: { name: 'boolean', required: false },
+      control: { type: 'boolean' },
+      description: 'If true, the component is disabled',
+      table: {
+        disable: false,
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' },
+      },
+    },
     isDisabled: {
       type: { name: 'boolean', required: false },
       control: { type: 'boolean' },
       description: 'If true, the component is disabled',
       table: {
+        disable: false,
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    isFullWidth: {
+    isRequired: {
       type: { name: 'boolean', required: false },
       control: { type: 'boolean' },
-      description: 'If true, the component take all available width',
+      description:
+        'If true, the label is displayed as required and the input element is required',
       table: {
+        disable: false,
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
-    onClick: {
-      action: 'onClick',
-      description: 'Click event handler',
+    onChange: {
+      action: 'onChange',
+      type: { name: 'function', required: false },
+      description: 'Change event handler',
       table: {
+        disable: false,
         type: { summary: 'function' },
         defaultValue: { summary: '() => {}' },
       },
-    },*/
+    },
   },
   args: {
     value: '',
     placeholder: 'Type text',
     label: 'Text field label',
+    type: ETextFieldType.TEXT,
+    size: ETextFieldSize.MEDIUM,
+    helperMessage: '',
+    errorMessage: '',
+    class: '',
+    isError: false,
+    isDisabled: false,
+    isRequired: false,
     /*variant: ETextFieldVariant.CONTAINED,
     size: ETextFieldSize.MEDIUM,
     isDisabled: false,

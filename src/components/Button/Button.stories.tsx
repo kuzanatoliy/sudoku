@@ -16,11 +16,21 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    class: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'Additional css classes',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
     variant: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
       description: 'The variant to use',
       table: {
+        disable: false,
         type: { summary: 'string' },
         defaultValue: { summary: EButtonVariant.CONTAINED },
       },
@@ -31,6 +41,7 @@ const meta = {
       control: { type: 'select' },
       description: 'The size of the component',
       table: {
+        disable: false,
         type: { summary: 'string' },
         defaultValue: { summary: EButtonSize.MEDIUM },
       },
@@ -41,6 +52,7 @@ const meta = {
       control: { type: 'boolean' },
       description: 'If true, the component is disabled',
       table: {
+        disable: false,
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
@@ -50,14 +62,17 @@ const meta = {
       control: { type: 'boolean' },
       description: 'If true, the component take all available width',
       table: {
+        disable: false,
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' },
       },
     },
     onClick: {
       action: 'onClick',
+      type: { name: 'function', required: false },
       description: 'Click event handler',
       table: {
+        disable: false,
         type: { summary: 'function' },
         defaultValue: { summary: '() => {}' },
       },

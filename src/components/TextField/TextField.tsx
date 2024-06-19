@@ -4,41 +4,43 @@ import { TComponent } from 'types';
 
 import styles from './TextField.module.scss';
 
-/* export const enum ETextFieldVariant {
-  CONTAINED = 'contained',
-  OUTLINED = 'outlined',
-} */
-
-/* export const enum ETextFieldSize {
+export const enum ETextFieldSize {
   LARGE = 'large',
   MEDIUM = 'medium',
   SMALL = 'small',
-} */
+}
+
+export const enum ETextFieldType {
+  TEXT = 'text',
+  PASSWORD = 'password',
+}
 
 export interface ITextFieldProps {
+  onChange?: () => void;
   value: string;
   placeholder?: string;
   label?: string;
-  /*onClick?: () => void;
-  class?: string;
-  variant?: ETextFieldVariant;
+  type?: ETextFieldType;
   size?: ETextFieldSize;
-  isDisabled?: false;
-  isFullWidth?: false;*/
+  helperMessage?: string;
+  errorMessage?: string;
+  class?: string;
+  isError?: boolean;
+  isDisabled?: boolean;
+  isRequired?: boolean;
 }
 
 const DEFAULT_TEXT_FIELD_PROPS = {
-  /* onClick: () => {},
-  variant: ETextFieldVariant.CONTAINED,
+  onChange: () => {},
+  type: ETextFieldType.TEXT,
   size: ETextFieldSize.MEDIUM,
+  isError: false,
   isDisabled: false,
-  isFullWidth: false, */
+  isRequired: false,
 };
 
 export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
-
-  let inputRef;
 
   const inputId = uuid();
 
@@ -49,16 +51,17 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           {localProps.label}
         </label>
       </Show>
-      <div
-        class={styles.textfield_input_container}
-        onClick={() => inputRef!.focus()}
-      >
+      <div class={styles.textfield_input_container}>
         <input
           id={inputId}
-          ref={inputRef}
+          class={
+            localProps.class
+              ? `${localProps.class} ${styles.textfield_input}`
+              : styles.textfield_input
+          }
           value={localProps.value}
+          type={localProps.type}
           placeholder={localProps.placeholder}
-          class={styles.textfield_input}
         />
       </div>
     </div>
