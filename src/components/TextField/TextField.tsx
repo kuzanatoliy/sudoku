@@ -49,6 +49,9 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
       <Show when={localProps.label}>
         <label for={inputId} class={styles.textfield_label}>
           {localProps.label}
+          <Show when={localProps.isRequired}>
+            <span aria-hidden={true}> *</span>
+          </Show>
         </label>
       </Show>
       <div class={styles.textfield_input_container}>
@@ -62,6 +65,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           value={localProps.value}
           type={localProps.type}
           placeholder={localProps.placeholder}
+          aria-required={localProps.isRequired}
         />
       </div>
     </div>
