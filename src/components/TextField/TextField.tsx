@@ -45,7 +45,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
   const inputId = uuid();
 
   return (
-    <div class={styles.textfield_root}>
+    <div class={styles.textfield_root} aria-disabled={localProps.isDisabled}>
       <Show when={localProps.label}>
         <label for={inputId} class={styles.textfield_label}>
           {localProps.label}
@@ -65,6 +65,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           value={localProps.value}
           type={localProps.type}
           placeholder={localProps.placeholder}
+          disabled={localProps.isDisabled}
           aria-required={localProps.isRequired}
         />
       </div>
