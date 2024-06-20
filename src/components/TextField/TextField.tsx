@@ -29,6 +29,7 @@ export interface ITextFieldProps {
   isError?: boolean;
   isDisabled?: boolean;
   isRequired?: boolean;
+  'aria-label'?: string;
 }
 
 const DEFAULT_TEXT_FIELD_PROPS = {
@@ -76,6 +77,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
           onInput={(event) => localProps.onChange(event.target.value)}
+          aria-label={localProps['aria-label']}
           aria-required={localProps.isRequired}
           aria-invalid={localProps.isError}
           aria-describedby={localProps.helperMessage && helperTectId}

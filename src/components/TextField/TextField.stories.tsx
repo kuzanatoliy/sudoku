@@ -110,6 +110,15 @@ const meta = {
         defaultValue: { summary: 'false' },
       },
     },
+    'aria-label': {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'Alternative label text',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
     onChange: {
       action: 'onChange',
       type: { name: 'function', required: false },
@@ -152,6 +161,7 @@ const meta = {
     isError: false,
     isDisabled: false,
     isRequired: false,
+    'aria-label': '',
   },
 } satisfies Meta<typeof TextField>;
 
