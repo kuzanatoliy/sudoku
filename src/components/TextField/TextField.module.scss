@@ -1,6 +1,12 @@
 .textfield_root {
   --textfield-border-color: var(--color-green-normal);
   --textfield-color: var(--color-green-normal);
+  --textfield-bg-color: var(--white);
+  --textfield-placehoder-color: color-mix(
+    in srgb,
+    var(--textfield-color) 30%,
+    var(--white)
+  );
   --textfield-radius: var(--size-half);
   --textfield-padding-block: var(--size-single);
   --textfield-padding-inline: var(--size-double);
@@ -14,6 +20,17 @@
   &[aria-disabled='true'] {
     --textfield-border-color: var(--color-gray-normal);
     --textfield-color: var(--color-gray-normal);
+    --textfield-placehoder-color: var(--color-gray-normal);
+  }
+
+  &:focus-within {
+    --textfield-border-color: var(--color-green-dark);
+    --textfield-outline-width: var(--size-quarter);
+  }
+
+  &:has([aria-invalid='true']):not(:has(:disabled)) {
+    --textfield-color: var(--color-orange-dark);
+    --textfield-border-color: var(--color-orange-dark);
   }
 }
 
@@ -23,13 +40,6 @@
   box-shadow: 0 0 0 var(--textfield-outline-width) var(--textfield-border-color);
   border-radius: var(--textfield-radius);
   overflow: hidden;
-
-  &:focus-within,
-  &:active:not(:has(:disabled)) {
-    --textfield-color: var(--color-green-dark);
-    --textfield-border-color: var(--color-green-dark);
-    --textfield-outline-width: var(--size-quarter);
-  }
 }
 
 .textfield_label {
@@ -49,9 +59,10 @@
   font-size: var(--textfield-size);
   height: calc(var(--textfield-size) * 1.2);
   color: var(--textfield-color);
+  background-color: var(--textfield-bg-color);
   box-sizing: content-box;
 
   &::placeholder {
-    color: color-mix(in srgb, var(--color-green-dark) 30%, var(--white));
+    color: var(--textfield-placehoder-color);
   }
 }

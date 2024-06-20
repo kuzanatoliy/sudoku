@@ -23,7 +23,6 @@ export interface ITextFieldProps {
   type?: ETextFieldType;
   size?: ETextFieldSize;
   helperMessage?: string;
-  errorMessage?: string;
   class?: string;
   isError?: boolean;
   isDisabled?: boolean;
@@ -67,6 +66,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
           aria-required={localProps.isRequired}
+          aria-invalid={localProps.isError}
         />
       </div>
     </div>

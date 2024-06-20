@@ -74,15 +74,6 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    errorMessage: {
-      type: { name: 'string', required: false },
-      control: { type: 'text' },
-      description: 'The error message',
-      table: {
-        disable: false,
-        type: { summary: 'string' },
-      },
-    },
     class: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
@@ -141,7 +132,6 @@ const meta = {
     type: ETextFieldType.TEXT,
     size: ETextFieldSize.MEDIUM,
     helperMessage: '',
-    errorMessage: '',
     class: '',
     isError: false,
     isDisabled: false,
