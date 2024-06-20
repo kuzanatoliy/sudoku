@@ -17,6 +17,18 @@
   flex-direction: column;
   gap: var(--size-half);
 
+  &[data-size='large'] {
+    --textfield-padding-block: var(--size-oneandhalf);
+    --textfield-padding-inline: var(--size-triple);
+    --textfield-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --textfield-padding-block: var(--size-three-quarters);
+    --textfield-padding-inline: var(--size-oneandhalf);
+    --textfield-size: var(--size-oneandhalf);
+  }
+
   &[aria-disabled='true'] {
     --textfield-border-color: var(--color-gray-normal);
     --textfield-color: var(--color-gray-normal);

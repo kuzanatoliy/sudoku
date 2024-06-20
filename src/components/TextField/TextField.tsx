@@ -19,7 +19,7 @@ export interface ITextFieldProps {
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
-  value: string;
+  value?: string;
   placeholder?: string;
   label?: string;
   type?: ETextFieldType;
@@ -35,6 +35,7 @@ const DEFAULT_TEXT_FIELD_PROPS = {
   onChange: () => {},
   onFocus: () => {},
   onBlur: () => {},
+  value: '',
   type: ETextFieldType.TEXT,
   size: ETextFieldSize.MEDIUM,
   isError: false,
@@ -49,7 +50,11 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
   const helperTectId = uuid();
 
   return (
-    <div class={styles.textfield_root} aria-disabled={localProps.isDisabled}>
+    <div
+      class={styles.textfield_root}
+      aria-disabled={localProps.isDisabled}
+      data-size={localProps.size}
+    >
       <Show when={localProps.label}>
         <label for={inputId} class={styles.textfield_label}>
           {localProps.label}

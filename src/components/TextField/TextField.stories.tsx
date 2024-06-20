@@ -8,7 +8,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     value: {
-      type: { name: 'string', required: true },
+      type: { name: 'string', required: false },
       control: { type: 'text' },
       description: 'The value of the input element',
       table: {
@@ -147,7 +147,7 @@ const meta = {
     label: 'Text field label',
     type: ETextFieldType.TEXT,
     size: ETextFieldSize.MEDIUM,
-    helperMessage: '',
+    helperMessage: 'Helper text of the text field',
     class: '',
     isError: false,
     isDisabled: false,
@@ -160,27 +160,12 @@ type Story = StoryObj<typeof meta>;
 
 export const TextFieldComponent: Story = {};
 
-/*export const TextFieldVariants: Story = {
-  argTypes: {
-    variant: {
-      table: { disable: true },
-    },
-  },
-  render: (props) => (
-    <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
-      <TextField {...props} variant={ETextFieldVariant.CONTAINED}>
-        CONTAINED
-      </TextField>
-      <TextField {...props} variant={ETextFieldVariant.OUTLINED}>
-        OUTLINED
-      </TextField>
-    </div>
-  ),
-};
-
 export const TextFieldSizes: Story = {
   argTypes: {
     size: {
+      table: { disable: true },
+    },
+    label: {
       table: { disable: true },
     },
   },
@@ -188,20 +173,13 @@ export const TextFieldSizes: Story = {
     <div
       style={{
         display: 'flex',
+        'flex-direction': 'column',
         gap: '20px',
-        'align-items': 'flex-start',
-        'flex-wrap': 'wrap',
       }}
     >
-      <TextField {...props} size={ETextFieldSize.SMALL}>
-        SMALL
-      </TextField>
-      <TextField {...props} size={ETextFieldSize.MEDIUM}>
-        MEDIUM
-      </TextField>
-      <TextField {...props} size={ETextFieldSize.LARGE}>
-        LARGE
-      </TextField>
+      <TextField {...props} label='SMALL' size={ETextFieldSize.SMALL} />
+      <TextField {...props} label='MEDIUM' size={ETextFieldSize.MEDIUM} />
+      <TextField {...props} label='LARGE' size={ETextFieldSize.LARGE} />
     </div>
   ),
-};*/
+};
