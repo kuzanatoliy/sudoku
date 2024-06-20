@@ -42,6 +42,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
 
   const inputId = uuid();
+  const helperTectId = uuid();
 
   return (
     <div class={styles.textfield_root} aria-disabled={localProps.isDisabled}>
@@ -67,8 +68,14 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           disabled={localProps.isDisabled}
           aria-required={localProps.isRequired}
           aria-invalid={localProps.isError}
+          aria-describedby={localProps.helperMessage && helperTectId}
         />
       </div>
+      <Show when={localProps.helperMessage}>
+        <p id={helperTectId} class={styles.textfield_helper_message}>
+          {localProps.helperMessage}
+        </p>
+      </Show>
     </div>
   );
 };

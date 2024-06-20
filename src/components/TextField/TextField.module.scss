@@ -36,7 +36,6 @@
 
 .textfield_input_container {
   display: flex;
-  cursor: text;
   box-shadow: 0 0 0 var(--textfield-outline-width) var(--textfield-border-color);
   border-radius: var(--textfield-radius);
   overflow: hidden;
@@ -47,6 +46,13 @@
   font-size: var(--textfield-size);
   color: var(--textfield-color);
   font-weight: 600;
+}
+
+.textfield_helper_message {
+  line-height: 1.2;
+  font-size: var(--textfield-size);
+  color: var(--textfield-color);
+  margin: 0;
 }
 
 .textfield_input {
@@ -64,5 +70,9 @@
 
   &::placeholder {
     color: var(--textfield-placehoder-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
