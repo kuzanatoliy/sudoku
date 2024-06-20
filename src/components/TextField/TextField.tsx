@@ -77,6 +77,8 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
           onInput={(event) => localProps.onChange(event.target.value)}
+          onFocus={() => localProps.onFocus()}
+          onBlur={() => localProps.onBlur()}
           aria-label={localProps['aria-label']}
           aria-required={localProps.isRequired}
           aria-invalid={localProps.isError}
