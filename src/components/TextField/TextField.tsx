@@ -16,7 +16,9 @@ export const enum ETextFieldType {
 }
 
 export interface ITextFieldProps {
-  onChange?: () => void;
+  onChange?: (value: string) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
   value: string;
   placeholder?: string;
   label?: string;
@@ -31,6 +33,8 @@ export interface ITextFieldProps {
 
 const DEFAULT_TEXT_FIELD_PROPS = {
   onChange: () => {},
+  onFocus: () => {},
+  onBlur: () => {},
   type: ETextFieldType.TEXT,
   size: ETextFieldSize.MEDIUM,
   isError: false,
@@ -66,6 +70,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           type={localProps.type}
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
+          onInput={(event) => localProps.onChange(event.target.value)}
           aria-required={localProps.isRequired}
           aria-invalid={localProps.isError}
           aria-describedby={localProps.helperMessage && helperTectId}

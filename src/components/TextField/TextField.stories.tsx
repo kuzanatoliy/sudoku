@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import {
-  ETextFieldSize,
-  ETextFieldType,
-  TextField /*ETextFieldSize, ETextFieldVariant*/,
-} from './TextField';
+import { ETextFieldSize, ETextFieldType, TextField } from './TextField';
 
 const meta = {
   title: 'Components/TextField',
@@ -124,6 +120,26 @@ const meta = {
         defaultValue: { summary: '() => {}' },
       },
     },
+    onFocus: {
+      action: 'onFocus',
+      type: { name: 'function', required: false },
+      description: 'Focus event handler',
+      table: {
+        disable: false,
+        type: { summary: 'function' },
+        defaultValue: { summary: '() => {}' },
+      },
+    },
+    onBlur: {
+      action: 'onBlur',
+      type: { name: 'function', required: false },
+      description: 'Blur event handler',
+      table: {
+        disable: false,
+        type: { summary: 'function' },
+        defaultValue: { summary: '() => {}' },
+      },
+    },
   },
   args: {
     value: '',
@@ -136,10 +152,6 @@ const meta = {
     isError: false,
     isDisabled: false,
     isRequired: false,
-    /*variant: ETextFieldVariant.CONTAINED,
-    size: ETextFieldSize.MEDIUM,
-    isDisabled: false,
-    isFullWidth: false,*/
   },
 } satisfies Meta<typeof TextField>;
 
