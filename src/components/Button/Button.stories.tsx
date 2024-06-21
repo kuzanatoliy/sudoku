@@ -82,6 +82,7 @@ const meta = {
     children: 'BUTTON TEXT',
     variant: EButtonVariant.CONTAINED,
     size: EButtonSize.MEDIUM,
+    class: '',
     isDisabled: false,
     isFullWidth: false,
   },
