@@ -1,0 +1,91 @@
+.textareafield_root {
+  --textareafield-border-color: var(--color-green-normal);
+  --textareafield-color: var(--color-green-normal);
+  --textareafield-bg-color: var(--white);
+  --textareafield-placehoder-color: color-mix(
+    in srgb,
+    var(--textareafield-color) 30%,
+    var(--white)
+  );
+  --textareafield-radius: var(--size-half);
+  --textareafield-padding-block: var(--size-single);
+  --textareafield-padding-inline: var(--size-double);
+  --textareafield-size: var(--size-double);
+  --textareafield-outline-width: 1px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-half);
+
+  &[data-size='large'] {
+    --textareafield-padding-block: var(--size-oneandhalf);
+    --textareafield-padding-inline: var(--size-triple);
+    --textareafield-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --textareafield-padding-block: var(--size-three-quarters);
+    --textareafield-padding-inline: var(--size-oneandhalf);
+    --textareafield-size: var(--size-oneandhalf);
+  }
+
+  &[aria-disabled='true'] {
+    --textareafield-border-color: var(--color-gray-normal);
+    --textareafield-color: var(--color-gray-normal);
+    --textareafield-placehoder-color: var(--color-gray-normal);
+  }
+
+  &:focus-within {
+    --textareafield-border-color: var(--color-green-dark);
+    --textareafield-outline-width: var(--size-quarter);
+  }
+
+  &:has([aria-invalid='true']):not(:has(:disabled)) {
+    --textareafield-color: var(--color-orange-dark);
+    --textareafield-border-color: var(--color-orange-dark);
+  }
+}
+
+.textareafield_textarea_container {
+  display: flex;
+  box-shadow: 0 0 0 var(--textareafield-outline-width)
+    var(--textareafield-border-color);
+  border-radius: var(--textareafield-radius);
+  overflow: hidden;
+}
+
+.textareafield_label {
+  line-height: 1.2;
+  font-size: var(--textareafield-size);
+  color: var(--textareafield-color);
+  font-weight: 600;
+}
+
+.textareafield_helper_message {
+  line-height: 1.2;
+  font-size: var(--textareafield-size);
+  color: var(--textareafield-color);
+  margin: 0;
+}
+
+.textareafield_textarea {
+  border: none;
+  outline: none;
+  padding: 0;
+  flex: 1;
+  line-height: 1.2;
+  padding: var(--textareafield-padding-block)
+    var(--textareafield-padding-inline);
+  font-size: var(--textareafield-size);
+  color: var(--textareafield-color);
+  background-color: var(--textareafield-bg-color);
+  box-sizing: content-box;
+
+  &::placeholder {
+    color: var(--textareafield-placehoder-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

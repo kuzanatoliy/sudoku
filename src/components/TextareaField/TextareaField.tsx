@@ -2,29 +2,24 @@ import { Show, mergeProps } from 'solid-js';
 import { v4 as uuid } from 'uuid';
 import { TComponent } from 'types';
 
-import styles from './TextField.module.scss';
+import styles from './TextareaField.module.scss';
 
-export const enum ETextFieldSize {
+export const enum ETextareaFieldSize {
   LARGE = 'large',
   MEDIUM = 'medium',
   SMALL = 'small',
 }
 
-export const enum ETextFieldType {
-  TEXT = 'text',
-  PASSWORD = 'password',
-}
-
-export interface ITextFieldProps {
+export interface ITextareaFieldProps {
   onChange?: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
   value?: string;
   placeholder?: string;
   label?: string;
-  type?: ETextFieldType;
-  size?: ETextFieldSize;
+  size?: ETextareaFieldSize;
   helperMessage?: string;
+  rows?: number;
   class?: string;
   isError?: boolean;
   isDisabled?: boolean;
@@ -33,21 +28,22 @@ export interface ITextFieldProps {
 }
 
 /* c8 ignore start */
-const DEFAULT_TEXT_FIELD_PROPS = {
+const DEFAULT_TEXTAREA_FIELD_PROPS = {
   onChange: () => {},
   onFocus: () => {},
   onBlur: () => {},
   value: '',
-  type: ETextFieldType.TEXT,
-  size: ETextFieldSize.MEDIUM,
+  size: ETextareaFieldSize.MEDIUM,
+  rows: 3,
   isError: false,
   isDisabled: false,
   isRequired: false,
 };
 /* c8 ignore end */
 
-export const TextField: TComponent<ITextFieldProps> = (props) => {
-  const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
+// todo: need to add rows property
+export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
+  const localProps = mergeProps(DEFAULT_TEXTAREA_FIELD_PROPS, props);
 
   const inputId = uuid();
   const helperTextId = uuid();
@@ -57,26 +53,26 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
       role='group'
       class={
         localProps.class
-          ? `${localProps.class} ${styles.textfield_root}`
-          : styles.textfield_root
+          ? `${localProps.class} ${styles.textareafield_root}`
+          : styles.textareafield_root
       }
       aria-disabled={localProps.isDisabled}
       data-size={localProps.size}
     >
       <Show when={localProps.label}>
-        <label for={inputId} class={styles.textfield_label}>
+        <label for={inputId} class={styles.textareafield_label}>
           {localProps.label}
           <Show when={localProps.isRequired}>
             <span aria-hidden={true}> *</span>
           </Show>
         </label>
       </Show>
-      <div class={styles.textfield_input_container}>
-        <input
+      <div class={styles.textareafield_textarea_container}>
+        <textarea
           id={inputId}
-          class={styles.textfield_input}
+          class={styles.textareafield_textarea}
           value={localProps.value}
-          type={localProps.type}
+          rows={localProps.rows}
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
           onInput={(event) => localProps.onChange(event.target.value)}
@@ -89,7 +85,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
         />
       </div>
       <Show when={localProps.helperMessage}>
-        <p id={helperTextId} class={styles.textfield_helper_message}>
+        <p id={helperTextId} class={styles.textareafield_helper_message}>
           {localProps.helperMessage}
         </p>
       </Show>
