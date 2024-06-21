@@ -12,11 +12,6 @@ describe('Button', () => {
     vitest.clearAllMocks();
   });
 
-  it('Should render component', () => {
-    renderComponent();
-    expect(screen.getByRole('button')).toBeDefined();
-  });
-
   it('Should handle click', () => {
     const clickSpy = vitest.fn();
     renderComponent({ onClick: clickSpy });
@@ -24,14 +19,23 @@ describe('Button', () => {
     expect(clickSpy).toBeCalled();
   });
 
-  it('Should handle default click', () => {
-    renderComponent();
-    fireEvent.click(screen.getByRole('button'));
-  });
-
   it('Should add custom class', () => {
     const customClass = 'custom-class';
     renderComponent({ class: customClass });
-    screen.getByRole('button').classList.contains(customClass);
+    expect(
+      screen.getByRole('button').classList.contains(customClass)
+    ).toBeTruthy();
+  });
+
+  it('Should be enabled', () => {
+    renderComponent({ isDisabled: false });
+    expect(screen.getByRole('button').hasAttribute('disabled')).toBeFalsy();
+    expect(screen.queryByText('*')).toBeNull();
+  });
+
+  it('Should be disabled', () => {
+    renderComponent({ isDisabled: true });
+    expect(screen.getByRole('button').hasAttribute('disabled')).toBeTruthy();
+    expect(screen.queryByText('*')).toBeNull();
   });
 });
