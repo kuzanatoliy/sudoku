@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import {
-  ETextareaFieldSize,
-  ETextareaFieldType,
-  TextareaField,
-} from './TextareaField';
+import { ETextareaFieldSize, TextareaField } from './TextareaField';
 
 const meta = {
   title: 'Components/TextareaField',
@@ -39,17 +35,6 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    type: {
-      type: { name: 'string', required: false },
-      control: { type: 'select' },
-      description: 'Type of the input element',
-      table: {
-        disable: false,
-        type: { summary: 'string' },
-        defaultValue: { summary: ETextareaFieldType.TEXT },
-      },
-      options: [ETextareaFieldType.TEXT, ETextareaFieldType.PASSWORD],
-    },
     size: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
@@ -81,6 +66,17 @@ const meta = {
       table: {
         disable: false,
         type: { summary: 'string' },
+        defaultValue: { summary: ETextareaFieldSize.MEDIUM },
+      },
+    },
+    rows: {
+      type: { name: 'number', required: false },
+      control: { type: 'number', min: 1 },
+      description: 'Additional css for component root',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+        defaultValue: { summary: '3' },
       },
     },
     isError: {
@@ -158,10 +154,10 @@ const meta = {
     value: '',
     placeholder: 'Type text',
     label: 'Text field label',
-    type: ETextareaFieldType.TEXT,
     size: ETextareaFieldSize.MEDIUM,
     helperMessage: 'Helper text of the text field',
     class: '',
+    rows: 3,
     isError: false,
     isDisabled: false,
     isRequired: false,

@@ -10,11 +10,6 @@ export const enum ETextareaFieldSize {
   SMALL = 'small',
 }
 
-export const enum ETextareaFieldType {
-  TEXT = 'text',
-  PASSWORD = 'password',
-}
-
 export interface ITextareaFieldProps {
   onChange?: (value: string) => void;
   onFocus?: () => void;
@@ -22,9 +17,9 @@ export interface ITextareaFieldProps {
   value?: string;
   placeholder?: string;
   label?: string;
-  type?: ETextareaFieldType;
   size?: ETextareaFieldSize;
   helperMessage?: string;
+  rows?: number;
   class?: string;
   isError?: boolean;
   isDisabled?: boolean;
@@ -38,8 +33,8 @@ const DEFAULT_TEXTAREA_FIELD_PROPS = {
   onFocus: () => {},
   onBlur: () => {},
   value: '',
-  type: ETextareaFieldType.TEXT,
   size: ETextareaFieldSize.MEDIUM,
+  rows: 3,
   isError: false,
   isDisabled: false,
   isRequired: false,
@@ -58,26 +53,26 @@ export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
       role='group'
       class={
         localProps.class
-          ? `${localProps.class} ${styles.TextareaField_root}`
-          : styles.TextareaField_root
+          ? `${localProps.class} ${styles.textareafield_root}`
+          : styles.textareafield_root
       }
       aria-disabled={localProps.isDisabled}
       data-size={localProps.size}
     >
       <Show when={localProps.label}>
-        <label for={inputId} class={styles.TextareaField_label}>
+        <label for={inputId} class={styles.textareafield_label}>
           {localProps.label}
           <Show when={localProps.isRequired}>
             <span aria-hidden={true}> *</span>
           </Show>
         </label>
       </Show>
-      <div class={styles.TextareaField_input_container}>
-        <input
+      <div class={styles.textareafield_textarea_container}>
+        <textarea
           id={inputId}
-          class={styles.TextareaField_input}
+          class={styles.textareafield_textarea}
           value={localProps.value}
-          type={localProps.type}
+          rows={localProps.rows}
           placeholder={localProps.placeholder}
           disabled={localProps.isDisabled}
           onInput={(event) => localProps.onChange(event.target.value)}
@@ -90,7 +85,7 @@ export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
         />
       </div>
       <Show when={localProps.helperMessage}>
-        <p id={helperTextId} class={styles.TextareaField_helper_message}>
+        <p id={helperTextId} class={styles.textareafield_helper_message}>
           {localProps.helperMessage}
         </p>
       </Show>
