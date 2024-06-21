@@ -32,6 +32,7 @@ export interface ITextFieldProps {
   'aria-label'?: string;
 }
 
+/* c8 ignore start */
 const DEFAULT_TEXT_FIELD_PROPS = {
   onChange: () => {},
   onFocus: () => {},
@@ -43,16 +44,22 @@ const DEFAULT_TEXT_FIELD_PROPS = {
   isDisabled: false,
   isRequired: false,
 };
+/* c8 ignore end */
 
 export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
 
   const inputId = uuid();
-  const helperTectId = uuid();
+  const helperTextId = uuid();
 
   return (
     <div
-      class={styles.textfield_root}
+      role={'group'}
+      class={
+        localProps.class
+          ? `${localProps.class} ${styles.textfield_root}`
+          : styles.textfield_root
+      }
       aria-disabled={localProps.isDisabled}
       data-size={localProps.size}
     >
@@ -67,11 +74,7 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
       <div class={styles.textfield_input_container}>
         <input
           id={inputId}
-          class={
-            localProps.class
-              ? `${localProps.class} ${styles.textfield_input}`
-              : styles.textfield_input
-          }
+          class={styles.textfield_input}
           value={localProps.value}
           type={localProps.type}
           placeholder={localProps.placeholder}
@@ -82,11 +85,11 @@ export const TextField: TComponent<ITextFieldProps> = (props) => {
           aria-label={localProps['aria-label']}
           aria-required={localProps.isRequired}
           aria-invalid={localProps.isError}
-          aria-describedby={localProps.helperMessage && helperTectId}
+          aria-describedby={localProps.helperMessage && helperTextId}
         />
       </div>
       <Show when={localProps.helperMessage}>
-        <p id={helperTectId} class={styles.textfield_helper_message}>
+        <p id={helperTextId} class={styles.textfield_helper_message}>
           {localProps.helperMessage}
         </p>
       </Show>

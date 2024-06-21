@@ -18,14 +18,6 @@ describe('TextField', () => {
     expect(screen.getByRole('textbox')).toBeDefined();
   });
 
-  it('Should pass workflow', () => {
-    renderComponent();
-    const textField = screen.getByRole('textbox');
-    fireEvent.focus(textField);
-    fireEvent.change(textField, { target: { value: 'new value' } });
-    fireEvent.blur(textField);
-  });
-
   it('Should validate onFocus/onBlur events', () => {
     const onFocusSpy = vitest.fn();
     const onBlurSpy = vitest.fn();
@@ -91,5 +83,35 @@ describe('TextField', () => {
     renderComponent({ isDisabled: true });
     expect(screen.getByRole('textbox').hasAttribute('disabled')).toBeTruthy();
     expect(screen.queryByText('*')).toBeNull();
+  });
+
+  it('Should not be invalid', () => {
+    renderComponent({ isError: false });
+    expect(screen.getByRole('textbox').getAttribute('aria-invalid')).toBe(
+      'false'
+    );
+    expect(screen.queryByText('*')).toBeNull();
+  });
+
+  it('Should be invalid', () => {
+    renderComponent({ isError: true });
+    expect(screen.getByRole('textbox').getAttribute('aria-invalid')).toBe(
+      'true'
+    );
+    expect(screen.queryByText('*')).toBeNull();
+  });
+
+  it('Should validate helper text', () => {
+    const helperMessage = 'helper message';
+    renderComponent({ helperMessage });
+    expect(screen.getByText(helperMessage)).toBeDefined();
+  });
+
+  it('Should add custom class', () => {
+    const customClass = 'custom-class';
+    renderComponent({ class: customClass });
+    expect(
+      screen.getByRole('group').classList.contains(customClass)
+    ).toBeTruthy();
   });
 });

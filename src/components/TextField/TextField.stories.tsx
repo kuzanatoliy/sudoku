@@ -73,7 +73,7 @@ const meta = {
     class: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
-      description: 'Additional css classes',
+      description: 'Additional css for component root',
       table: {
         disable: false,
         type: { summary: 'string' },
