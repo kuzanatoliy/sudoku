@@ -1,0 +1,90 @@
+.textfield_root {
+  --textfield-border-color: var(--color-green-normal);
+  --textfield-color: var(--color-green-normal);
+  --textfield-bg-color: var(--white);
+  --textfield-placehoder-color: color-mix(
+    in srgb,
+    var(--textfield-color) 30%,
+    var(--white)
+  );
+  --textfield-radius: var(--size-half);
+  --textfield-padding-block: var(--size-single);
+  --textfield-padding-inline: var(--size-double);
+  --textfield-size: var(--size-double);
+  --textfield-outline-width: 1px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-half);
+
+  &[data-size='large'] {
+    --textfield-padding-block: var(--size-oneandhalf);
+    --textfield-padding-inline: var(--size-triple);
+    --textfield-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --textfield-padding-block: var(--size-three-quarters);
+    --textfield-padding-inline: var(--size-oneandhalf);
+    --textfield-size: var(--size-oneandhalf);
+  }
+
+  &[aria-disabled='true'] {
+    --textfield-border-color: var(--color-gray-normal);
+    --textfield-color: var(--color-gray-normal);
+    --textfield-placehoder-color: var(--color-gray-normal);
+  }
+
+  &:focus-within {
+    --textfield-border-color: var(--color-green-dark);
+    --textfield-outline-width: var(--size-quarter);
+  }
+
+  &:has([aria-invalid='true']):not(:has(:disabled)) {
+    --textfield-color: var(--color-orange-dark);
+    --textfield-border-color: var(--color-orange-dark);
+  }
+}
+
+.textfield_input_container {
+  display: flex;
+  box-shadow: 0 0 0 var(--textfield-outline-width) var(--textfield-border-color);
+  border-radius: var(--textfield-radius);
+  overflow: hidden;
+}
+
+.textfield_label {
+  line-height: 1.2;
+  font-size: var(--textfield-size);
+  color: var(--textfield-color);
+  font-weight: 600;
+}
+
+.textfield_helper_message {
+  line-height: 1.2;
+  font-size: var(--textfield-size);
+  color: var(--textfield-color);
+  margin: 0;
+}
+
+.textfield_input {
+  border: none;
+  outline: none;
+  padding: 0;
+  flex: 1;
+  line-height: 1.2;
+  padding: var(--textfield-padding-block) var(--textfield-padding-inline);
+  font-size: var(--textfield-size);
+  height: calc(var(--textfield-size) * 1.2);
+  color: var(--textfield-color);
+  background-color: var(--textfield-bg-color);
+  box-sizing: content-box;
+
+  &::placeholder {
+    color: var(--textfield-placehoder-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
