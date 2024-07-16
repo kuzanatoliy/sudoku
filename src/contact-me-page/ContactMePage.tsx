@@ -11,17 +11,30 @@ export const ContactMePage: TParentComponent = () => {
         label='First name:'
         placeholder='Type your first name'
         value=''
+        helperMessage='Example: Glen'
+        isRequired
       />
       <TextField
         label='Last name:'
         placeholder='Type your last name'
         value=''
+        helperMessage='Example: Cook'
+        isRequired
       />
-      <TextField label='Subject:' placeholder='Type subject' value='' />
+      <TextField
+        label='Subject:'
+        placeholder='Type subject'
+        value=''
+        helperMessage='Example: Bug report'
+        isRequired
+      />
       <TextareaField
         label='Message:'
         placeholder='Type your message'
         value=''
+        helperMessage='Example: The pice of functionality works incorrectly'
+        isRequired
+        rows={7}
       />
       <div class={styles.control_panel}>
         <Button class={styles.control} variant={EButtonVariant.OUTLINED}>
