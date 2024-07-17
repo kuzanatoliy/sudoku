@@ -29,13 +29,13 @@ describe('Button', () => {
 
   it('Should be enabled', () => {
     renderComponent({ isDisabled: false });
-    expect(screen.getByRole('button').hasAttribute('disabled')).toBeFalsy();
+    expect(screen.getByRole('button')).not.toBeDisabled();
     expect(screen.queryByText('*')).toBeNull();
   });
 
   it('Should be disabled', () => {
     renderComponent({ isDisabled: true });
-    expect(screen.getByRole('button').hasAttribute('disabled')).toBeTruthy();
+    expect(screen.getByRole('button')).toBeDisabled();
     expect(screen.queryByText('*')).toBeNull();
   });
 });

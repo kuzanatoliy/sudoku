@@ -75,13 +75,13 @@ describe('TextField', () => {
 
   it('Should be enabled', () => {
     renderComponent({ isDisabled: false });
-    expect(screen.getByRole('textbox').hasAttribute('disabled')).toBeFalsy();
+    expect(screen.getByRole('textbox')).not.toBeDisabled();
     expect(screen.queryByText('*')).toBeNull();
   });
 
   it('Should be disabled', () => {
     renderComponent({ isDisabled: true });
-    expect(screen.getByRole('textbox').hasAttribute('disabled')).toBeTruthy();
+    expect(screen.getByRole('textbox')).toBeDisabled();
     expect(screen.queryByText('*')).toBeNull();
   });
 

@@ -6,6 +6,7 @@ import solid from 'vite-plugin-solid';
 const vitestConfig = defineTestConfig({
   test: {
     environment: 'jsdom',
+    setupFiles: ['./vitest-setup.ts'],
     globals: true,
     pool: 'vmThreads',
     poolOptions: {
