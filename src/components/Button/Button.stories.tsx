@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Button, EButtonSize, EButtonVariant } from './Button';
+import { Button, EButtonSize, EButtonVariant, IButtonProps } from './Button';
 
 const meta = {
   title: 'Components/Button',
@@ -105,7 +105,7 @@ export const ButtonVariants: Story = {
       table: { disable: true },
     },
   },
-  render: (props) => (
+  render: (props: Omit<IButtonProps, 'variant'>) => (
     <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
       <Button {...props} variant={EButtonVariant.CONTAINED}>
         CONTAINED
@@ -123,7 +123,7 @@ export const ButtonSizes: Story = {
       table: { disable: true },
     },
   },
-  render: (props) => (
+  render: (props: Omit<IButtonProps, 'size'>) => (
     <div
       style={{
         display: 'flex',

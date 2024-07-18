@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { ETextFieldSize, ETextFieldType, TextField } from './TextField';
+import {
+  ETextFieldSize,
+  ETextFieldType,
+  ITextFieldProps,
+  TextField,
+} from './TextField';
 
 const meta = {
   title: 'Components/TextField',
@@ -179,7 +184,7 @@ export const TextFieldSizes: Story = {
       table: { disable: true },
     },
   },
-  render: (props) => (
+  render: (props: Omit<ITextFieldProps, 'size' | 'label'>) => (
     <div
       style={{
         display: 'flex',

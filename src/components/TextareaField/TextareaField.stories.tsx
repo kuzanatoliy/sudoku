@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { ETextareaFieldSize, TextareaField } from './TextareaField';
+import {
+  ETextareaFieldSize,
+  TextareaField,
+  ITextareaFieldProps,
+} from './TextareaField';
 
 const meta = {
   title: 'Components/TextareaField',
@@ -179,7 +183,7 @@ export const TextareaFieldSizes: Story = {
       table: { disable: true },
     },
   },
-  render: (props) => (
+  render: (props: Omit<ITextareaFieldProps, 'size' | 'label'>) => (
     <div
       style={{
         display: 'flex',
