@@ -35,7 +35,11 @@ export const Details: TParentComponent<IDetailsProps> = (props) => {
   });
 
   return (
-    <details class={styles.details} open={isOpened()}>
+    <details
+      class={styles.details}
+      open={isOpened()}
+      data-size={localProps.size}
+    >
       <summary class={styles.details_summary}>
         <ArrowDownIcon />
         {localProps.summary}

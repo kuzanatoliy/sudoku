@@ -2,6 +2,17 @@
   --details-color: var(--color-green-normal);
   --details-size: var(--size-double);
   --details-line-height: 1.2;
+  --details-content-padding: var(--size-single);
+
+  &[data-size='large'] {
+    --details-content-padding: var(--size-oneandhalf);
+    --details-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --details-content-padding: var(--size-three-quarters);
+    --details-size: var(--size-oneandhalf);
+  }
 
   color: var(--details-color);
   font-size: var(--details-size);
@@ -12,7 +23,7 @@
   list-style: none;
   cursor: pointer;
   display: flex;
-  gap: var(--size-single);
+  gap: var(--details-content-padding);
 
   & svg {
     height: calc(var(--details-size) * var(--details-line-height));
@@ -25,5 +36,5 @@
 }
 
 .details_content {
-  padding: var(--size-single);
+  padding: var(--details-content-padding);
 }

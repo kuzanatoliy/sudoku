@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Details, EDetailsSize } from './Details';
+import { Details, EDetailsSize, IDetailsProps } from './Details';
 
 const meta = {
   title: 'Components/Details',
@@ -74,6 +74,33 @@ export const DetailsComponent: Story = {
       table: { disable: false },
     },
   },
+};
+
+export const DetailsSizes: Story = {
+  argTypes: {
+    size: {
+      table: { disable: true },
+    },
+  },
+  render: (props: Omit<IDetailsProps, 'summary' | 'children' | 'size'>) => (
+    <div
+      style={{
+        display: 'flex',
+        'flex-direction': 'column',
+        gap: '20px',
+      }}
+    >
+      <Details {...props} size={EDetailsSize.SMALL} summary='SMALL'>
+        SMALL CONTENT
+      </Details>
+      <Details {...props} size={EDetailsSize.MEDIUM} summary='MEDIUM'>
+        MEDIUM CONTENT
+      </Details>
+      <Details {...props} size={EDetailsSize.LARGE} summary='LARGE'>
+        LARGE CONTENT
+      </Details>
+    </div>
+  ),
 };
 
 /*export const DetailsVariants: Story = {
