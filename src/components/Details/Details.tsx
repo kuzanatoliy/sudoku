@@ -1,12 +1,8 @@
 import { mergeProps, createSignal, onMount } from 'solid-js';
+import { ArrowDownIcon } from 'icons';
 import { TParentComponent } from 'types';
 
-// import styles from './Details.module.scss';
-
-export const enum EDetailsVariant {
-  CONTAINED = 'contained',
-  OUTLINED = 'outlined',
-}
+import styles from './Details.module.scss';
 
 export const enum EDetailsSize {
   LARGE = 'large',
@@ -18,7 +14,6 @@ export const enum EDetailsSize {
 export interface IDetailsProps {
   summary?: string;
   class?: string;
-  variant?: EDetailsVariant;
   size?: EDetailsSize;
   isAutoOpened?: boolean;
 }
@@ -26,7 +21,6 @@ export interface IDetailsProps {
 
 const DEFAULT_DETAILS_PROPS = {
   summary: '',
-  variant: EDetailsVariant.CONTAINED,
   size: EDetailsSize.MEDIUM,
   isAutoOpened: false,
 };
@@ -41,9 +35,12 @@ export const Details: TParentComponent<IDetailsProps> = (props) => {
   });
 
   return (
-    <details open={isOpened()}>
-      <summary>{localProps.summary}</summary>
-      {localProps.children}
+    <details class={styles.details} open={isOpened()}>
+      <summary class={styles.details_summary}>
+        <ArrowDownIcon />
+        {localProps.summary}
+      </summary>
+      <div class={styles.details_content}>{localProps.children}</div>
     </details>
   );
 };

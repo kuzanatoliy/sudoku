@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Details, EDetailsSize, EDetailsVariant } from './Details';
+import { Details, EDetailsSize } from './Details';
 
 const meta = {
   title: 'Components/Details',
@@ -34,17 +34,6 @@ const meta = {
         type: { summary: 'string' },
       },
     },
-    variant: {
-      type: { name: 'string', required: false },
-      control: { type: 'select' },
-      description: 'The variant to use',
-      table: {
-        disable: false,
-        type: { summary: 'string' },
-        defaultValue: { summary: EDetailsVariant.CONTAINED },
-      },
-      options: [EDetailsVariant.CONTAINED, EDetailsVariant.OUTLINED],
-    },
     size: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
@@ -70,7 +59,6 @@ const meta = {
   args: {
     children: 'Details content',
     summary: 'Details summary',
-    variant: EDetailsVariant.CONTAINED,
     size: EDetailsSize.MEDIUM,
     class: '',
     isAutoOpened: false,
