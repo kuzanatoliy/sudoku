@@ -1,7 +1,8 @@
 import { render, screen, fireEvent } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { Button, IButtonProps } from './Button';
+import { Button } from './Button';
+import { IButtonProps } from './Button.types';
 
 describe('Button', () => {
   const renderComponent = (props: Partial<IButtonProps> = {}) => {
@@ -17,6 +18,13 @@ describe('Button', () => {
     renderComponent({ onClick: clickSpy });
     fireEvent.click(screen.getByRole('button'));
     expect(clickSpy).toBeCalled();
+  });
+
+  it('Should not handle click', () => {
+    const clickSpy = vitest.fn();
+    renderComponent();
+    fireEvent.click(screen.getByRole('button'));
+    expect(clickSpy).not.toBeCalled();
   });
 
   it('Should add custom class', () => {
