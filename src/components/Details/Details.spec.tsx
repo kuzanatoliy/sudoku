@@ -1,7 +1,9 @@
 import { render, screen } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { Details, IDetailsProps } from './Details';
+import { IDetailsProps } from './Details.types';
+
+import { Details } from './Details';
 
 describe('Details', () => {
   const DEFAULT_SUMMARY = 'DETAILS SUMMARY';

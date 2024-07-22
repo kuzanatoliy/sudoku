@@ -2,20 +2,9 @@ import { mergeProps, createSignal, onMount } from 'solid-js';
 import { ArrowDownIcon } from 'icons';
 import { TParentComponent } from 'types';
 
+import { EDetailsSize, IDetailsProps } from './Details.types';
+
 import styles from './Details.module.scss';
-
-export const enum EDetailsSize {
-  LARGE = 'large',
-  MEDIUM = 'medium',
-  SMALL = 'small',
-}
-
-export interface IDetailsProps {
-  summary?: string;
-  class?: string;
-  size?: EDetailsSize;
-  isAutoOpened?: boolean;
-}
 
 const DEFAULT_DETAILS_PROPS = {
   summary: '',
