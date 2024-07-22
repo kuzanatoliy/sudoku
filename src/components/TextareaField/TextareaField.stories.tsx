@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import {
-  ETextareaFieldSize,
-  TextareaField,
-  ITextareaFieldProps,
-} from './TextareaField';
+import { TextareaField } from './TextareaField';
+import { ETextareaFieldSize, ITextareaFieldProps } from './TextareaField.types';
 
 const meta = {
   title: 'Components/TextareaField',

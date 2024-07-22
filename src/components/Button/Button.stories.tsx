@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Button, EButtonSize, EButtonVariant, IButtonProps } from './Button';
+import { Button } from './Button';
+import { EButtonVariant, EButtonSize, IButtonProps } from './Button.types';
 
 const meta = {
   title: 'Components/Button',
