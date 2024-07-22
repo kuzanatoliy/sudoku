@@ -2,32 +2,10 @@ import { Show, mergeProps } from 'solid-js';
 import { v4 as uuid } from 'uuid';
 import { TComponent } from 'types';
 
+import { ETextareaFieldSize, ITextareaFieldProps } from './TextareaField.types';
+
 import styles from './TextareaField.module.scss';
 
-export const enum ETextareaFieldSize {
-  LARGE = 'large',
-  MEDIUM = 'medium',
-  SMALL = 'small',
-}
-
-export interface ITextareaFieldProps {
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  value?: string;
-  placeholder?: string;
-  label?: string;
-  size?: ETextareaFieldSize;
-  helperMessage?: string;
-  rows?: number;
-  class?: string;
-  isError?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  'aria-label'?: string;
-}
-
-/* c8 ignore start */
 const DEFAULT_TEXTAREA_FIELD_PROPS = {
   onChange: () => {},
   onFocus: () => {},
@@ -39,9 +17,7 @@ const DEFAULT_TEXTAREA_FIELD_PROPS = {
   isDisabled: false,
   isRequired: false,
 };
-/* c8 ignore end */
 
-// todo: need to add rows property
 export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXTAREA_FIELD_PROPS, props);
 

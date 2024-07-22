@@ -2,7 +2,8 @@ import { fireEvent, render, screen } from '@solidjs/testing-library';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { TextareaField, ITextareaFieldProps } from './TextareaField';
+import { TextareaField } from './TextareaField';
+import { ITextareaFieldProps } from './TextareaField.types';
 
 describe('TextareaField', () => {
   const renderComponent = (props: Partial<ITextareaFieldProps> = {}) => {
@@ -22,20 +23,38 @@ describe('TextareaField', () => {
     const onFocusSpy = vitest.fn();
     const onBlurSpy = vitest.fn();
     renderComponent({ onFocus: onFocusSpy, onBlur: onBlurSpy });
-    const TextareaField = screen.getByRole('textbox');
-    fireEvent.focus(TextareaField);
-    fireEvent.blur(TextareaField);
+    const textareaField = screen.getByRole('textbox');
+    fireEvent.focus(textareaField);
+    fireEvent.blur(textareaField);
     expect(onFocusSpy).toBeCalled();
     expect(onBlurSpy).toBeCalled();
+  });
+
+  it('Should validate default onFocus/onBlur behaviour', async () => {
+    renderComponent();
+    const textareaField = screen.getByRole('textbox');
+    expect(textareaField).not.toHaveFocus();
+    await userEvent.click(textareaField);
+    expect(textareaField).toHaveFocus();
+    await userEvent.tab();
+    expect(textareaField).not.toHaveFocus();
   });
 
   it('Should validate onChange event', async () => {
     const onChangeSpy = vitest.fn();
     const newTextValue = 'new text value';
     renderComponent({ onChange: onChangeSpy });
-    const TextareaField = screen.getByRole('textbox');
-    await userEvent.type(TextareaField, newTextValue);
+    const textareaField = screen.getByRole('textbox');
+    await userEvent.type(textareaField, newTextValue);
     expect(onChangeSpy).toBeCalledWith(newTextValue);
+  });
+
+  it('Should validate default onChange behaviour', async () => {
+    const newTextValue = 'new text value';
+    renderComponent();
+    const textareaField = screen.getByRole('textbox');
+    await userEvent.type(textareaField, newTextValue);
+    expect(textareaField).toHaveValue(newTextValue);
   });
 
   it('Should validate label text', () => {
