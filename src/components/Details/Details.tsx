@@ -10,14 +10,12 @@ export const enum EDetailsSize {
   SMALL = 'small',
 }
 
-/* c8 ignore start */
 export interface IDetailsProps {
   summary?: string;
   class?: string;
   size?: EDetailsSize;
   isAutoOpened?: boolean;
 }
-/* c8 ignore end */
 
 const DEFAULT_DETAILS_PROPS = {
   summary: '',

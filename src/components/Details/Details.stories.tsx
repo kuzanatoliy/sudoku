@@ -103,48 +103,28 @@ export const DetailsSizes: Story = {
   ),
 };
 
-/*export const DetailsVariants: Story = {
+export const DetailsOpenState: Story = {
   argTypes: {
-    variant: {
+    isAutoOpened: {
       table: { disable: true },
     },
   },
-  render: (props) => (
-    <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
-      <Details {...props} variant={EDetailsVariant.CONTAINED}>
-        CONTAINED
-      </Details>
-      <Details {...props} variant={EDetailsVariant.OUTLINED}>
-        OUTLINED
-      </Details>
-    </div>
-  ),
-};*/
-
-/*export const DetailsSizes: Story = {
-  argTypes: {
-    size: {
-      table: { disable: true },
-    },
-  },
-  render: (props) => (
+  render: (
+    props: Omit<IDetailsProps, 'summary' | 'children' | 'isAutoOpened'>
+  ) => (
     <div
       style={{
         display: 'flex',
+        'flex-direction': 'column',
         gap: '20px',
-        'align-items': 'flex-start',
-        'flex-wrap': 'wrap',
       }}
     >
-      <Details {...props} size={EDetailsSize.SMALL}>
-        SMALL
+      <Details {...props} summary='AUTO OPENED' isAutoOpened>
+        AUTO OPENED CONTENT
       </Details>
-      <Details {...props} size={EDetailsSize.MEDIUM}>
-        MEDIUM
-      </Details>
-      <Details {...props} size={EDetailsSize.LARGE}>
-        LARGE
+      <Details {...props} summary='NOT AUTO OPENED'>
+        NOT AUTO OPENED CONTENT
       </Details>
     </div>
   ),
-};*/
+};
