@@ -74,12 +74,19 @@ export const PillComponent: Story = {
 
 export const PillSizes: Story = {
   argTypes: {
-    variant: {
+    size: {
       table: { disable: true },
     },
   },
   render: (props: Omit<IPillProps, 'children' | 'size'>) => (
-    <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
+    <div
+      style={{
+        display: 'flex',
+        gap: '20px',
+        'flex-wrap': 'wrap',
+        'align-items': 'flex-start',
+      }}
+    >
       <Pill {...props} size={EPillSize.SMALL}>
         SMALL CONTENT
       </Pill>
@@ -95,7 +102,7 @@ export const PillSizes: Story = {
 
 export const PillVariants: Story = {
   argTypes: {
-    size: {
+    variant: {
       table: { disable: true },
     },
   },

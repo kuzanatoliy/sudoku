@@ -3,7 +3,7 @@ import { TParentComponent } from 'types';
 
 import { EPillSize, EPillVariant, IPillProps } from './Pill.types';
 
-//import styles from './Pill.module.scss';
+import styles from './Pill.module.scss';
 
 const defaultProps = {
   children: '',
@@ -17,7 +17,9 @@ export const Pill: TParentComponent<IPillProps> = (props) => {
   return (
     <div
       role='group'
-      class={localProps.class ? localProps.class : ''}
+      class={
+        localProps.class ? `${localProps.class} ${styles.pill}` : styles.pill
+      }
       data-variant={localProps.variant}
       data-size={localProps.size}
     >
