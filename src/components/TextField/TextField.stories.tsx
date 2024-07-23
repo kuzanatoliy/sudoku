@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
+import { TextField } from './TextField';
 import {
-  ETextFieldSize,
   ETextFieldType,
+  ETextFieldSize,
   ITextFieldProps,
-  TextField,
-} from './TextField';
+} from './TextField.types';
 
 const meta = {
   title: 'Components/TextField',

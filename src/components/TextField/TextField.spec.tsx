@@ -2,7 +2,8 @@ import { fireEvent, render, screen } from '@solidjs/testing-library';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { TextField, ITextFieldProps } from './TextField';
+import { TextField } from './TextField';
+import { ITextFieldProps } from './TextField.types';
 
 describe('TextField', () => {
   const renderComponent = (props: Partial<ITextFieldProps> = {}) => {
@@ -29,6 +30,16 @@ describe('TextField', () => {
     expect(onBlurSpy).toBeCalled();
   });
 
+  it('Should validate default onFocus/onBlur behaviour', async () => {
+    renderComponent();
+    const textField = screen.getByRole('textbox');
+    expect(textField).not.toHaveFocus();
+    await userEvent.click(textField);
+    expect(textField).toHaveFocus();
+    await userEvent.tab();
+    expect(textField).not.toHaveFocus();
+  });
+
   it('Should validate onChange event', async () => {
     const onChangeSpy = vitest.fn();
     const newTextValue = 'new text value';
@@ -36,6 +47,14 @@ describe('TextField', () => {
     const textField = screen.getByRole('textbox');
     await userEvent.type(textField, newTextValue);
     expect(onChangeSpy).toBeCalledWith(newTextValue);
+  });
+
+  it('Should validate default onChange behaviour', async () => {
+    const newTextValue = 'new text value';
+    renderComponent();
+    const textField = screen.getByRole('textbox');
+    await userEvent.type(textField, newTextValue);
+    expect(textField).toHaveValue(newTextValue);
   });
 
   it('Should validate label text', () => {

@@ -1,29 +1,9 @@
 import { mergeProps } from 'solid-js';
 import { TParentComponent } from 'types';
 
+import { EButtonSize, EButtonVariant, IButtonProps } from './Button.types';
+
 import styles from './Button.module.scss';
-
-export const enum EButtonVariant {
-  CONTAINED = 'contained',
-  OUTLINED = 'outlined',
-}
-
-export const enum EButtonSize {
-  LARGE = 'large',
-  MEDIUM = 'medium',
-  SMALL = 'small',
-}
-
-/* c8 ignore start */
-export interface IButtonProps {
-  onClick?: () => void;
-  class?: string;
-  variant?: EButtonVariant;
-  size?: EButtonSize;
-  isDisabled?: boolean;
-  isFullWidth?: boolean;
-}
-/* c8 ignore end */
 
 const DEFAULT_BUTTON_PROPS = {
   onClick: () => {},

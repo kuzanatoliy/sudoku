@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
-import { Details, EDetailsSize, IDetailsProps } from './Details';
+import { Details } from './Details';
+import { EDetailsSize, IDetailsProps } from './Details.types';
 
 const meta = {
   title: 'Components/Details',

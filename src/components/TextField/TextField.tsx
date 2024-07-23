@@ -2,37 +2,14 @@ import { Show, mergeProps } from 'solid-js';
 import { v4 as uuid } from 'uuid';
 import { TComponent } from 'types';
 
+import {
+  ETextFieldType,
+  ETextFieldSize,
+  ITextFieldProps,
+} from './TextField.types';
+
 import styles from './TextField.module.scss';
 
-export const enum ETextFieldSize {
-  LARGE = 'large',
-  MEDIUM = 'medium',
-  SMALL = 'small',
-}
-
-export const enum ETextFieldType {
-  TEXT = 'text',
-  PASSWORD = 'password',
-}
-
-export interface ITextFieldProps {
-  onChange?: (value: string) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
-  value?: string;
-  placeholder?: string;
-  label?: string;
-  type?: ETextFieldType;
-  size?: ETextFieldSize;
-  helperMessage?: string;
-  class?: string;
-  isError?: boolean;
-  isDisabled?: boolean;
-  isRequired?: boolean;
-  'aria-label'?: string;
-}
-
-/* c8 ignore start */
 const DEFAULT_TEXT_FIELD_PROPS = {
   onChange: () => {},
   onFocus: () => {},
@@ -44,7 +21,6 @@ const DEFAULT_TEXT_FIELD_PROPS = {
   isDisabled: false,
   isRequired: false,
 };
-/* c8 ignore end */
 
 export const TextField: TComponent<ITextFieldProps> = (props) => {
   const localProps = mergeProps(DEFAULT_TEXT_FIELD_PROPS, props);
