@@ -3,7 +3,7 @@ import { TParentComponent } from 'types';
 import { FormContext } from './FormContext';
 import { useFormState } from './hooks';
 
-export const DeviceProvider: TParentComponent = (props) => {
+export const FormProvider: TParentComponent = (props) => {
   const formState = useFormState();
 
   return (

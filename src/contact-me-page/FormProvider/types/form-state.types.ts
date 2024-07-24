@@ -1,1 +1,3 @@
-export type TFormState = object;
+export type TFormState = {
+  firstName: string;
+};
