@@ -17,6 +17,21 @@ export const ContactMePage: TParentComponent = () => {
       isValid: true,
       isTouched: false,
     },
+    message: {
+      value: '',
+      isValid: true,
+      isTouched: false,
+    },
+    subject: {
+      value: '',
+      isValid: true,
+      isTouched: false,
+    },
+    email: {
+      value: '',
+      isValid: true,
+      isTouched: false,
+    },
   });
 
   const onChangeFirstName = (value: string) => {
@@ -31,6 +46,30 @@ export const ContactMePage: TParentComponent = () => {
     setStore('lastName', {
       value,
       isValid: !!value && /[A-Z,a-z]/.test(value),
+      isTouched: true,
+    });
+  };
+
+  const onChangeEmail = (value: string) => {
+    setStore('email', {
+      value,
+      isValid: !!value && /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value),
+      isTouched: true,
+    });
+  };
+
+  const onChangeMessage = (value: string) => {
+    setStore('message', {
+      value,
+      isValid: !!value,
+      isTouched: true,
+    });
+  };
+
+  const onChangeSubject = (value: string) => {
+    setStore('subject', {
+      value,
+      isValid: !!value,
       isTouched: true,
     });
   };
@@ -50,32 +89,95 @@ export const ContactMePage: TParentComponent = () => {
       <TextField
         label='Last name:'
         placeholder='Type your last name'
-        value={store.firstName.value}
-        isError={store.firstName.isTouched && !store.firstName.isValid}
+        value={store.lastName.value}
+        isError={store.lastName.isTouched && !store.lastName.isValid}
         helperMessage='Example: Cook'
         isRequired
         onChange={onChangeLastName}
       />
       <TextField
+        label='Email:'
+        placeholder='Type email'
+        value={store.email.value}
+        isError={store.email.isTouched && !store.email.isValid}
+        helperMessage='Example: example@mail.com'
+        isRequired
+        onChange={onChangeEmail}
+      />
+      <TextField
         label='Subject:'
         placeholder='Type subject'
-        value=''
+        value={store.subject.value}
+        isError={store.subject.isTouched && !store.subject.isValid}
         helperMessage='Example: Bug report'
         isRequired
+        onChange={onChangeSubject}
       />
       <TextareaField
         label='Message:'
         placeholder='Type your message'
-        value=''
+        value={store.message.value}
+        isError={store.message.isTouched && !store.message.isValid}
         helperMessage='Example: The pice of functionality works incorrectly'
         isRequired
         rows={7}
+        onChange={onChangeMessage}
       />
       <div class={styles.control_panel}>
-        <Button class={styles.control} variant={EButtonVariant.OUTLINED}>
+        <Button
+          class={styles.control}
+          variant={EButtonVariant.OUTLINED}
+          onClick={() => {
+            setStore({
+              firstName: {
+                value: '',
+                isValid: true,
+                isTouched: false,
+              },
+              lastName: {
+                value: '',
+                isValid: true,
+                isTouched: false,
+              },
+              message: {
+                value: '',
+                isValid: true,
+                isTouched: false,
+              },
+              subject: {
+                value: '',
+                isValid: true,
+                isTouched: false,
+              },
+              email: {
+                value: '',
+                isValid: true,
+                isTouched: false,
+              },
+            });
+          }}
+        >
           Reset
         </Button>
-        <Button class={styles.control}>Submin</Button>
+        <Button
+          class={styles.control}
+          onClick={() => {
+            fetch('https://render-mailer.onrender.com/message', {
+              method: 'POST',
+              body: new URLSearchParams({
+                subject: 'Test', //store.subject.value,
+                name: 'Aanatoli Kuzmiankou', //`${store.firstName.value} ${store.lastName.value}`,
+                email: 'njkz-09@yandex.by', //store.email.value,
+                message: 'Local sudoku check', //store.message.value,
+              }),
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            });
+          }}
+        >
+          Submin
+        </Button>
       </div>
     </div>
   );
