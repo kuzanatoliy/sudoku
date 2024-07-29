@@ -24,4 +24,12 @@ describe('Note', () => {
     expect(screen.getByText(DEFAULT_LABEL, { exact: false })).toBeDefined();
     expect(screen.getByText(DEFAULT_MESSAGE)).toBeDefined();
   });
+
+  it('Should add custom class', () => {
+    const customClass = 'custom-class';
+    renderComponent({ class: customClass });
+    expect(
+      screen.getByRole('group').classList.contains(customClass)
+    ).toBeTruthy();
+  });
 });

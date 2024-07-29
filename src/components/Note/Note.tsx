@@ -18,7 +18,12 @@ export const Note: TParentComponent<INoteProps> = (props) => {
   const localProps = mergeProps(DEFAULT_NOTE_PROPS, props);
 
   return (
-    <div class={styles.note}>
+    <div
+      role='group'
+      class={
+        localProps.class ? `${localProps.class} ${styles.note}` : styles.note
+      }
+    >
       <ExclamationMarkIcon />
       <p class={styles.note_content}>
         <Show when={!!localProps.label}>
