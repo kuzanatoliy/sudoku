@@ -1,3 +1,8 @@
+export const enum ENoteVariant {
+  BLANKED = 'blanked',
+  OUTLINED = 'outlined',
+}
+
 export const enum ENoteSize {
   LARGE = 'large',
   MEDIUM = 'medium',
@@ -5,8 +10,9 @@ export const enum ENoteSize {
 }
 
 export interface INoteProps {
-  summary?: string;
+  label?: string;
+  message?: string;
   class?: string;
+  variant?: ENoteVariant;
   size?: ENoteSize;
-  isAutoOpened?: boolean;
 }

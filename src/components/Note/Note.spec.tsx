@@ -5,13 +5,13 @@ import { INoteProps } from './Note.types';
 
 import { Note } from './Note';
 
-describe.skip('Note', () => {
-  const DEFAULT_SUMMARY = 'DETAILS SUMMARY';
-  const DEFAULT_CONTENT = 'DETAILS CONTENT';
+describe('Note', () => {
+  const DEFAULT_LABEL = 'NOTE';
+  const DEFAULT_MESSAGE = 'MESSAGE';
 
   const renderComponent = (props: Partial<INoteProps> = {}) => {
     return render(() => (
-      <Note summary={DEFAULT_SUMMARY} children={DEFAULT_CONTENT} {...props} />
+      <Note label={DEFAULT_LABEL} message={DEFAULT_MESSAGE} {...props} />
     ));
   };
 
@@ -19,13 +19,9 @@ describe.skip('Note', () => {
     vitest.clearAllMocks();
   });
 
-  it('Should hide content by default', () => {
-    renderComponent({ isAutoOpened: false });
-    expect(screen.getByText(DEFAULT_CONTENT)).not.toBeVisible();
-  });
-
-  it('Should display content by default', () => {
-    renderComponent({ isAutoOpened: true });
-    expect(screen.getByText(DEFAULT_CONTENT)).toBeVisible();
+  it('Should render component', () => {
+    renderComponent();
+    expect(screen.getByText(DEFAULT_LABEL, { exact: false })).toBeDefined();
+    expect(screen.getByText(DEFAULT_MESSAGE)).toBeDefined();
   });
 });

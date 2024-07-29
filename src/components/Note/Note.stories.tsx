@@ -1,28 +1,26 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { Note } from './Note';
-// import { ENoteSize, INoteProps } from './Note.types';
+import { ENoteVariant, ENoteSize /*INoteProps*/ } from './Note.types';
 
 const meta = {
   title: 'Components/Note',
   component: Note,
   tags: ['autodocs'],
   argTypes: {
-    children: {
+    message: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
-      description: 'The content of the component',
+      description: 'The message text',
       table: {
-        disable: true,
         type: { summary: 'string' },
       },
     },
-    /*summary: {
+    label: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
-      description: 'The summary of the component',
+      description: 'The label text',
       table: {
-        disable: true,
         type: { summary: 'string' },
       },
     },
@@ -35,6 +33,17 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    variant: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      description: 'The variant to use',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+        defaultValue: { summary: ENoteVariant.OUTLINED },
+      },
+      options: [ENoteVariant.BLANKED, ENoteVariant.OUTLINED],
+    },
     size: {
       type: { name: 'string', required: false },
       control: { type: 'select' },
@@ -46,36 +55,21 @@ const meta = {
       },
       options: [ENoteSize.SMALL, ENoteSize.MEDIUM, ENoteSize.LARGE],
     },
-    isAutoOpened: {
-      type: { name: 'boolean', required: false },
-      control: { type: 'boolean' },
-      description: 'If true, the details should be initially opened',
-      table: {
-        disable: false,
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' },
-      },
-    },*/
   },
   args: {
-    children: 'Note content',
-    /*summary: 'Note summary',
+    label: 'Note',
+    message:
+      'Additional information that should notificate use about something',
     size: ENoteSize.MEDIUM,
+    variant: ENoteVariant.OUTLINED,
     class: '',
-    isAutoOpened: false,*/
   },
 } satisfies Meta<typeof Note>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const NoteComponent: Story = {
-  argTypes: {
-    children: {
-      table: { disable: false },
-    },
-  },
-};
+export const NoteComponent: Story = {};
 
 /*export const NoteSizes: Story = {
   argTypes: {
