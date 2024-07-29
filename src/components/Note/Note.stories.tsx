@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { Note } from './Note';
-import { ENoteVariant, ENoteSize /*INoteProps*/ } from './Note.types';
+import { ENoteVariant, ENoteSize, INoteProps } from './Note.types';
 
 const meta = {
   title: 'Components/Note',
@@ -13,6 +13,7 @@ const meta = {
       control: { type: 'text' },
       description: 'The message text',
       table: {
+        disable: true,
         type: { summary: 'string' },
       },
     },
@@ -21,6 +22,7 @@ const meta = {
       control: { type: 'text' },
       description: 'The label text',
       table: {
+        disable: true,
         type: { summary: 'string' },
       },
     },
@@ -69,15 +71,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const NoteComponent: Story = {};
+export const NoteComponent: Story = {
+  argTypes: {
+    message: {
+      table: {
+        disable: false,
+      },
+    },
+    label: {
+      table: {
+        disable: false,
+      },
+    },
+  },
+};
 
-/*export const NoteSizes: Story = {
+export const NoteSizes: Story = {
   argTypes: {
     size: {
       table: { disable: true },
     },
   },
-  render: (props: Omit<INoteProps, 'summary' | 'children' | 'size'>) => (
+  render: (props: Omit<INoteProps, 'label' | 'message' | 'size'>) => (
     <div
       style={{
         display: 'flex',
@@ -85,41 +100,9 @@ export const NoteComponent: Story = {};
         gap: '20px',
       }}
     >
-      <Note {...props} size={ENoteSize.SMALL} summary='SMALL'>
-        SMALL CONTENT
-      </Note>
-      <Note {...props} size={ENoteSize.MEDIUM} summary='MEDIUM'>
-        MEDIUM CONTENT
-      </Note>
-      <Note {...props} size={ENoteSize.LARGE} summary='LARGE'>
-        LARGE CONTENT
-      </Note>
+      <Note {...props} size={ENoteSize.SMALL} label='Small note' />
+      <Note {...props} size={ENoteSize.MEDIUM} label='Medium note' />
+      <Note {...props} size={ENoteSize.LARGE} label='Large note' />
     </div>
   ),
 };
-
-export const NoteOpenState: Story = {
-  argTypes: {
-    isAutoOpened: {
-      table: { disable: true },
-    },
-  },
-  render: (
-    props: Omit<INoteProps, 'summary' | 'children' | 'isAutoOpened'>
-  ) => (
-    <div
-      style={{
-        display: 'flex',
-        'flex-direction': 'column',
-        gap: '20px',
-      }}
-    >
-      <Note {...props} summary='AUTO OPENED' isAutoOpened>
-        AUTO OPENED CONTENT
-      </Note>
-      <Note {...props} summary='NOT AUTO OPENED'>
-        NOT AUTO OPENED CONTENT
-      </Note>
-    </div>
-  ),
-};*/
