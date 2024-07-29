@@ -2,7 +2,7 @@ import { mergeProps, Show } from 'solid-js';
 import { ExclamationMarkIcon } from 'icons';
 import { TComponent } from 'types';
 
-import { ENoteVariant, ENoteSize, INoteProps } from './Note.types';
+import { ENoteVariant, ENoteSize, INoteProps, ENoteType } from './Note.types';
 
 import styles from './Note.module.scss';
 
@@ -11,6 +11,7 @@ const DEFAULT_NOTE_PROPS = {
   message: '',
   size: ENoteSize.MEDIUM,
   variant: ENoteVariant.OUTLINED,
+  type: ENoteType.NOTE,
 };
 
 export const Note: TComponent<INoteProps> = (props) => {
@@ -20,6 +21,8 @@ export const Note: TComponent<INoteProps> = (props) => {
     <div
       role='group'
       data-size={localProps.size}
+      data-variant={localProps.variant}
+      data-type={localProps.type}
       class={
         localProps.class ? `${localProps.class} ${styles.note}` : styles.note
       }

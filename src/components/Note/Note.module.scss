@@ -15,6 +15,18 @@
     --note-size: var(--size-oneandhalf);
   }
 
+  &[data-variant='blanked'] {
+    border: none;
+  }
+
+  &[data-type='warn'] {
+    --note-color: var(--color-orange-normal);
+  }
+
+  &[data-type='error'] {
+    --note-color: var(--color-orange-dark);
+  }
+
   & svg {
     height: calc(var(--note-size) * var(--note-line-height));
     aspect-ratio: 1/1;

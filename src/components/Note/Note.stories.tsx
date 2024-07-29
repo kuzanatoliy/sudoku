@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { Note } from './Note';
-import { ENoteVariant, ENoteSize, INoteProps } from './Note.types';
+import { ENoteVariant, ENoteSize, INoteProps, ENoteType } from './Note.types';
 
 const meta = {
   title: 'Components/Note',
@@ -57,6 +57,17 @@ const meta = {
       },
       options: [ENoteSize.SMALL, ENoteSize.MEDIUM, ENoteSize.LARGE],
     },
+    type: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      description: 'The type of the component',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+        defaultValue: { summary: ENoteType.NOTE },
+      },
+      options: [ENoteType.NOTE, ENoteType.WARN, ENoteType.ERROR],
+    },
   },
   args: {
     label: 'Note',
@@ -64,6 +75,7 @@ const meta = {
       'Additional information that should notificate use about something',
     size: ENoteSize.MEDIUM,
     variant: ENoteVariant.OUTLINED,
+    type: ENoteType.NOTE,
     class: '',
   },
 } satisfies Meta<typeof Note>;
@@ -103,6 +115,47 @@ export const NoteSizes: Story = {
       <Note {...props} size={ENoteSize.SMALL} label='Small note' />
       <Note {...props} size={ENoteSize.MEDIUM} label='Medium note' />
       <Note {...props} size={ENoteSize.LARGE} label='Large note' />
+    </div>
+  ),
+};
+
+export const NoteVariants: Story = {
+  argTypes: {
+    variant: {
+      table: { disable: true },
+    },
+  },
+  render: (props: Omit<INoteProps, 'label' | 'message' | 'variant'>) => (
+    <div
+      style={{
+        display: 'flex',
+        'flex-direction': 'column',
+        gap: '20px',
+      }}
+    >
+      <Note {...props} variant={ENoteVariant.BLANKED} label='Blanked note' />
+      <Note {...props} variant={ENoteVariant.OUTLINED} label='Outlined note' />
+    </div>
+  ),
+};
+
+export const NoteTypes: Story = {
+  argTypes: {
+    type: {
+      table: { disable: true },
+    },
+  },
+  render: (props: Omit<INoteProps, 'label' | 'message' | 'variant'>) => (
+    <div
+      style={{
+        display: 'flex',
+        'flex-direction': 'column',
+        gap: '20px',
+      }}
+    >
+      <Note {...props} type={ENoteType.NOTE} label='Note' />
+      <Note {...props} type={ENoteType.WARN} label='Warning' />
+      <Note {...props} type={ENoteType.ERROR} label='Error' />
     </div>
   ),
 };
