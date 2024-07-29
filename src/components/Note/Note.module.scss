@@ -1,0 +1,40 @@
+.note {
+  --note-color: var(--color-green-normal);
+  --note-size: var(--size-double);
+  --note-line-height: 1.2;
+  --note-content-padding: var(--size-single);
+
+  &[data-size='large'] {
+    --note-content-padding: var(--size-oneandhalf);
+    --note-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --note-content-padding: var(--size-three-quarters);
+    --note-size: var(--size-oneandhalf);
+  }
+
+  color: var(--note-color);
+  font-size: var(--note-size);
+  line-height: var(--note-line-height);
+}
+
+.note_summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  gap: var(--note-content-padding);
+
+  & svg {
+    height: calc(var(--note-size) * var(--note-line-height));
+    aspect-ratio: 1/1;
+  }
+
+  [open] & svg {
+    scale: -1;
+  }
+}
+
+.note_content {
+  padding: var(--note-content-padding);
+}
