@@ -1,17 +1,18 @@
 import { render, screen } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { IPillProps } from './Pill.types';
+import { INoteProps } from './Note.types';
 
-import { Pill } from './Pill';
+import { Note } from './Note';
 
-describe('Pill', () => {
-  const DEFAULT_CONTENT = 'PILL CONTENT';
+describe('Note', () => {
+  const DEFAULT_LABEL = 'NOTE';
+  const DEFAULT_MESSAGE = 'MESSAGE';
 
-  const renderComponent = (
-    props: Partial<IPillProps & { children?: string }> = {}
-  ) => {
-    return render(() => <Pill children={DEFAULT_CONTENT} {...props} />);
+  const renderComponent = (props: Partial<INoteProps> = {}) => {
+    return render(() => (
+      <Note label={DEFAULT_LABEL} message={DEFAULT_MESSAGE} {...props} />
+    ));
   };
 
   beforeEach(() => {
@@ -20,7 +21,8 @@ describe('Pill', () => {
 
   it('Should render component', () => {
     renderComponent();
-    expect(screen.getByText(DEFAULT_CONTENT)).toBeDefined();
+    expect(screen.getByText(DEFAULT_LABEL, { exact: false })).toBeDefined();
+    expect(screen.getByText(DEFAULT_MESSAGE)).toBeDefined();
   });
 
   it('Should add custom class', () => {

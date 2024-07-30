@@ -32,4 +32,12 @@ describe('Details', () => {
     renderComponent({ isAutoOpened: true });
     expect(screen.getByText(DEFAULT_CONTENT)).toBeVisible();
   });
+
+  it('Should add custom class', () => {
+    const customClass = 'custom-class';
+    renderComponent({ class: customClass });
+    expect(
+      screen.getByRole('group').classList.contains(customClass)
+    ).toBeTruthy();
+  });
 });

@@ -23,7 +23,11 @@ export const Details: TParentComponent<IDetailsProps> = (props) => {
 
   return (
     <details
-      class={styles.details}
+      class={
+        localProps.class
+          ? `${localProps.class} ${styles.details}`
+          : styles.details
+      }
       open={isOpened()}
       data-size={localProps.size}
     >
