@@ -44,6 +44,7 @@ export const viteConfig = defineConfig({
       components: resolve(__dirname, './src/components'),
       icons: resolve(__dirname, './src/icons'),
       'not-found-page': resolve(__dirname, './src/not-found-page'),
+      query: resolve(__dirname, './src/query'),
       'sudoku-engine': resolve(__dirname, './src/sudoku-engine'),
       'sudoku-page': resolve(__dirname, './src/sudoku-page'),
       'timer-engine': resolve(__dirname, './src/timer-engine'),
