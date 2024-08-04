@@ -1,31 +1,29 @@
 /**
  * @param value property that should be validated
- * @param min minimun value
- * @param max maximin value
- * @returns true if value more than min and less than max
+ * @param options required validation configuration (min - minimun value, max - maximin value)
+ * @returns
  */
 export const validateLength = <TValue extends { length: number }>(
   value: TValue,
-  min: number,
-  max: number
-) => value.length > min && value.length < max;
+  options: { min: number; max: number }
+) => value.length > options.min && value.length < options.max;
 
 /**
  * @param value property that should be validated
- * @param min minimun value
+ * @param options required validation configuration (min - minimun value)
  * @returns true if value more than min
  */
 export const validateMinLength = <TValue extends { length: number }>(
   value: TValue,
-  min: number
-) => value.length > min;
+  options: { min: number }
+) => value.length > options.min;
 
 /**
  * @param value property that should be validated
- * @param max maximin value
+ * @param options required validation configuration (max - maximum value)
  * @returns true if value less than max
  */
 export const validateMaxLength = <TValue extends { length: number }>(
   value: TValue,
-  max: number
-) => value.length < max;
+  options: { max: number }
+) => value.length < options.max;
