@@ -29,7 +29,8 @@
       "sudoku-engine": ["./src/sudoku-engine"],
       "sudoku-page": ["./src/sudoku-page"],
       "timer-engine": ["./src/timer-engine"],
-      "types": ["./src/types"]
+      "types": ["./src/types"],
+      "validator": ["./src/validator"]
     }
   },
   "include": ["src", "./vitest-setup.ts"],
