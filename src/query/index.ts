@@ -1,1 +1,1 @@
-// init module
+export * from './createQuery';

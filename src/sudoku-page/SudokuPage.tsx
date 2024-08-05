@@ -1,4 +1,5 @@
-import { createEffect, createSignal } from 'solid-js';
+import { createEffect, createSignal, Show } from 'solid-js';
+import { createQuery } from 'query';
 import { TParentComponent } from 'types';
 import { useDeviceContext } from 'components';
 import { TSudokuValue } from 'sudoku-engine';
@@ -10,7 +11,7 @@ import { ESudokuFieldSize } from './types';
 
 import styles from './SudokuPage.module.scss';
 
-import data from '../../data/plays.json';
+import data from '../../public/plays.json';
 
 export const SudokuPage: TParentComponent = () => {
   const deviceState = useDeviceContext();
@@ -30,12 +31,18 @@ export const SudokuPage: TParentComponent = () => {
     );
   });
 
+  const { state, runQuery } = createQuery('/plays.json', { method: 'GET' });
+
+  createEffect(runQuery);
+
   const initialPlay = data[0].play as TSudokuValue[];
 
   return (
     <div class={styles.container}>
-      <DurationWrapper time={time()} />
-      <SudokuPlay initialPlay={initialPlay} size={sudokuPlaySize()} />
+      <Show when={!state().isLoading}>
+        <DurationWrapper time={time()} />
+        <SudokuPlay initialPlay={initialPlay} size={sudokuPlaySize()} />
+      </Show>
     </div>
   );
 };
