@@ -1,12 +1,24 @@
 import { createSignal } from 'solid-js';
 
-export const createQuery = (url: string, options: { method: string }) => {
-  const [state, setState] = createSignal({
+export type TQuery<TData> = {
+  isLoading: boolean;
+  isStarted: boolean;
+  isValid: boolean;
+  isError: boolean;
+  data: TData;
+};
+
+export const createQuery = <TData>(
+  url: string,
+  initData: TData,
+  options: { method: string }
+) => {
+  const [state, setState] = createSignal<TQuery<TData>>({
     isLoading: false,
     isStarted: false,
     isValid: true,
     isError: false,
-    data: {},
+    data: initData,
   });
 
   const runQuery = () => {
@@ -18,7 +30,7 @@ export const createQuery = (url: string, options: { method: string }) => {
         }
         throw new Error(`${url}:${options?.method} - cannot be fetched`);
       })
-      .then((data) => {
+      .then((data: TData) => {
         setState((prev) => ({ ...prev, data, isValid: true, isError: false }));
       })
       .catch((error) => {

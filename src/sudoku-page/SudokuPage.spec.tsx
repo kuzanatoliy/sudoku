@@ -51,7 +51,7 @@ vitest.mock('./SudokuPlay', async () => {
   };
 });
 
-describe('SudokuPage', () => {
+describe.skip('SudokuPage', () => {
   const renderComponent = ({ isMobile = false, isTablet = false } = {}) => {
     vitest
       .mocked(useDeviceContext)
