@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { SudokuPlay } from './SudokuPlay';
 
-import plays from '../../../data/plays.json';
+import plays from '../../../public/plays.json';
 
 const enum EPlayOptions {
   play1 = 'Play 1',
