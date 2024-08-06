@@ -29,7 +29,7 @@ export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
       role='group'
       class={
         localProps.class
-          ? `${localProps.class} ${styles.textareafield_root}`
+          ? `${styles.textareafield_root} ${localProps.class}`
           : styles.textareafield_root
       }
       aria-disabled={localProps.isDisabled}

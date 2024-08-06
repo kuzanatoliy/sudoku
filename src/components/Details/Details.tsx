@@ -25,7 +25,7 @@ export const Details: TParentComponent<IDetailsProps> = (props) => {
     <details
       class={
         localProps.class
-          ? `${localProps.class} ${styles.details}`
+          ? `${styles.details} ${localProps.class}`
           : styles.details
       }
       open={isOpened()}
