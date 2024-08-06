@@ -20,7 +20,7 @@ export const Button: TParentComponent<IButtonProps> = (props) => {
     <button
       class={
         localProps.class
-          ? `${localProps.class} ${styles.button}`
+          ? `${styles.button} ${localProps.class}`
           : styles.button
       }
       onClick={() => localProps.onClick()}
