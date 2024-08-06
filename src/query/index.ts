@@ -1,1 +1,1 @@
-export * from './createQuery';
+export * from './use-query';

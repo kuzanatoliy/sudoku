@@ -1,9 +1,13 @@
 import { renderHook } from '@solidjs/testing-library';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, vitest } from 'vitest';
 
 import { useDeviceState } from './use-device-state';
 
 describe('use-device-state', () => {
+  beforeEach(() => {
+    vitest.clearAllMocks();
+  });
+
   it('Should render hook', () => {
     global.innerWidth = 1000;
     const { result } = renderHook(() => useDeviceState());

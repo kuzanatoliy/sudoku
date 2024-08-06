@@ -8,7 +8,7 @@ export type TQuery<TData> = {
   data: TData;
 };
 
-export const createQuery = <TData>(
+export const useQuery = <TData>(
   url: string,
   initData: TData,
   options: { method: string }
@@ -23,7 +23,7 @@ export const createQuery = <TData>(
 
   const runQuery = () => {
     setState((prev) => ({ ...prev, isStarted: true, isLoading: true }));
-    fetch(url, options)
+    return fetch(url, options)
       .then((resp: Response) => {
         if (resp.ok) {
           return resp.json();
