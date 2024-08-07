@@ -33,8 +33,8 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       tabIndex={localProps.isDisabled ? -1 : 0}
       class={
         localProps.class
-          ? `${localProps.class} ${styles.sudokufield} ${
-              styles[`sudokufield__${localProps.size}`]
+          ? `${styles.sudokufield} ${
+              styles[`sudokufield__${localProps.size} ${localProps.class}`]
             }`
           : `${styles.sudokufield} ${styles[`sudokufield__${localProps.size}`]}`
       }
