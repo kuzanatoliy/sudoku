@@ -18,7 +18,7 @@ export const Pill: TParentComponent<IPillProps> = (props) => {
     <div
       role='group'
       class={
-        localProps.class ? `${localProps.class} ${styles.pill}` : styles.pill
+        localProps.class ? `${styles.pill} ${localProps.class}` : styles.pill
       }
       data-variant={localProps.variant}
       data-size={localProps.size}
