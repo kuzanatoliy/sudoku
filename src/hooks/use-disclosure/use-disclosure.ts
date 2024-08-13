@@ -9,13 +9,13 @@ export const useDisclosure = (props: TUseDisclosureProps = {}) => {
 
   return {
     isOpen,
-    open: () => {
+    onOpen: () => {
       setIsOpen(true);
     },
-    close: () => {
+    onClose: () => {
       setIsOpen(false);
     },
-    toggle: () => {
+    onToggle: () => {
       setIsOpen((prev) => !prev);
     },
   };
