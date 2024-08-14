@@ -42,6 +42,7 @@ export const viteConfig = defineConfig({
   resolve: {
     alias: {
       components: resolve(__dirname, './src/components'),
+      hooks: resolve(__dirname, './src/hooks'),
       icons: resolve(__dirname, './src/icons'),
       'not-found-page': resolve(__dirname, './src/not-found-page'),
       query: resolve(__dirname, './src/query'),
