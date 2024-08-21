@@ -17,6 +17,15 @@ const meta = {
         type: { summary: 'string' },
       },
     },
+    width: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The width of the component',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+      },
+    },
     height: {
       type: { name: 'string', required: false },
       control: { type: 'text' },
