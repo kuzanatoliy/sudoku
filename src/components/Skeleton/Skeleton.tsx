@@ -24,11 +24,7 @@ export const Skeleton: TComponent<ISkeletonProps> = (props) => {
         localProps.height || localProps.width
           ? {
               height: localProps.height && `${localProps.height}px`,
-              width:
-                localProps.variant !== ESkeletonVariant.CIRCLE &&
-                localProps.width
-                  ? `${localProps.width}px`
-                  : undefined,
+              width: localProps.width && `${localProps.width}px`,
             }
           : undefined
       }
