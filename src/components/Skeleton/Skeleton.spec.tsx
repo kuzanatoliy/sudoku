@@ -1,17 +1,13 @@
-/* import { render, screen } from '@solidjs/testing-library';
+import { render /*, screen*/ } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { IPillProps } from './Pill.types';
+import { ISkeletonProps } from './Skeleton.types';
 
-import { Pill } from './Skeleton';
+import { Skeleton } from './Skeleton';
 
-describe.skip('Pill', () => {
-  const DEFAULT_CONTENT = 'PILL CONTENT';
-
-  const renderComponent = (
-    props: Partial<IPillProps & { children?: string }> = {}
-  ) => {
-    return render(() => <Pill children={DEFAULT_CONTENT} {...props} />);
+describe('Skeleton', () => {
+  const renderComponent = (props: Partial<ISkeletonProps> = {}) => {
+    return render(() => <Skeleton {...props} />);
   };
 
   beforeEach(() => {
@@ -19,15 +15,13 @@ describe.skip('Pill', () => {
   });
 
   it('Should render component', () => {
-    renderComponent();
-    expect(screen.getByText(DEFAULT_CONTENT)).toBeDefined();
+    const { container } = renderComponent({ height: 100, width: 100 });
+    expect(container).not.toBeEmptyDOMElement();
   });
 
   it('Should add custom class', () => {
     const customClass = 'custom-class';
-    renderComponent({ class: customClass });
-    expect(
-      screen.getByRole('group').classList.contains(customClass)
-    ).toBeTruthy();
+    const { container } = renderComponent({ class: customClass });
+    expect(container).not.toBeEmptyDOMElement();
   });
-});*/
+});

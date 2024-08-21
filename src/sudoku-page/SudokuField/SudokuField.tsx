@@ -34,8 +34,8 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       class={
         localProps.class
           ? `${styles.sudokufield} ${
-              styles[`sudokufield__${localProps.size} ${localProps.class}`]
-            }`
+              styles[`sudokufield__${localProps.size}`]
+            } ${localProps.class}`
           : `${styles.sudokufield} ${styles[`sudokufield__${localProps.size}`]}`
       }
       onKeyDown={(event: KeyboardEvent) => {
