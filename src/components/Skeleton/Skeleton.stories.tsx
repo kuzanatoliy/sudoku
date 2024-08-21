@@ -72,8 +72,11 @@ export const SkeletonVariants: Story = {
   },
   render: (props: Omit<ISkeletonProps, 'variant'>) => (
     <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
+      Box:
       <Skeleton {...props} variant={ESkeletonVariant.BOX} />
+      Rounded:
       <Skeleton {...props} variant={ESkeletonVariant.ROUNDED} />
+      Circle:
       <Skeleton {...props} variant={ESkeletonVariant.CIRCLE} />
     </div>
   ),
