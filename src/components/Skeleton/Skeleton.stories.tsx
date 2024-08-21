@@ -18,21 +18,21 @@ const meta = {
       },
     },
     width: {
-      type: { name: 'string', required: false },
-      control: { type: 'text' },
+      type: { name: 'number', required: false },
+      control: { type: 'number' },
       description: 'The width of the component',
       table: {
         disable: false,
-        type: { summary: 'string' },
+        type: { summary: 'number' },
       },
     },
     height: {
-      type: { name: 'string', required: false },
-      control: { type: 'text' },
+      type: { name: 'number', required: false },
+      control: { type: 'number' },
       description: 'The height of the component',
       table: {
         disable: false,
-        type: { summary: 'string' },
+        type: { summary: 'number' },
       },
     },
     variant: {
@@ -53,8 +53,8 @@ const meta = {
   },
   args: {
     variant: ESkeletonVariant.BOX,
-    height: '100px',
-    width: '200px',
+    height: 100,
+    width: 200,
     class: '',
   },
 } satisfies Meta<typeof Skeleton>;

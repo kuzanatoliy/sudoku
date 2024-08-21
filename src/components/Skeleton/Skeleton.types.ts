@@ -5,8 +5,8 @@ export const enum ESkeletonVariant {
 }
 
 export interface ISkeletonProps {
-  width?: string;
-  height?: string;
+  width?: number;
+  height?: number;
   class?: string;
   variant?: ESkeletonVariant;
 }

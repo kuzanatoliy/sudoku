@@ -21,8 +21,8 @@ export const Skeleton: TComponent<ISkeletonProps> = (props) => {
       }
       data-variant={localProps.variant}
       style={{
-        height: localProps.height,
-        width: localProps.width,
+        height: localProps.height && `${localProps.height}px`,
+        width: localProps.width && `${localProps.width}px`,
       }}
     />
   );
