@@ -24,7 +24,7 @@ export const Note: TComponent<INoteProps> = (props) => {
       data-variant={localProps.variant}
       data-type={localProps.type}
       class={
-        localProps.class ? `${localProps.class} ${styles.note}` : styles.note
+        localProps.class ? `${styles.note} ${localProps.class}` : styles.note
       }
     >
       <ExclamationMarkIcon />
