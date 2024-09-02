@@ -29,10 +29,8 @@ describe('useQuery', () => {
 
   const DEFAULT_DATA: unknown[] = [];
 
-  const renderHook = () =>
-    render(() =>
-      useQuery<Array<unknown>>('/test', DEFAULT_DATA, { method: 'GET' })
-    );
+  const renderHook = (method?: string) =>
+    render(() => useQuery<Array<unknown>>('/test', DEFAULT_DATA, { method }));
 
   it('Should verify valid workflow', async () => {
     vitest.mocked(globalThis.fetch).mockImplementation(() => {
