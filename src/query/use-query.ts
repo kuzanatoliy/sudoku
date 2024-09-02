@@ -1,18 +1,6 @@
 import { createSignal } from 'solid-js';
 
-export type TQueryState<TData> = {
-  isLoading: boolean;
-  isStarted: boolean;
-  isValid: boolean;
-  isError: boolean;
-  data: TData;
-};
-
-export type TQueryOptions = {
-  method?: string;
-  body?: object;
-  headers?: Record<string, string>;
-};
+import { TQueryState, TQueryOptions } from './use-query.types';
 
 export const useQuery = <TData>(
   url: string,

@@ -10,6 +10,7 @@ import {
 } from 'vitest';
 
 import { useQuery } from './use-query';
+import { EHttpMethod } from './use-query.types';
 
 describe('useQuery', () => {
   let originalFetch: typeof globalThis.fetch;
@@ -29,14 +30,14 @@ describe('useQuery', () => {
 
   const DEFAULT_DATA: unknown[] = [];
 
-  const renderHook = (method?: string) =>
+  const renderHook = (method?: EHttpMethod) =>
     render(() => useQuery<Array<unknown>>('/test', DEFAULT_DATA, { method }));
 
   it.each`
     method
     ${undefined}
-    ${'GET'}
-    ${'POST'}
+    ${EHttpMethod.GET}
+    ${EHttpMethod.POST}
   `(
     'Should verify valid workflow for the method $method',
     async ({ method }) => {
@@ -65,8 +66,8 @@ describe('useQuery', () => {
   it.each`
     method
     ${undefined}
-    ${'GET'}
-    ${'POST'}
+    ${EHttpMethod.GET}
+    ${EHttpMethod.POST}
   `(
     'Should verify invalid workflow for the method $method',
     async ({ method }) => {
@@ -93,13 +94,13 @@ describe('useQuery', () => {
       }) as unknown as ReturnType<typeof globalThis.fetch>;
     });
 
-    const { result } = renderHook('GET');
-    const promise = result.runQuery({ method: 'HEAD', body: {} });
+    const { result } = renderHook(EHttpMethod.GET);
+    const promise = result.runQuery({ method: EHttpMethod.HEAD, body: {} });
     await promise;
     expect(globalThis.fetch).toHaveBeenCalledWith(
       expect.any(String),
       expect.objectContaining({
-        method: 'HEAD',
+        method: EHttpMethod.HEAD,
       })
     );
   });
@@ -112,7 +113,7 @@ describe('useQuery', () => {
       }) as unknown as ReturnType<typeof globalThis.fetch>;
     });
 
-    const { result } = renderHook('POST');
+    const { result } = renderHook(EHttpMethod.POST);
     const promise = result.runQuery({
       body: {
         test: 'test value',
