@@ -46,7 +46,7 @@ export const useQuery = <TData>(
         if (resp.ok) {
           return resp.json();
         }
-        throw new Error(`${url}:${options?.method} - cannot be fetched`);
+        throw new Error(`${url}:${method || 'GET'} - cannot be fetched`);
       })
       .then((data: TData) => {
         setState((prev) => ({ ...prev, data, isValid: true, isError: false }));
