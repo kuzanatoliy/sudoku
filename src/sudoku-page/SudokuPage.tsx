@@ -1,5 +1,5 @@
 import { createEffect, createSignal, Show } from 'solid-js';
-import { useQuery } from 'query';
+import { EHttpMethod, useQuery } from 'query';
 import { TParentComponent, TSudokuPlayData } from 'types';
 import { useDeviceContext } from 'components';
 import { CustomTime, Duration, TCustomTime } from 'timer-engine';
@@ -29,10 +29,10 @@ export const SudokuPage: TParentComponent = () => {
   });
 
   const { state, runQuery } = useQuery<TSudokuPlayData[]>('/plays.json', [], {
-    method: 'GET',
+    method: EHttpMethod.GET,
   });
 
-  createEffect(runQuery);
+  createEffect(() => runQuery());
 
   return (
     <div class={styles.container}>
