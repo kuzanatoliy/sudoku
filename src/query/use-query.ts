@@ -1,6 +1,6 @@
 import { createSignal } from 'solid-js';
 
-import { TQueryState, TQueryOptions } from './use-query.types';
+import { TQueryState, TQueryOptions, EHttpMethod } from './use-query.types';
 
 export const useQuery = <TData>(
   url: string,
@@ -21,7 +21,7 @@ export const useQuery = <TData>(
     return fetch(url, {
       method: options?.method || initOptions?.method,
       body:
-        method && method !== 'GET' && method !== 'HEAD'
+        method && method !== EHttpMethod.GET && method !== EHttpMethod.HEAD
           ? new URLSearchParams({ ...initOptions.body, ...options?.body })
           : undefined,
       headers: {
