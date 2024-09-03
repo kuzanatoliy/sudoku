@@ -4,8 +4,8 @@ import { TQueryState, TQueryOptions, EHttpMethod } from './use-query.types';
 
 export const useQuery = <TData>(
   url: string,
-  initData: TData,
-  initOptions: TQueryOptions
+  initData?: TData,
+  initOptions?: TQueryOptions
 ) => {
   const [state, setState] = createSignal<TQueryState<TData>>({
     isLoading: false,
@@ -22,11 +22,11 @@ export const useQuery = <TData>(
       method: options?.method || initOptions?.method,
       body:
         method && method !== EHttpMethod.GET && method !== EHttpMethod.HEAD
-          ? new URLSearchParams({ ...initOptions.body, ...options?.body })
+          ? new URLSearchParams({ ...initOptions?.body, ...options?.body })
           : undefined,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        ...initOptions.headers,
+        ...initOptions?.headers,
         ...options?.headers,
       },
     })

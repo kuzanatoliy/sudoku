@@ -2,10 +2,16 @@
 import { createStore } from 'solid-js/store';
 import { TParentComponent } from 'types';
 import { Button, EButtonVariant, TextareaField, TextField } from 'components';
+import { EHttpMethod, useQuery } from 'query';
 
 import styles from './ContactMePage.module.scss';
 
 export const ContactMePage: TParentComponent = () => {
+  const { runQuery } = useQuery(
+    'https://render-mailer.onrender.com/message',
+    undefined,
+    { method: EHttpMethod.POST }
+  );
   const [store, setStore] = createStore({
     firstName: {
       value: '',
@@ -162,16 +168,12 @@ export const ContactMePage: TParentComponent = () => {
         <Button
           class={styles.control}
           onClick={() => {
-            fetch('https://render-mailer.onrender.com/message', {
-              method: 'POST',
-              body: new URLSearchParams({
-                subject: 'Test', //store.subject.value,
-                name: 'Aanatoli Kuzmiankou', //`${store.firstName.value} ${store.lastName.value}`,
-                email: 'njkz-09@yandex.by', //store.email.value,
-                message: 'Local sudoku check', //store.message.value,
-              }),
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+            runQuery({
+              body: {
+                subject: store.subject.value,
+                name: `${store.firstName.value} ${store.lastName.value}`,
+                email: store.email.value,
+                message: store.message.value,
               },
             });
           }}

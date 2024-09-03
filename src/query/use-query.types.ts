@@ -13,7 +13,7 @@ export type TQueryState<TData> = {
   isStarted: boolean;
   isValid: boolean;
   isError: boolean;
-  data: TData;
+  data?: TData;
 };
 
 export type TQueryOptions = {
