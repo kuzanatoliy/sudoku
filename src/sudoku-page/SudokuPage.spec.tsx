@@ -29,8 +29,7 @@ vitest.mock('components', async () => {
 });
 
 vitest.mock('query', async () => {
-  const origin =
-    await vitest.importActual<typeof import('components')>('components');
+  const origin = await vitest.importActual<typeof import('query')>('query');
   return {
     ...origin,
     useQuery: vitest.fn(),
