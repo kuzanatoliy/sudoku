@@ -178,7 +178,7 @@ export const ContactMePage: TParentComponent = () => {
             });
           }}
         >
-          Submin
+          Submit
         </Button>
       </div>
     </div>
