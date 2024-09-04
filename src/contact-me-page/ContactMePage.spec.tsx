@@ -77,4 +77,51 @@ describe('ContactMePage', () => {
       },
     });
   });
+
+  it('Should validate reset workflow', async () => {
+    renderComponent();
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'First name:' }),
+      'firstname'
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'Last name:' }),
+      'lastname'
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'Email:' }),
+      'email@hm.com'
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'Subject:' }),
+      'subject'
+    );
+    await userEvent.type(
+      screen.getByRole('textbox', { name: 'Message:' }),
+      'message'
+    );
+    expect(screen.getByRole('textbox', { name: 'First name:' })).toHaveValue(
+      'firstname'
+    );
+    expect(screen.getByRole('textbox', { name: 'Last name:' })).toHaveValue(
+      'lastname'
+    );
+    expect(screen.getByRole('textbox', { name: 'Email:' })).toHaveValue(
+      'email@hm.com'
+    );
+    expect(screen.getByRole('textbox', { name: 'Subject:' })).toHaveValue(
+      'subject'
+    );
+    expect(screen.getByRole('textbox', { name: 'Message:' })).toHaveValue(
+      'message'
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Reset' }));
+    expect(screen.getByRole('textbox', { name: 'First name:' })).toHaveValue(
+      ''
+    );
+    expect(screen.getByRole('textbox', { name: 'Last name:' })).toHaveValue('');
+    expect(screen.getByRole('textbox', { name: 'Email:' })).toHaveValue('');
+    expect(screen.getByRole('textbox', { name: 'Subject:' })).toHaveValue('');
+    expect(screen.getByRole('textbox', { name: 'Message:' })).toHaveValue('');
+  });
 });
