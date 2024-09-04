@@ -4,7 +4,7 @@ import { TQueryState, TQueryOptions, EHttpMethod } from './use-query.types';
 
 export const useQuery = <TData>(
   url: string,
-  initData?: TData,
+  initData: TData,
   initOptions?: TQueryOptions
 ) => {
   const [state, setState] = createSignal<TQueryState<TData>>({
