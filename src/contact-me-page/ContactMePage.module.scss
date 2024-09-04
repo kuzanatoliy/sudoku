@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--size-double);
+  color: var(--color-green-dark);
+}
+
+.control_panel {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--size-double);
+}
+
+.control {
+  min-width: 150px;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--size-quadruple);
+}

@@ -2,6 +2,7 @@ import { HashRouter as Router, Route, Navigate } from '@solidjs/router';
 
 import { TParentComponent } from 'types';
 import { DeviceProvider } from 'components';
+import { ContactMePage } from 'contact-me-page';
 import { NotFoundPage } from 'not-found-page';
 import { SudokuPage } from 'sudoku-page';
 
@@ -16,6 +17,7 @@ export const App: TParentComponent = () => (
     </header>
     <main class={styles.app_main}>
       <Router>
+        <Route path='/contact-me' component={ContactMePage} />
         <Route path='/play' component={SudokuPage} />
         <Route path='/' component={() => <Navigate href='/play' />} />
         <Route path='*' component={NotFoundPage} />

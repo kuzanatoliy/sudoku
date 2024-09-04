@@ -24,6 +24,7 @@
     "baseUrl": "./",
     "paths": {
       "components": ["./src/components"],
+      "contact-me-page": ["./src/contact-me-page"],
       "hooks": ["./src/hooks"],
       "icons": ["./src/icons"],
       "not-found-page": ["./src/not-found-page"],
