@@ -1,12 +1,17 @@
 :root {
-  //background-image: url('/background.png');
-  //background-size: 100vw;
-  //background-repeat: no-repeat;
-  //--page-background-color: none;
+  background-image: url('/background.png');
+  background-size: 100vw;
+  background-repeat: no-repeat;
 }
 
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex: 1;
-  align-items: stretch;
+}
+
+.header {
+  width: fit-content;
 }

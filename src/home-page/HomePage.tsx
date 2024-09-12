@@ -1,7 +1,13 @@
 import { TParentComponent } from 'types';
 
 import styles from './HomePage.module.scss';
+import { Button, EButtonVariant } from 'components';
 
 export const HomePage: TParentComponent = () => {
-  return <div class={styles.container}>Home page</div>;
+  return (
+    <main class={styles.container}>
+      <h1 class={styles.header}>Sudoku</h1>
+      <Button variant={EButtonVariant.OUTLINED}>Go to play</Button>
+    </main>
+  );
 };
