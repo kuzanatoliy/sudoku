@@ -1,14 +1,23 @@
 .container {
   background-image: url('/background.png');
-  background-size: 100vw;
+  background-size: 100vw 100vh;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
+  gap: var(--size-octuple);
 }
 
 .header {
   width: fit-content;
+  font-size: var(--size-sixteenfold);
+  color: var(--white);
+  margin: 0;
+  text-shadow: var(--size-single) var(--size-single) var(--black);
+  @media (max-width: 600px) {
+    font-size: var(--size-octuple);
+    text-shadow: var(--size-half) var(--size-half) var(--black);
+  }
 }
