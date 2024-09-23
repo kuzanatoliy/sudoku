@@ -25,6 +25,7 @@
     "paths": {
       "components": ["./src/components"],
       "contact-me-page": ["./src/contact-me-page"],
+      "home-page": ["./src/home-page"],
       "hooks": ["./src/hooks"],
       "icons": ["./src/icons"],
       "not-found-page": ["./src/not-found-page"],
