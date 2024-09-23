@@ -17,7 +17,7 @@ export const HomePage: TParentComponent = () => {
           Go to play
         </Button>
       </main>
-      <footer class={styles.app_footer}>© Kuzanatoliorg</footer>
+      <footer class={styles.footer}>© Kuzanatoliorg</footer>
     </div>
   );
 };

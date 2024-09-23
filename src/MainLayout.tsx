@@ -1,13 +1,13 @@
 import { TParentComponent } from 'types';
 
-import styles from './App.module.scss';
+import styles from './MainLayout.module.scss';
 
 export const MainLayout: TParentComponent = (props) => (
   <>
-    <header class={styles.app_header}>
-      <h1 class={styles.app_header_title}>Sudoku</h1>
+    <header class={styles.main_layout_header}>
+      <h1 class={styles.main_layout_header_title}>Sudoku</h1>
     </header>
-    <main class={styles.app_main}>{props.children}</main>
-    <footer class={styles.app_footer}>© Kuzanatoliorg</footer>
+    <main class={styles.main_layout_main}>{props.children}</main>
+    <footer class={styles.main_layout_footer}>© Kuzanatoliorg</footer>
   </>
 );
