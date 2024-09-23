@@ -2,6 +2,13 @@
   background-image: url('/background.png');
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,4 +27,13 @@
     font-size: var(--size-octuple);
     text-shadow: var(--size-half) var(--size-half) var(--black);
   }
+}
+
+.app_footer {
+  font-weight: bold;
+  color: var(--white);
+  text-align: center;
+  margin: 0;
+  padding: var(--size-double)
+    calc((100% - var(--breakpoint-laptop)) / 2 + var(--size-double));
 }
