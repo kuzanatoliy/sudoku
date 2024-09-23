@@ -7,14 +7,15 @@ import { SudokuPage } from 'sudoku-page';
 import { ContactMePage } from 'contact-me-page';
 import { NotFoundPage } from 'not-found-page';
 
+import { MainLayout } from './MainLayout';
+
 import '../src/theme.scss';
-import { Layout } from './Layout';
 
 export const App: TParentComponent = () => (
   <DeviceProvider>
     <Router>
       <Route path='/home' component={HomePage} />
-      <Route path='/*' component={Layout}>
+      <Route path='/*' component={MainLayout}>
         <Route path='/contact-me' component={ContactMePage} />
         <Route path='/play' component={SudokuPage} />
         <Route path='/' component={() => <Navigate href='/home' />} />

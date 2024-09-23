@@ -1,7 +1,8 @@
-import styles from './App.module.scss';
 import { TParentComponent } from 'types';
 
-export const Layout: TParentComponent = (props) => (
+import styles from './App.module.scss';
+
+export const MainLayout: TParentComponent = (props) => (
   <>
     <header class={styles.app_header}>
       <h1 class={styles.app_header_title}>Sudoku</h1>

@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from '@solidjs/testing-library';
+import { render, screen } from '@solidjs/testing-library';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
-import { HomePage } from './HomePage';
-import { useNavigate } from '@solidjs/router';
+import { MainLayout } from './MainLayout';
 
 const navigateSpy = vitest.fn();
 vitest.mock('@solidjs/router', async () => {
@@ -16,9 +15,11 @@ vitest.mock('@solidjs/router', async () => {
   };
 });
 
-describe('HomePage', () => {
+describe('MainLayout', () => {
+  const CONTENT = 'MAIN_LAYOUT_CONTENT';
+
   const renderComponent = () => {
-    return render(() => <HomePage />);
+    return render(() => <MainLayout>{CONTENT}</MainLayout>);
   };
 
   beforeEach(() => {
@@ -27,14 +28,8 @@ describe('HomePage', () => {
 
   it('Should render component', () => {
     renderComponent();
+    expect(screen.getByText(CONTENT)).toBeDefined();
     expect(screen.getByRole('heading', { name: 'Sudoku' })).toBeDefined();
-    expect(screen.getByRole('button', { name: 'Go to play' })).toBeDefined();
-    expect(useNavigate).toBeCalled();
-  });
-
-  it('Should naviget to games', () => {
-    renderComponent();
-    fireEvent.click(screen.getByRole('button'));
-    expect(navigateSpy).toBeCalled();
+    expect(screen.getByText('© Kuzanatoliorg')).toBeDefined();
   });
 });
