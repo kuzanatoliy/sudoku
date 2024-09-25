@@ -19,7 +19,7 @@ export interface ISudokuFieldProps {
 }
 
 const defaultProps = {
-  size: ESudokuFieldSize.DEFAULT,
+  size: ESudokuFieldSize.LARGE,
   isDisabled: false,
   isHighlighted: false,
   isError: false,
@@ -33,10 +33,8 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       tabIndex={localProps.isDisabled ? -1 : 0}
       class={
         localProps.class
-          ? `${styles.sudokufield} ${
-              styles[`sudokufield__${localProps.size}`]
-            } ${localProps.class}`
-          : `${styles.sudokufield} ${styles[`sudokufield__${localProps.size}`]}`
+          ? `${styles.sudokufield} ${localProps.class}`
+          : styles.sudokufield
       }
       onKeyDown={(event: KeyboardEvent) => {
         if (localProps.isDisabled) {
@@ -63,6 +61,7 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
         }
       }}
       aria-disabled={localProps.isDisabled}
+      data-size={localProps.size}
       data-highlighted={localProps.isHighlighted}
       data-error={localProps.isError}
     >

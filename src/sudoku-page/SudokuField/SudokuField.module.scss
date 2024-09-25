@@ -1,25 +1,22 @@
 .sudokufield {
-  &__small {
+  &[data-size='small'] {
     --sudokufield_width: var(--size-double);
     --sudokufield_height: var(--size-double);
     --sudokufield_size: var(--size-oneandhalf);
     --sudokufield_padding: var(--size-quarter);
   }
 
-  &__middle {
+  &[data-size='middle'] {
     --sudokufield_width: var(--size-quadruple);
     --sudokufield_height: var(--size-quadruple);
     --sudokufield_size: var(--size-triple);
     --sudokufield_padding: var(--size-half);
   }
 
-  &__default,
-  &__large {
-    --sudokufield_width: var(--size-sextuple);
-    --sudokufield_height: var(--size-sextuple);
-    --sudokufield_size: var(--size-quadruple);
-    --sudokufield_padding: var(--size-single);
-  }
+  --sudokufield_width: var(--size-sextuple);
+  --sudokufield_height: var(--size-sextuple);
+  --sudokufield_size: var(--size-quadruple);
+  --sudokufield_padding: var(--size-single);
 
   width: var(--sudokufield_width);
   height: var(--sudokufield_height);
