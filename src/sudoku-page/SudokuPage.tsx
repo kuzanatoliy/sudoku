@@ -13,7 +13,7 @@ import styles from './SudokuPage.module.scss';
 export const SudokuPage: TParentComponent = () => {
   const deviceState = useDeviceContext();
   const [sudokuPlaySize, setSudokuPlaySize] = createSignal<ESudokuFieldSize>(
-    ESudokuFieldSize.DEFAULT
+    ESudokuFieldSize.LARGE
   );
   const [time, setTime] = createSignal<TCustomTime>(new CustomTime(0));
 
