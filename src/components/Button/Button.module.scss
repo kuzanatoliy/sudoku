@@ -16,7 +16,8 @@
   &:focus {
     box-shadow:
       0 0 0 1px var(--button-border-color),
-      0 0 0 calc(var(--button-outline-offset) + 1px) var(--white),
+      0 0 0 calc(var(--button-outline-offset) + 1px)
+        var(--button-outline-offset-color, var(--white)),
       0 0 0
         calc(var(--button-outline-offset) + var(--button-outline-width) + 1px)
         var(--color-green-dark);
