@@ -39,6 +39,13 @@ const vitestConfig = defineTestConfig({
 
 export const viteConfig = defineConfig({
   plugins: [solid()],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
+    },
+  },
   resolve: {
     alias: {
       components: resolve(__dirname, './src/components'),
