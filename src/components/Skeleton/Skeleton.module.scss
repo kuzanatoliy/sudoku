@@ -13,7 +13,9 @@
     }
   }
 
-  animation: 3s infinite alternate skeleton;
+  & {
+    animation: 3s infinite alternate skeleton;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     background: var(--color-gray-light);
