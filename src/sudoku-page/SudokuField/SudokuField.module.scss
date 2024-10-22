@@ -51,7 +51,10 @@
   }
 
   &[aria-disabled='true'] {
-    pointer-events: none;
-    color: var(--color-gray-normal);
+    color: var(--color-gray-dark);
+
+    &:focus {
+      background-color: var(--color-gray-normal);
+    }
   }
 }
