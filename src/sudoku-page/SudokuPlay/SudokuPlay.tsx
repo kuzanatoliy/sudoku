@@ -46,56 +46,54 @@ export const SudokuPlay: TComponent<ISudokuPlayProps> = (props) => {
     setFocusedField(-1);
   };
 
-  return (
-    <div
-      class={styles.sudokuplay}
-      onKeyDown={(event) => {
-        console.log(fieldRefs);
-        let item = null;
-        switch (event.key) {
-          case 'ArrowUp':
-            event.stopImmediatePropagation();
-            event.preventDefault();
-            item = focusedField() - 9;
-            if (item < 0) {
-              item += 81;
-            }
-            fieldRefs[item].focus();
-            break;
-          case 'ArrowDown':
-            event.stopImmediatePropagation();
-            event.preventDefault();
-            item = focusedField() + 9;
-            if (item > 80) {
-              item -= 81;
-            }
-            fieldRefs[item].focus();
-            break;
-          case 'ArrowLeft':
-            event.stopImmediatePropagation();
-            event.preventDefault();
-            item = focusedField();
-            if (item % 9 === 0) {
-              item += 8;
-            } else {
-              item--;
-            }
-            fieldRefs[item].focus();
-            break;
-          case 'ArrowRight':
-            event.stopImmediatePropagation();
-            event.preventDefault();
-            item = focusedField();
-            if (item % 9 === 8) {
-              item -= 8;
-            } else {
-              item++;
-            }
-            fieldRefs[item].focus();
-            break;
+  const onKeyDown = (event: KeyboardEvent) => {
+    let item = null;
+    switch (event.key) {
+      case 'ArrowUp':
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        item = focusedField() - 9;
+        if (item < 0) {
+          item += 81;
         }
-      }}
-    >
+        fieldRefs[item].focus();
+        break;
+      case 'ArrowDown':
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        item = focusedField() + 9;
+        if (item > 80) {
+          item -= 81;
+        }
+        fieldRefs[item].focus();
+        break;
+      case 'ArrowLeft':
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        item = focusedField();
+        if (item % 9 === 0) {
+          item += 8;
+        } else {
+          item--;
+        }
+        fieldRefs[item].focus();
+        break;
+      case 'ArrowRight':
+        event.stopImmediatePropagation();
+        event.preventDefault();
+        item = focusedField();
+        if (item % 9 === 8) {
+          item -= 8;
+        } else {
+          item++;
+        }
+        fieldRefs[item].focus();
+        break;
+    }
+  };
+
+  return (
+    <div class={styles.sudokuplay} onKeyDown={onKeyDown}>
       <Index each={playState()}>
         {(item, index) => (
           <SudokuField
