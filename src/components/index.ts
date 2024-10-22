@@ -1,4 +1,5 @@
 export * from './Button';
+export * from './Card';
 export * from './Details';
 export * from './DeviceProvider';
 export * from './Note';
