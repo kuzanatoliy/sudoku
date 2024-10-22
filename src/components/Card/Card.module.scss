@@ -3,6 +3,7 @@
   --card-size: var(--size-double);
   --card-line-height: 1.2;
   --card-content-padding: var(--size-single);
+  --card-border-radius: var(--size-half);
 
   &[data-size='large'] {
     --card-content-padding: var(--size-oneandhalf);
@@ -16,5 +17,8 @@
 
   color: var(--card-color);
   font-size: var(--card-size);
+  padding: var(--card-content-padding);
   line-height: var(--card-line-height);
+  border: solid 1px var(--card-color);
+  border-radius: var(--card-border-radius);
 }

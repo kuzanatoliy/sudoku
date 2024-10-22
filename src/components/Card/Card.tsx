@@ -14,6 +14,7 @@ export const Card: TParentComponent<ICardProps> = (props) => {
 
   return (
     <div
+      role='group'
       class={
         localProps.class ? `${styles.card} ${localProps.class}` : styles.card
       }

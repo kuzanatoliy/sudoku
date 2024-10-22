@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { Card } from './Card';
-import { ECardSize /*, ICardProps*/ } from './Card.types';
+import { ECardSize, ICardProps } from './Card.types';
 
 const meta = {
   title: 'Components/Card',
@@ -56,7 +56,7 @@ export const CardComponent: Story = {
   },
 };
 
-/*export const CardSizes: Story = {
+export const CardSizes: Story = {
   argTypes: {
     size: {
       table: { disable: true },
@@ -70,41 +70,21 @@ export const CardComponent: Story = {
         gap: '20px',
       }}
     >
-      <Card {...props} size={ECardSize.SMALL} summary='SMALL'>
-        SMALL CONTENT
+      <Card {...props} size={ECardSize.SMALL}>
+        Harry Potter has never been the star of a Quidditch team, scoring points
+        while riding a broom far above the ground. He knows no spells, has never
+        helped to hatch a dragon, and has never worn a cloak of invisibility.
       </Card>
-      <Card {...props} size={ECardSize.MEDIUM} summary='MEDIUM'>
-        MEDIUM CONTENT
+      <Card {...props} size={ECardSize.MEDIUM}>
+        Harry Potter has never been the star of a Quidditch team, scoring points
+        while riding a broom far above the ground. He knows no spells, has never
+        helped to hatch a dragon, and has never worn a cloak of invisibility.
       </Card>
-      <Card {...props} size={ECardSize.LARGE} summary='LARGE'>
-        LARGE CONTENT
+      <Card {...props} size={ECardSize.LARGE}>
+        Harry Potter has never been the star of a Quidditch team, scoring points
+        while riding a broom far above the ground. He knows no spells, has never
+        helped to hatch a dragon, and has never worn a cloak of invisibility.
       </Card>
     </div>
   ),
 };
-
-export const CardOpenState: Story = {
-  argTypes: {
-    isAutoOpened: {
-      table: { disable: true },
-    },
-  },
-  render: (
-    props: Omit<ICardProps, 'summary' | 'children' | 'isAutoOpened'>
-  ) => (
-    <div
-      style={{
-        display: 'flex',
-        'flex-direction': 'column',
-        gap: '20px',
-      }}
-    >
-      <Card {...props} summary='AUTO OPENED' isAutoOpened>
-        AUTO OPENED CONTENT
-      </Card>
-      <Card {...props} summary='NOT AUTO OPENED'>
-        NOT AUTO OPENED CONTENT
-      </Card>
-    </div>
-  ),
-};*/
