@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@solidjs/testing-library';
+import { userEvent } from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
 import { SudokuPlay, ISudokuPlayProps } from './SudokuPlay';
@@ -62,6 +63,23 @@ describe('SudokuPlay', () => {
     renderComponent();
     expect(SudokuField).toBeCalledTimes(PLAY.length);
   });
+
+  it.each`
+    key             | startField | targetField
+    ${'ArrowUp'}    | ${0}       | ${72}
+    ${'ArrowDown'}  | ${72}      | ${0}
+    ${'ArrowLeft'}  | ${0}       | ${8}
+    ${'ArrowRight'} | ${8}       | ${0}
+  `(
+    'Should validate navigation ($key)',
+    async ({ key, startField, targetField }) => {
+      const { container } = renderComponent();
+      await userEvent.click(container.childNodes[0].childNodes[startField]);
+      expect(container.childNodes[0].childNodes[startField]).toHaveFocus();
+      await userEvent.keyboard(`{${key}}`);
+      expect(container.childNodes[0].childNodes[targetField]).toHaveFocus();
+    }
+  );
 
   it('Should check workflow with item', () => {
     const { container } = renderComponent();
