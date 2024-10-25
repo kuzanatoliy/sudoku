@@ -33,6 +33,7 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
 
   return (
     <div
+      role='textbox'
       tabIndex={localProps.tabIndex}
       class={
         localProps.class
