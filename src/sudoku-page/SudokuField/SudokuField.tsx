@@ -16,6 +16,8 @@ export interface ISudokuFieldProps {
   isDisabled?: boolean;
   isHighlighted?: boolean;
   isError?: boolean;
+  tabIndex?: number;
+  ref?: HTMLDivElement | ((el: HTMLDivElement) => void);
 }
 
 const defaultProps = {
@@ -23,6 +25,7 @@ const defaultProps = {
   isDisabled: false,
   isHighlighted: false,
   isError: false,
+  tabIndex: -1,
 };
 
 export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
@@ -30,7 +33,8 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
 
   return (
     <div
-      tabIndex={localProps.isDisabled ? -1 : 0}
+      role='textbox'
+      tabIndex={localProps.tabIndex}
       class={
         localProps.class
           ? `${styles.sudokufield} ${localProps.class}`
@@ -64,6 +68,7 @@ export const SudokuField: TComponent<ISudokuFieldProps> = (props) => {
       data-size={localProps.size}
       data-highlighted={localProps.isHighlighted}
       data-error={localProps.isError}
+      ref={localProps.ref}
     >
       {localProps.value || ''}
     </div>

@@ -1,4 +1,5 @@
-import { fireEvent, render } from '@solidjs/testing-library';
+import { fireEvent, render, screen } from '@solidjs/testing-library';
+import { userEvent } from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
 import { SudokuPlay, ISudokuPlayProps } from './SudokuPlay';
@@ -63,10 +64,32 @@ describe('SudokuPlay', () => {
     expect(SudokuField).toBeCalledTimes(PLAY.length);
   });
 
+  it.each`
+    key             | startField | targetField
+    ${'ArrowUp'}    | ${0}       | ${72}
+    ${'ArrowDown'}  | ${72}      | ${0}
+    ${'ArrowUp'}    | ${72}      | ${63}
+    ${'ArrowDown'}  | ${0}       | ${9}
+    ${'ArrowLeft'}  | ${0}       | ${8}
+    ${'ArrowRight'} | ${8}       | ${0}
+    ${'ArrowLeft'}  | ${1}       | ${0}
+    ${'ArrowRight'} | ${7}       | ${8}
+  `(
+    'Should validate navigation ($key)',
+    async ({ key, startField, targetField }) => {
+      renderComponent();
+      const fields = screen.getAllByRole('textbox');
+      await userEvent.click(fields[startField]);
+      expect(fields[startField]).toHaveFocus();
+      await userEvent.keyboard(`{${key}}`);
+      expect(fields[targetField]).toHaveFocus();
+    }
+  );
+
   it('Should check workflow with item', () => {
-    const { container } = renderComponent();
+    renderComponent();
     expect(isEffectedItem).not.toBeCalled();
-    const element = container.childNodes[0].childNodes[2];
+    const element = screen.getAllByRole('textbox')[2];
     fireEvent.focus(element);
     expect(isEffectedItem).toBeCalled();
     fireEvent.keyDown(element, { key: '5' });

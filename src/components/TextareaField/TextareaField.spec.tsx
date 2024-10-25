@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from '@solidjs/testing-library';
-import userEvent from '@testing-library/user-event';
+import { userEvent } from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vitest } from 'vitest';
 
 import { TextareaField } from './TextareaField';
