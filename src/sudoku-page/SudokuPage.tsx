@@ -28,7 +28,7 @@ export const SudokuPage: TParentComponent = () => {
     );
   });
 
-  const { state, runQuery } = useQuery<TSudokuPlayData[]>('/plays.json', [], {
+  const { state, runQuery } = useQuery<TSudokuPlayData[]>('./plays.json', [], {
     method: EHttpMethod.GET,
   });
 
