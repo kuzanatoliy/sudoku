@@ -82,6 +82,7 @@ vitest.mock('sudoku-page', async () => {
   };
 });
 
+// TODO: add new test case
 describe('App', () => {
   const renderComponent = () => {
     return render(() => <App />);
@@ -113,7 +114,7 @@ describe('App', () => {
   });
 
   it('Should render SudokuPage', () => {
-    global.location.hash = '/play';
+    global.location.hash = '/plays/1';
     renderComponent();
     expect(HomePage).not.toBeCalled();
     expect(DeviceProvider).toBeCalled();

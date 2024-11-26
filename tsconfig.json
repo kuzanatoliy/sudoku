@@ -32,6 +32,7 @@
       "query": ["./src/query"],
       "sudoku-engine": ["./src/sudoku-engine"],
       "sudoku-page": ["./src/sudoku-page"],
+      "sudoku-plays-page": ["./src/sudoku-plays-page"],
       "timer-engine": ["./src/timer-engine"],
       "types": ["./src/types"],
       "validator": ["./src/validator"]

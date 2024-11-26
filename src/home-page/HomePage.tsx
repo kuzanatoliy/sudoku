@@ -11,7 +11,7 @@ export const HomePage: TParentComponent = () => {
       <main class={styles.main}>
         <h1 class={styles.header}>Sudoku</h1>
         <Button
-          onClick={() => navigate('/play')}
+          onClick={() => navigate('/plays/1')}
           variant={EButtonVariant.OUTLINED}
         >
           Go to play

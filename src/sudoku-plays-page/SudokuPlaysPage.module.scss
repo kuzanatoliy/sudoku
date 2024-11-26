@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-double);
+  color: var(--color-green-dark);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--size-octuple);
+}

@@ -4,6 +4,7 @@ import { TParentComponent } from 'types';
 import { DeviceProvider } from 'components';
 import { HomePage } from 'home-page';
 import { SudokuPage } from 'sudoku-page';
+import { SudokuPlaysPage } from 'sudoku-plays-page';
 import { ContactMePage } from 'contact-me-page';
 import { NotFoundPage } from 'not-found-page';
 
@@ -17,7 +18,8 @@ export const App: TParentComponent = () => (
       <Route path='/home' component={HomePage} />
       <Route path='/*' component={MainLayout}>
         <Route path='/contact-me' component={ContactMePage} />
-        <Route path='/play' component={SudokuPage} />
+        <Route path='/plays' component={SudokuPlaysPage} />
+        <Route path='/plays/1' component={SudokuPage} />
         <Route path='/' component={() => <Navigate href='/home' />} />
         <Route path='*' component={NotFoundPage} />
       </Route>
