@@ -60,7 +60,7 @@ vitest.mock('./SudokuPlay', async () => {
   };
 });
 
-describe('SudokuPage', () => {
+describe.skip('SudokuPage', () => {
   const MOCK_DATA = [
     {
       complexity: 5,

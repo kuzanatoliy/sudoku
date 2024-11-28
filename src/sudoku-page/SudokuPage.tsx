@@ -36,7 +36,7 @@ export const SudokuPage: TParentComponent = () => {
 
   return (
     <div class={styles.container}>
-      <Show when={!state().isLoading}>
+      <Show when={state().isStarted && !state().isLoading}>
         <DurationWrapper time={time()} />
         <SudokuPlay
           initialPlay={state().data[0].play}

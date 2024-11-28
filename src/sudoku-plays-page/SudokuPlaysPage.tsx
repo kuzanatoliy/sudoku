@@ -1,14 +1,18 @@
-import { createEffect } from 'solid-js';
+import { createEffect, For, Show } from 'solid-js';
 import { useNavigate } from '@solidjs/router';
 
 import { TParentComponent, TSudokuPlayData } from 'types';
-import { Button } from 'components';
 import { useQuery, EHttpMethod } from 'query';
 
 import styles from './SudokuPlaysPage.module.scss';
+import { PlayMenu } from './PlayMenu';
+import { PlayMenuItem } from './PlayMenuItem';
+import { PlayPreview } from './PlayPreview';
 
 export const SudokuPlaysPage: TParentComponent = () => {
   const navigate = useNavigate();
+
+  console.log(navigate);
 
   const { state, runQuery } = useQuery<TSudokuPlayData[]>('./plays.json', [], {
     method: EHttpMethod.GET,
@@ -16,13 +20,19 @@ export const SudokuPlaysPage: TParentComponent = () => {
 
   createEffect(() => runQuery());
 
-  console.log(state);
+  console.log(state().data);
 
   return (
     <div class={styles.container}>
-      <h2 class={styles.title}>Oops!</h2>
-      <div>Looks like there is an issue with our system</div>
-      <Button onClick={() => navigate('/')}>Move to home</Button>
+      <Show when={state().isStarted && !state().isLoading}>
+        <PlayMenu>
+          <PlayMenuItem>
+            <For each={state().data}>
+              {(item) => <PlayPreview play={item.play} />}
+            </For>
+          </PlayMenuItem>
+        </PlayMenu>
+      </Show>
     </div>
   );
 };
