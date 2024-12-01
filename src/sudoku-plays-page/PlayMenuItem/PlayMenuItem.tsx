@@ -6,5 +6,5 @@ export interface IPlayMenuProps {
 }
 
 export const PlayMenuItem: TParentComponent<IPlayMenuProps> = (props) => {
-  return <div>{props.children}</div>;
+  return <li>{props.children}</li>;
 };

@@ -23,14 +23,16 @@ export const SudokuPlaysPage: TParentComponent = () => {
   console.log(state().data);
 
   return (
-    <div class={styles.container}>
+    <div class={styles.sudokuplayspage}>
       <Show when={state().isStarted && !state().isLoading}>
         <PlayMenu>
-          <PlayMenuItem>
-            <For each={state().data}>
-              {(item) => <PlayPreview play={item.play} />}
-            </For>
-          </PlayMenuItem>
+          <For each={state().data}>
+            {(item) => (
+              <PlayMenuItem>
+                <PlayPreview play={item.play} />
+              </PlayMenuItem>
+            )}
+          </For>
         </PlayMenu>
       </Show>
     </div>
