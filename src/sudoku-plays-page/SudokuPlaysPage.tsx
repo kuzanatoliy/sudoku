@@ -29,7 +29,9 @@ export const SudokuPlaysPage: TParentComponent = () => {
           <For each={state().data}>
             {(item) => (
               <PlayMenuItem>
-                <PlayPreview play={item.play} />
+                <a href='#' class={styles.sudokuplayspage_link}>
+                  <PlayPreview play={item.play} />
+                </a>
               </PlayMenuItem>
             )}
           </For>
