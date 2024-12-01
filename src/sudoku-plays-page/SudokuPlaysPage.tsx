@@ -12,24 +12,27 @@ import { PlayPreview } from './PlayPreview';
 export const SudokuPlaysPage: TParentComponent = () => {
   const navigate = useNavigate();
 
-  console.log(navigate);
-
   const { state, runQuery } = useQuery<TSudokuPlayData[]>('./plays.json', [], {
     method: EHttpMethod.GET,
   });
 
   createEffect(() => runQuery());
 
-  console.log(state().data);
-
   return (
     <div class={styles.sudokuplayspage}>
       <Show when={state().isStarted && !state().isLoading}>
         <PlayMenu>
           <For each={state().data}>
-            {(item) => (
+            {(item, ind) => (
               <PlayMenuItem>
-                <a href='#' class={styles.sudokuplayspage_link}>
+                <a
+                  href='#'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(`/plays/${ind() + 1}`);
+                  }}
+                  class={styles.sudokuplayspage_link}
+                >
                   <PlayPreview play={item.play} />
                 </a>
               </PlayMenuItem>

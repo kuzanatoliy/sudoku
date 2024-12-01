@@ -19,7 +19,7 @@ export const App: TParentComponent = () => (
       <Route path='/*' component={MainLayout}>
         <Route path='/contact-me' component={ContactMePage} />
         <Route path='/plays' component={SudokuPlaysPage} />
-        <Route path='/plays/1' component={SudokuPage} />
+        <Route path='/plays/:id' component={SudokuPage} />
         <Route path='/' component={() => <Navigate href='/home' />} />
         <Route path='*' component={NotFoundPage} />
       </Route>
