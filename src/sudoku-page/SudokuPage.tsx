@@ -1,4 +1,6 @@
 import { createEffect, createSignal, Show } from 'solid-js';
+import { useNavigate, useParams } from '@solidjs/router';
+
 import { EHttpMethod, useQuery } from 'query';
 import { TParentComponent, TSudokuPlayData } from 'types';
 import { useDeviceContext } from 'components';
@@ -11,6 +13,8 @@ import { ESudokuFieldSize } from './types';
 import styles from './SudokuPage.module.scss';
 
 export const SudokuPage: TParentComponent = () => {
+  const navigate = useNavigate();
+  const params = useParams();
   const deviceState = useDeviceContext();
   const [sudokuPlaySize, setSudokuPlaySize] = createSignal<ESudokuFieldSize>(
     ESudokuFieldSize.LARGE
@@ -21,6 +25,10 @@ export const SudokuPage: TParentComponent = () => {
   duration.subscribe(setTime);
   duration.run();
 
+  const { state, runQuery } = useQuery<TSudokuPlayData[]>('./plays.json', [], {
+    method: EHttpMethod.GET,
+  });
+
   createEffect(() => {
     const { isTablet, isMobile } = deviceState();
     setSudokuPlaySize(
@@ -28,18 +36,31 @@ export const SudokuPage: TParentComponent = () => {
     );
   });
 
-  const { state, runQuery } = useQuery<TSudokuPlayData[]>('./plays.json', [], {
-    method: EHttpMethod.GET,
-  });
-
   createEffect(() => runQuery());
+
+  createEffect(() => {
+    console.log(params);
+    if (
+      state().isStarted &&
+      !state().isLoading &&
+      !state().data[+params.id - 1]
+    ) {
+      navigate('/not-found');
+    }
+  });
 
   return (
     <div class={styles.container}>
-      <Show when={!state().isLoading}>
+      <Show
+        when={
+          state().isStarted &&
+          !state().isLoading &&
+          state().data[+params.id - 1]
+        }
+      >
         <DurationWrapper time={time()} />
         <SudokuPlay
-          initialPlay={state().data[0].play}
+          initialPlay={state().data[+params.id - 1].play}
           size={sudokuPlaySize()}
         />
       </Show>

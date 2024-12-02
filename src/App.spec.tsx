@@ -7,6 +7,7 @@ import { DeviceProvider } from 'components';
 import { HomePage } from 'home-page';
 import { NotFoundPage } from 'not-found-page';
 import { SudokuPage } from 'sudoku-page';
+import { SudokuPlaysPage } from 'sudoku-plays-page';
 
 import { MainLayout } from './MainLayout';
 
@@ -82,6 +83,19 @@ vitest.mock('sudoku-page', async () => {
   };
 });
 
+vitest.mock('sudoku-plays-page', async () => {
+  const origin =
+    await vitest.importActual<typeof import('sudoku-plays-page')>(
+      'sudoku-plays-page'
+    );
+  return {
+    ...origin,
+    SudokuPlaysPage: vitest
+      .fn()
+      .mockImplementation((props) => <div>{props.children}</div>),
+  };
+});
+
 describe('App', () => {
   const renderComponent = () => {
     return render(() => <App />);
@@ -96,6 +110,7 @@ describe('App', () => {
     expect(HomePage).not.toBeCalled();
     expect(DeviceProvider).toBeCalled();
     expect(SudokuPage).not.toBeCalled();
+    expect(SudokuPlaysPage).not.toBeCalled();
     expect(NotFoundPage).not.toBeCalled();
     expect(MainLayout).toBeCalled();
     expect(Navigate).toBeCalled();
@@ -107,17 +122,31 @@ describe('App', () => {
     expect(HomePage).toBeCalled();
     expect(DeviceProvider).toBeCalled();
     expect(SudokuPage).not.toBeCalled();
+    expect(SudokuPlaysPage).not.toBeCalled();
     expect(NotFoundPage).not.toBeCalled();
     expect(MainLayout).not.toBeCalled();
     expect(Navigate).not.toBeCalled();
   });
 
   it('Should render SudokuPage', () => {
-    global.location.hash = '/play';
+    global.location.hash = '/plays/1';
     renderComponent();
     expect(HomePage).not.toBeCalled();
     expect(DeviceProvider).toBeCalled();
     expect(SudokuPage).toBeCalled();
+    expect(SudokuPlaysPage).not.toBeCalled();
+    expect(NotFoundPage).not.toBeCalled();
+    expect(MainLayout).toBeCalled();
+    expect(Navigate).not.toBeCalled();
+  });
+
+  it('Should render SudokuPlaysPage', () => {
+    global.location.hash = '/plays';
+    renderComponent();
+    expect(HomePage).not.toBeCalled();
+    expect(DeviceProvider).toBeCalled();
+    expect(SudokuPage).not.toBeCalled();
+    expect(SudokuPlaysPage).toBeCalled();
     expect(NotFoundPage).not.toBeCalled();
     expect(MainLayout).toBeCalled();
     expect(Navigate).not.toBeCalled();
@@ -129,6 +158,7 @@ describe('App', () => {
     expect(HomePage).not.toBeCalled();
     expect(DeviceProvider).toBeCalled();
     expect(SudokuPage).not.toBeCalled();
+    expect(SudokuPlaysPage).not.toBeCalled();
     expect(NotFoundPage).toBeCalled();
     expect(MainLayout).toBeCalled();
     expect(Navigate).not.toBeCalled();

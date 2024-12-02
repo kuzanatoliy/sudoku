@@ -57,6 +57,7 @@ export const viteConfig = defineConfig({
       query: resolve(__dirname, './src/query'),
       'sudoku-engine': resolve(__dirname, './src/sudoku-engine'),
       'sudoku-page': resolve(__dirname, './src/sudoku-page'),
+      'sudoku-plays-page': resolve(__dirname, './src/sudoku-plays-page'),
       'timer-engine': resolve(__dirname, './src/timer-engine'),
       types: resolve(__dirname, './src/types'),
       validator: resolve(__dirname, './src/validator'),
