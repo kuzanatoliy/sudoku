@@ -6,7 +6,6 @@ import styles from './PlayPreview.module.scss';
 
 export interface IPlayPreviewProps {
   play: TSudokuValue[];
-  //size?: ESudokuFieldSize;
 }
 
 export const PlayPreview: TComponent<IPlayPreviewProps> = (props) => {

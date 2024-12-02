@@ -1,10 +1,7 @@
 import { TParentComponent } from 'types';
 
-export interface IPlayMenuProps {
-  //initialPlay: TSudokuValue[];
-  //size?: ESudokuFieldSize;
-}
+export interface IPlayMenuItemProps {}
 
-export const PlayMenuItem: TParentComponent<IPlayMenuProps> = (props) => {
+export const PlayMenuItem: TParentComponent<IPlayMenuItemProps> = (props) => {
   return <li>{props.children}</li>;
 };
