@@ -39,6 +39,7 @@ export const SudokuPage: TParentComponent = () => {
   createEffect(() => runQuery());
 
   createEffect(() => {
+    console.log(params);
     if (
       state().isStarted &&
       !state().isLoading &&
@@ -50,7 +51,13 @@ export const SudokuPage: TParentComponent = () => {
 
   return (
     <div class={styles.container}>
-      <Show when={state().isStarted && !state().isLoading}>
+      <Show
+        when={
+          state().isStarted &&
+          !state().isLoading &&
+          state().data[+params.id - 1]
+        }
+      >
         <DurationWrapper time={time()} />
         <SudokuPlay
           initialPlay={state().data[+params.id - 1].play}

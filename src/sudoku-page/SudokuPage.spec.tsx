@@ -11,11 +11,13 @@ import {
 
 import { useDeviceContext } from 'components';
 import { useQuery } from 'query';
+import { TSudokuPlayData } from 'types';
 
 import { DurationWrapper } from './DurationWrapper';
 import { SudokuPlay } from './SudokuPlay';
 import { SudokuPage } from './SudokuPage';
 import { ESudokuFieldSize } from './types';
+import { useNavigate, useParams } from '@solidjs/router';
 
 vitest.mock('components', async () => {
   const origin =
@@ -33,6 +35,19 @@ vitest.mock('query', async () => {
   return {
     ...origin,
     useQuery: vitest.fn(),
+  };
+});
+
+const navigateSpy = vitest.fn();
+vitest.mock('@solidjs/router', async () => {
+  const origin =
+    await vitest.importActual<typeof import('@solidjs/router')>(
+      '@solidjs/router'
+    );
+  return {
+    ...origin,
+    useNavigate: vitest.fn().mockImplementation(() => navigateSpy),
+    useParams: vitest.fn(),
   };
 });
 
@@ -60,8 +75,8 @@ vitest.mock('./SudokuPlay', async () => {
   };
 });
 
-describe.skip('SudokuPage', () => {
-  const MOCK_DATA = [
+describe('SudokuPage', () => {
+  const MOCK_DATA: TSudokuPlayData[] = [
     {
       complexity: 5,
       play: [
@@ -85,6 +100,9 @@ describe.skip('SudokuPage', () => {
     isMobile = false,
     isTablet = false,
     isLoading = false,
+    isStarted = true,
+    data = MOCK_DATA,
+    pageId = 1,
   } = {}) => {
     vitest
       .mocked(useDeviceContext)
@@ -97,13 +115,14 @@ describe.skip('SudokuPage', () => {
     vitest.mocked(useQuery).mockImplementation(() => ({
       state: vitest.fn().mockReturnValue({
         isLoading,
-        isStarted: false,
+        isStarted,
         isValid: true,
         isError: false,
-        data: MOCK_DATA,
+        data,
       }),
       runQuery: runQuerySpy,
     }));
+    vitest.mocked(useParams).mockReturnValue({ id: pageId.toString() });
     return render(() => <SudokuPage />);
   };
 
@@ -120,14 +139,38 @@ describe.skip('SudokuPage', () => {
   });
 
   it('Should render component', () => {
-    renderComponent();
+    renderComponent({
+      isLoading: false,
+      isStarted: true,
+      data: MOCK_DATA,
+      pageId: MOCK_DATA.length,
+    });
     expect(DurationWrapper).toBeCalled();
     expect(SudokuPlay).toBeCalled();
     expect(runQuerySpy).toBeCalled();
+    expect(useNavigate).toBeCalled();
+    expect(useParams).toBeCalled();
+    expect(navigateSpy).not.toBeCalled();
   });
 
-  it('Should render loading state', () => {
-    renderComponent({ isLoading: true });
+  it('Should redirect to not found page if play is not available', () => {
+    renderComponent({
+      isLoading: false,
+      isStarted: true,
+      data: MOCK_DATA,
+      pageId: MOCK_DATA.length + 1,
+    });
+    expect(navigateSpy).toBeCalled();
+  });
+
+  it.each`
+    isLoading | isStarted | data
+    ${false}  | ${false}  | ${MOCK_DATA}
+    ${true}   | ${true}   | ${MOCK_DATA}
+    ${true}   | ${false}  | ${MOCK_DATA}
+    ${false}  | ${true}   | ${[]}
+  `('Should render loading state', ({ isLoading, isStarted, data }) => {
+    renderComponent({ isLoading, isStarted, data, pageId: data.length });
     expect(DurationWrapper).not.toBeCalled();
     expect(SudokuPlay).not.toBeCalled();
     expect(runQuerySpy).toBeCalled();
