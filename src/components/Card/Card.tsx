@@ -5,12 +5,12 @@ import { ECardSize, ICardProps } from './Card.types';
 
 import styles from './Card.module.scss';
 
-const DEFAULT_DETAILS_PROPS = {
+const DEFAULT_CARD_PROPS = {
   size: ECardSize.MEDIUM,
 };
 
 export const Card: TParentComponent<ICardProps> = (props) => {
-  const localProps = mergeProps(DEFAULT_DETAILS_PROPS, props);
+  const localProps = mergeProps(DEFAULT_CARD_PROPS, props);
 
   return (
     <div
