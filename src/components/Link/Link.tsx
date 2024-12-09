@@ -16,7 +16,6 @@ export const Link: TParentComponent<ILinkProps> = (props) => {
   return (
     <a
       href={localProps.href}
-      //role='group'
       class={
         localProps.class ? `${styles.link} ${localProps.class}` : styles.link
       }

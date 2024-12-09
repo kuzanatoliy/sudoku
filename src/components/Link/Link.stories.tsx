@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
 
 import { Link } from './Link';
-import { ELinkSize } from './Link.types';
-//import { ILinkProps } from './Link.types';
+import { ELinkColorScheme, ELinkSize, ILinkProps } from './Link.types';
 
 const meta = {
   title: 'Components/Link',
@@ -13,6 +12,15 @@ const meta = {
       type: { name: 'string', required: false },
       control: { type: 'text' },
       description: 'The content of the component',
+      table: {
+        disable: true,
+        type: { summary: 'string' },
+      },
+    },
+    href: {
+      type: { name: 'string', required: false },
+      control: { type: 'text' },
+      description: 'The link url',
       table: {
         disable: true,
         type: { summary: 'string' },
@@ -38,11 +46,23 @@ const meta = {
       },
       options: [ELinkSize.SMALL, ELinkSize.MEDIUM, ELinkSize.LARGE],
     },
+    colorScheme: {
+      type: { name: 'string', required: false },
+      control: { type: 'select' },
+      description: 'The size of the component',
+      table: {
+        disable: false,
+        type: { summary: 'string' },
+        defaultValue: { summary: ELinkColorScheme.DARK },
+      },
+      options: [ELinkColorScheme.DARK, ELinkColorScheme.LIGHT],
+    },
   },
   args: {
     href: '#',
     children: 'Link content',
     size: ELinkSize.MEDIUM,
+    colorScheme: ELinkColorScheme.DARK,
     class: '',
   },
 } satisfies Meta<typeof Link>;
@@ -58,35 +78,76 @@ export const LinkComponent: Story = {
   },
 };
 
-/*export const LinkSizes: Story = {
+export const LinkSizes: Story = {
   argTypes: {
     size: {
       table: { disable: true },
     },
   },
-  render: (props: Omit<ILinkProps, 'summary' | 'children' | 'size'>) => (
+  render: (props: Omit<ILinkProps, 'children' | 'size'>) => (
     <div
       style={{
         display: 'flex',
         'flex-direction': 'column',
+        padding: '20px',
         gap: '20px',
+        'border-radius': '20px',
+        background:
+          props.colorScheme === ELinkColorScheme.DARK ? '#d8d9da' : '#004445',
       }}
     >
       <Link {...props} size={ELinkSize.SMALL}>
-        Harry Potter has never been the star of a Quidditch team, scoring points
-        while riding a broom far above the ground. He knows no spells, has never
-        helped to hatch a dragon, and has never worn a cloak of invisibility.
+        Small link
       </Link>
       <Link {...props} size={ELinkSize.MEDIUM}>
-        Harry Potter has never been the star of a Quidditch team, scoring points
-        while riding a broom far above the ground. He knows no spells, has never
-        helped to hatch a dragon, and has never worn a cloak of invisibility.
+        Medium link
       </Link>
       <Link {...props} size={ELinkSize.LARGE}>
-        Harry Potter has never been the star of a Quidditch team, scoring points
-        while riding a broom far above the ground. He knows no spells, has never
-        helped to hatch a dragon, and has never worn a cloak of invisibility.
+        Large link
       </Link>
     </div>
   ),
-};*/
+};
+
+export const LinkColorSchemes: Story = {
+  argTypes: {
+    colorScheme: {
+      table: { disable: true },
+    },
+  },
+  render: (props: Omit<ILinkProps, 'children' | 'size'>) => (
+    <div
+      style={{
+        display: 'flex',
+        'flex-direction': 'row',
+        gap: '20px',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          'flex-direction': 'column',
+          padding: '20px',
+          gap: '20px',
+          'border-radius': '20px',
+          background: '#d8d9da',
+        }}
+      >
+        <Link {...props} colorScheme={ELinkColorScheme.DARK}>
+          Large link
+        </Link>
+      </div>
+      <div
+        style={{
+          padding: '20px',
+          'border-radius': '20px',
+          background: '#004445',
+        }}
+      >
+        <Link {...props} colorScheme={ELinkColorScheme.LIGHT}>
+          Link content
+        </Link>
+      </div>
+    </div>
+  ),
+};
