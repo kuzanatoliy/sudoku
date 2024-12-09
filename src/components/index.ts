@@ -2,6 +2,7 @@ export * from './Button';
 export * from './Card';
 export * from './Details';
 export * from './DeviceProvider';
+export * from './Link';
 export * from './Note';
 export * from './Pill';
 export * from './Skeleton';

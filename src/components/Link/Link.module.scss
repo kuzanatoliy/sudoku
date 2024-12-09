@@ -1,0 +1,40 @@
+.link {
+  --link-color: var(--color-green-normal);
+  --link-size: var(--size-double);
+  --link-line-height: 1.2;
+
+  &[data-size='large'] {
+    --link-size: var(--size-triple);
+  }
+
+  &[data-size='small'] {
+    --link-size: var(--size-oneandhalf);
+  }
+
+  &[data-color-scheme='light'] {
+    --link-color: var(--color-gray-light);
+
+    &:hover,
+    &:focus,
+    &:active {
+      --link-color: var(--color-gray-normal);
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    --link-color: var(--color-green-dark);
+  }
+
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+
+  color: var(--link-color);
+  font-size: var(--link-size);
+  line-height: var(--link-line-height);
+  text-decoration: none;
+  outline: none;
+}

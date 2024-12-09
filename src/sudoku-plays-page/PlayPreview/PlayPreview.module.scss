@@ -15,6 +15,7 @@
   width: var(--playpreview-cell-width);
   height: var(--playpreview-cell-height);
   border: solid var(--playpreview-border-normal);
+  text-align: center;
   &:nth-child(3n) {
     border-right: solid var(--playpreview-border-bold);
   }
@@ -36,5 +37,4 @@
   &:nth-child(n + 72) {
     border-bottom: solid var(--playpreview-border-normal);
   }
-  text-align: center;
 }
