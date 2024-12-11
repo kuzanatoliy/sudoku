@@ -24,6 +24,7 @@
   z-index: 1;
   display: flex;
   gap: var(--size-double);
+  justify-content: space-between;
   align-items: center;
   color: var(--header-text-color);
   position: sticky;
@@ -32,6 +33,11 @@
   box-shadow: 0 var(--size-double) var(--size-double)
     var(--page-background-color);
   margin-bottom: var(--size-double);
+}
+
+.main_layout_navigation {
+  display: flex;
+  gap: 20px;
 }
 
 .main_layout_header_title {

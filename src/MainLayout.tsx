@@ -9,7 +9,7 @@ export const MainLayout: TParentComponent = (props) => (
   <>
     <header class={styles.main_layout_header}>
       <h1 class={styles.main_layout_header_title}>Sudoku</h1>
-      <nav>
+      <nav class={styles.main_layout_navigation}>
         <Link
           href='/home'
           colorScheme={ELinkColorScheme.LIGHT}
