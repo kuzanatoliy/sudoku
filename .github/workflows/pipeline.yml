@@ -1,5 +1,7 @@
 name: pipeline
 on: [push, workflow_dispatch]
+permissions:
+  contents: write
 jobs:
   quality-gates:
     runs-on: ubuntu-latest
