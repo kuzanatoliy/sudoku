@@ -11,7 +11,7 @@ const vitestConfig = defineTestConfig({
     pool: 'vmThreads',
     poolOptions: {
       vmThreads: {
-        useAtomics: false,
+        useAtomics: true,
       },
     },
     include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],
