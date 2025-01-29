@@ -8,10 +8,10 @@ const vitestConfig = defineTestConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
     globals: true,
-    pool: 'vmThreads',
+    pool: 'threads',
     poolOptions: {
       vmThreads: {
-        useAtomics: true,
+        useAtomics: false,
       },
     },
     include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],

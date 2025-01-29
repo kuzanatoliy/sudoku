@@ -39,7 +39,7 @@ export const TextareaField: TComponent<ITextareaFieldProps> = (props) => {
         <label for={inputId} class={styles.textareafield_label}>
           {localProps.label}
           <Show when={localProps.isRequired}>
-            <span aria-hidden={true}> *</span>
+            <span aria-hidden='true'> *</span>
           </Show>
         </label>
       </Show>

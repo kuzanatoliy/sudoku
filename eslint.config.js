@@ -7,7 +7,13 @@ import prettierRules from './.prettierrc.cjs';
 
 export default tseslint.config(
   {
-    ignores: ['dist/*', 'coverage/*', 'storybook-static/*', 'eslint.config.js'],
+    ignores: [
+      'dist/*',
+      'coverage/*',
+      'storybook-static/*',
+      'eslint.config.js',
+      'vite.config.ts',
+    ],
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,

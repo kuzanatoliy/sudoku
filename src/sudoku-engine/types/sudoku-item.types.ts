@@ -1,4 +1,4 @@
-import { TSudokuValue } from './values';
+import { TSudokuValue } from './values.types';
 
 export type TSudokuItemState = {
   readonly value: TSudokuValue;
