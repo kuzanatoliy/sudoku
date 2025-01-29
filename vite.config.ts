@@ -18,7 +18,11 @@ const vitestConfig = defineTestConfig({
     includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
     deps: {
       optimizer: {
+        ssr: {
+          enabled: false,
+        },
         web: {
+          enabled: true,
           include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],
         },
       },
@@ -38,7 +42,7 @@ const vitestConfig = defineTestConfig({
 });
 
 export const viteConfig = defineConfig({
-  plugins: [solid()],
+  plugins: [solid({ ssr: false })],
   css: {
     preprocessorOptions: {
       scss: {
