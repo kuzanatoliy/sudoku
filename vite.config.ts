@@ -18,11 +18,7 @@ const vitestConfig = defineTestConfig({
     includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
     deps: {
       optimizer: {
-        ssr: {
-          enabled: false,
-        },
         web: {
-          enabled: true,
           include: ['src/**/*{test,spec}.{js,ts,jsx,tsx}'],
         },
       },
