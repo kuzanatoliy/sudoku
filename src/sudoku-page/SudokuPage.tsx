@@ -39,7 +39,6 @@ export const SudokuPage: TParentComponent = () => {
   createEffect(() => runQuery());
 
   createEffect(() => {
-    console.log(params);
     if (
       state().isStarted &&
       !state().isLoading &&

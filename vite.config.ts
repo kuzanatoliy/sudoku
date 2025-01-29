@@ -8,7 +8,7 @@ const vitestConfig = defineTestConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest-setup.ts'],
     globals: true,
-    pool: 'vmThreads',
+    pool: 'threads',
     poolOptions: {
       vmThreads: {
         useAtomics: false,
@@ -38,7 +38,7 @@ const vitestConfig = defineTestConfig({
 });
 
 export const viteConfig = defineConfig({
-  plugins: [solid()],
+  plugins: [solid({ ssr: false })],
   css: {
     preprocessorOptions: {
       scss: {

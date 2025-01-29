@@ -1,6 +1,6 @@
 export const ExclamationMarkIcon = () => (
   <svg
-    aria-hidden
+    aria-hidden='true'
     fill='currentColor'
     version='1.1'
     viewBox='0 0 45.311 45.311'
