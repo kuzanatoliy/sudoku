@@ -71,6 +71,9 @@ describe('useQuery', () => {
   `(
     'Should verify invalid workflow for the method $method',
     async ({ method }) => {
+      const consoleErrorSpy = vitest
+        .spyOn(console, 'error')
+        .mockImplementation(() => {});
       vitest.mocked(globalThis.fetch).mockImplementation(() => {
         return Promise.resolve({
           ok: false,
@@ -81,6 +84,7 @@ describe('useQuery', () => {
       expect(result.state().isLoading).toBeFalsy();
       expect(result.state().isError).toBeFalsy();
       await result.runQuery();
+      expect(consoleErrorSpy).toBeCalled();
       expect(result.state().isLoading).toBeFalsy();
       expect(result.state().isError).toBeTruthy();
     }
