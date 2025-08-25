@@ -10,9 +10,12 @@ export const useOneLevelObject = (
       const curr = queue.pop()!;
       Object.keys(curr.value).forEach((key) => {
         if (!!curr.value[key] && typeof curr.value[key] === 'object') {
-          queue.push({ prefix: `${curr.prefix}${key}.`, value: curr.value });
+          queue.push({
+            prefix: `${curr.prefix}${key}.`,
+            value: curr.value[key] as Record<string, unknown>,
+          });
         } else {
-          result[`${curr.prefix}${key}`] = curr.value;
+          result[`${curr.prefix}${key}`] = curr.value[key];
         }
       });
     }
