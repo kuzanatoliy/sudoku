@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from 'storybook-solidjs';
-import { Button } from 'components';
-import { createSignal, createEffect } from 'solid-js';
 
-import { useOneLevelObject } from './use-one-level-object';
+import { TUseOneLevelObject, useOneLevelObject } from './use-one-level-object';
 
 const ORIGINAL_STRING = 'string';
 const ORIGINAL_OBJECT = {
@@ -12,30 +10,22 @@ const ORIGINAL_OBJECT = {
 };
 const ORIGINAL_ARRAY = ['test1', 'test2', ['test3', 'test4']];
 
+const enum EOptions {
+  string = 'String',
+  object = 'Object',
+  array = 'Array',
+}
+
 const meta = {
   title: 'hooks/useOneLevelObject',
-  component: () => {
-    const [object, setObject] = createSignal<
-      string | Record<string, unknown> | Array<unknown>
-    >(ORIGINAL_STRING);
-    const [transformedObject, setTransformedObject] = createSignal<unknown>('');
-
-    createEffect(() => {
-      const to = useOneLevelObject(object());
-      console.log(to);
-      setTransformedObject(to);
-    });
+  component: (props: TUseOneLevelObject) => {
+    const transformedObject = useOneLevelObject(props);
     return (
       <>
-        <div style={{ display: 'flex', gap: '20px', 'flex-wrap': 'wrap' }}>
-          <Button onClick={() => setObject(ORIGINAL_STRING)}>Use string</Button>
-          <Button onClick={() => setObject(ORIGINAL_OBJECT)}>Use Object</Button>
-          <Button onClick={() => setObject(ORIGINAL_ARRAY)}>Use Array</Button>
-        </div>
         <br />
         <strong>Original:</strong>
         <p>
-          <code>{JSON.stringify(object())}</code>
+          <code>{JSON.stringify(props.object)}</code>
         </p>
         <strong>Transformed:</strong>
         <p>
@@ -45,7 +35,25 @@ const meta = {
     );
   },
   tags: ['autodocs'],
-  argTypes: {},
+  argTypes: {
+    object: {
+      defaultValue: EOptions.string,
+      control: {
+        type: 'select',
+      },
+      mapping: {
+        [EOptions.string]: ORIGINAL_STRING,
+        [EOptions.object]: ORIGINAL_OBJECT,
+        [EOptions.array]: ORIGINAL_ARRAY,
+      },
+      options: [EOptions.string, EOptions.object, EOptions.array],
+      description: 'Initial play value',
+      table: {
+        type: { summary: 'select' },
+        defaultValue: { summary: EOptions.string },
+      },
+    },
+  },
 } satisfies Meta<{}>;
 
 export default meta;
