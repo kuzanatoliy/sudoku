@@ -29,7 +29,7 @@ describe('useDebouncedFunction', () => {
   const renderHook = (func = fnSpy, delay?: number) =>
     render(() => useDebouncedFunction(func, delay));
 
-  it('Should not call confirmation', () => {
+  it('Should call debounced function once', () => {
     const { result } = renderHook(fnSpy);
     expect(fnSpy).not.toHaveBeenCalled();
     result();
