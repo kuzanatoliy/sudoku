@@ -3,7 +3,7 @@ import { onCleanup } from 'solid-js';
 export const DEFAULT_DEBOUNCED_FUNCTION_DELAY = 1000;
 
 export const useDebouncedFunction = (
-  funk: (...args: unknown[]) => void,
+  func: (...args: unknown[]) => void,
   delay: number = DEFAULT_DEBOUNCED_FUNCTION_DELAY
 ) => {
   let timerId: NodeJS.Timeout | undefined = undefined;
@@ -12,10 +12,10 @@ export const useDebouncedFunction = (
     clearTimeout(timerId);
   });
 
-  return (...args: Parameters<typeof funk>) => {
+  return (...args: Parameters<typeof func>) => {
     clearTimeout(timerId);
     timerId = setTimeout(() => {
-      funk(...args);
+      func(...args);
     }, delay);
   };
 };

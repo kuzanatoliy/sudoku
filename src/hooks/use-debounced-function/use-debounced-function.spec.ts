@@ -26,8 +26,8 @@ describe('useDebouncedFunction', () => {
 
   const fnSpy = vitest.fn();
 
-  const renderHook = (funk = fnSpy, delay?: number) =>
-    render(() => useDebouncedFunction(funk, delay));
+  const renderHook = (func = fnSpy, delay?: number) =>
+    render(() => useDebouncedFunction(func, delay));
 
   it('Should not call confirmation', () => {
     const { result } = renderHook(fnSpy);
