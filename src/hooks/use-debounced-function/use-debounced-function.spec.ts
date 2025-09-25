@@ -11,7 +11,7 @@ import {
 
 import { useDebouncedFunction } from './use-debounced-function';
 
-describe('useLeavingConfirmation', () => {
+describe('useDebouncedFunction', () => {
   beforeAll(() => {
     vitest.useFakeTimers();
   });
